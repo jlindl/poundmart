@@ -1,26 +1,242 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ------------------------------------------------------------------
+   PoundMart design tokens
+   Brand: navy #04406C + sunshine #FCD000 (sampled from the logo),
+   on a warm cream canvas. Flavour colours come from the products.
+------------------------------------------------------------------- */
+@theme {
+  --color-ink: #04406c;
+  --color-ink-deep: #022a48;
+  --color-ink-night: #01192c;
+  --color-ink-soft: #2a5f88;
+  --color-ink-muted: #5b7690;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-sun: #fcd000;
+  --color-sun-deep: #e6b800;
+  --color-sun-soft: #fff3b8;
+  --color-sun-pale: #fffae3;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-cream: #fbf7ee;
+  --color-sand: #f3ecdd;
+  --color-paper: #ffffff;
+  --color-sky: #dcebf7;
+  --color-line: #e6dfcf;
+
+  --color-watermelon: #ff5468;
+  --color-grape: #7b3fb8;
+  --color-peach: #ff9b54;
+  --color-berry: #3d6fe8;
+  --color-candy: #ff7eb6;
+  --color-gummy: #e6508f;
+  --color-mango: #fdb42c;
+  --color-dragonfruit: #e562b0;
+  --color-cherry: #f2765f;
+  --color-argan: #9a6a3a;
+  --color-mint: #2fb59b;
+
+  --radius-4xl: 2rem;
+  --radius-5xl: 2.75rem;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --shadow-soft: 0 1px 2px rgb(4 64 108 / 0.04), 0 8px 24px -8px rgb(4 64 108 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(4 64 108 / 0.05), 0 24px 48px -16px rgb(4 64 108 / 0.25);
+  --shadow-glow: 0 0 0 1px rgb(252 208 0 / 0.4), 0 18px 40px -12px rgb(252 208 0 / 0.55);
+
+  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+  --animate-marquee-reverse: marquee var(--marquee-duration, 40s) linear infinite reverse;
+  --animate-spin-slow: spin 18s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shine: shine 2.4s var(--ease-out-expo) infinite;
+
+  @keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(var(--float-rotate, 0deg)); }
+    50% { transform: translateY(-14px) rotate(var(--float-rotate, 0deg)); }
+  }
+  @keyframes shine {
+    0% { transform: translateX(-120%) skewX(-20deg); }
+    60%, 100% { transform: translateX(220%) skewX(-20deg); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* ------------------------------------------------------------------
+   Base
+------------------------------------------------------------------- */
+:root {
+  /* Announcement bar (32px) + nav bar. Use pt-[var(--header-h)] on page tops. */
+  --header-h: 100px;
+}
+@media (min-width: 1024px) {
+  :root {
+    --header-h: 108px;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--color-sun);
+    color: var(--color-ink-deep);
+  }
+
+  :focus-visible {
+    outline: 2.5px solid var(--color-ink);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  img {
+    user-select: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Lenis smooth scroll
+------------------------------------------------------------------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis [data-lenis-prevent],
+.lenis [data-lenis-prevent-wheel],
+.lenis [data-lenis-prevent-touch] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------
+   Utilities
+------------------------------------------------------------------- */
+@utility container-x {
+  width: 100%;
+  max-width: 88rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+@utility type-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+}
+
+@utility accent-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@utility product-cutout {
+  /* Amazon packshots sit on pure white: multiply knocks the white out on light backgrounds. */
+  mix-blend-mode: multiply;
+}
+
+@utility grain {
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.18;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@utility dot-grid {
+  background-image: radial-gradient(rgb(4 64 108 / 0.12) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility mask-fade-x {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+/* ------------------------------------------------------------------
+   Route transitions (React <ViewTransition>)
+------------------------------------------------------------------- */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 380ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+::view-transition-group(.morph) {
+  animation-duration: 520ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }

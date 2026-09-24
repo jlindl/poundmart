@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PoundMart website
 
-## Getting Started
+The marketing site for **PoundMart, Home of Great Value Bundles**. It exists to turn search and social traffic into Amazon sales: every page tells the story, then sends shoppers to the [PoundMart Amazon store](https://www.amazon.co.uk/stores/PoundMart/page/51710033-B61C-4A51-A8C0-6DDF028E0841).
 
-First, run the development server:
+Built with Next.js 16 (App Router), React 19, Tailwind CSS v4, Motion and Lenis.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev            # http://localhost:3000
+npm run build          # production build (also validates every blog post)
+npm run check:posts    # blog quality gate (frontmatter, links, components, house style)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Set these in `.env.local` locally and in your host (e.g. Vercel project settings).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Purpose |
+|---|---|
+| `NEXT_PUBLIC_SITE_URL` | The live domain, e.g. `https://www.yourdomain.co.uk`. Used for canonical URLs, the sitemap, Open Graph and JSON-LD. **Set this before launch.** |
+| `NEXT_PUBLIC_AMAZON_ATTRIBUTION` | Optional. Query string from an **Amazon Attribution** tag, e.g. `maas=maas_adg_XXXX&ref_=aa_maas`. Appended to every Amazon link. Attribution tracks which off-Amazon traffic converts and qualifies external traffic for Amazon's **Brand Referral Bonus**. Strongly recommended. |
+| `NEXT_PUBLIC_AMAZON_TAG` | Optional Amazon Associates tag, e.g. `poundmart-21`. |
 
-## Learn More
+Every Amazon link also fires an `amazon_click` event (to `dataLayer`, `gtag` and Plausible if installed) with the link's `placement`, so you can see which buttons drive the most outbound clicks.
 
-To learn more about Next.js, take a look at the following resources:
+## Where things live
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Path | What |
+|---|---|
+| `lib/site.ts` | Site config, Amazon store URLs, tracking, nav, and **verified brand facts** (the only claims copy may make). |
+| `lib/products.ts` | The curated catalogue: 18 products grouped from 26 Amazon listings, with variants, value maths and styling. |
+| `data/amazon-catalog.json` | Snapshot of the live listings (prices, ratings, bullets, images) taken 24 September 2026. |
+| `public/products/<ASIN>/` | Product gallery (`g1…`) and A+ (`a1…`) images from the listings. |
+| `public/brand/` | Logo (dark + white), cart mark, brand film + captions, family poster. |
+| `content/blog/*.mdx` | Blog posts. Format, components and rules: [`content/README.md`](content/README.md). |
+| `scripts/check-posts.mjs` | Blog quality gate, also used by the future daily SEO automation. |
+| `components/motion/` | Animation primitives (reveals, split headlines, parallax, magnetic, marquee, tilt, count-up). |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Updating prices and ratings
 
-## Deploy on Vercel
+Prices, ratings and stock are a snapshot (shown on the site with a "prices checked" date). To refresh: update the numbers in `data/amazon-catalog.json`, then set `catalogCheckedAt` in `lib/site.ts`. Amazon always shows the live price at checkout.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Adding real photography
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Wherever a photo hasn't been shot yet, the site shows a branded placeholder. In development it prints the exact file path it's waiting for. Drop an image at that path in `public/` (JPG, landscape ~1600px wide unless the slot is square) and it appears automatically, no code changes needed. Blog posts without a hero photo get an auto-generated cover from their featured product; add `public/images/blog/<slug>.jpg` to replace it.
+
+## Blog
+
+Posts are MDX with frontmatter compatible with the `seo-content-engine` automation. A post dated in the future stays hidden until that date. RSS is at `/blog/rss.xml`; every post, product, collection and category is in `/sitemap.xml`.
