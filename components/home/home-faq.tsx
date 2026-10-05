@@ -19,7 +19,7 @@ export function HomeFaq({ items, storeHref }: { items: FaqItem[]; storeHref: str
 
   return (
     <section className="relative bg-paper py-24 md:py-32 lg:py-40">
-      <div className="container-x grid gap-14 lg:grid-cols-12 lg:gap-12">
+      <div className="container-x grid gap-14 grid-cols-1 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-[calc(var(--header-h)+2.5rem)]">
             <SectionHeading

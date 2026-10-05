@@ -126,7 +126,7 @@ export default async function BlogCategoryPage(props: PageProps<"/blog/category/
         <div aria-hidden className="absolute -right-40 -top-32 size-[40rem] rounded-full opacity-40 blur-3xl" style={{ background: category.accent }} />
         <div aria-hidden className="absolute -bottom-40 -left-20 size-[26rem] rounded-full bg-white/60 blur-3xl" />
 
-        <div className="container-x relative grid items-center gap-16 lg:grid-cols-12 lg:gap-10">
+        <div className="container-x relative grid items-center gap-16 grid-cols-1 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-7">
             <Reveal y={10}>
               <Breadcrumbs items={trail} />

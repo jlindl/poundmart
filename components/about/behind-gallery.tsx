@@ -114,7 +114,7 @@ export function BehindGallery({
           aria-label={`${eyebrow}: photo strip`}
           tabIndex={0}
           className={cn(
-            "no-scrollbar mt-10 snap-x snap-mandatory overflow-x-auto overscroll-x-contain focus-visible:outline-offset-[-4px] lg:mt-14",
+            "no-scrollbar relative mt-10 snap-x snap-mandatory overflow-x-auto overscroll-x-contain focus-visible:outline-offset-[-4px] lg:mt-14",
             pinned && "snap-none overflow-x-visible",
           )}
         >

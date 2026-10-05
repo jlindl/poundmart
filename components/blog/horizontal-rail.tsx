@@ -77,7 +77,7 @@ export function HorizontalRail({
         ref={viewportRef}
         className={cn(
           "relative",
-          pinned ? "sticky top-0 flex h-screen flex-col justify-center overflow-clip" : "lg:overflow-x-auto lg:pb-4",
+          pinned ? "sticky top-0 flex h-screen flex-col justify-center overflow-clip" : "lg:relative lg:overflow-x-auto lg:pb-4",
         )}
       >
         <motion.div

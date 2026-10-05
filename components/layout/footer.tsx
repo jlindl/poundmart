@@ -31,7 +31,7 @@ export function Footer() {
         </ul>
       </div>
 
-      <div className="container-x relative z-[2] grid gap-14 py-20 lg:grid-cols-12">
+      <div className="container-x relative z-[2] grid gap-14 py-20 grid-cols-1 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <Logo tone="light" className="h-12" />
           <p className="mt-6 max-w-sm text-lg leading-relaxed text-cream/70">
@@ -79,7 +79,7 @@ export function Footer() {
       <div aria-hidden className="pointer-events-none relative z-[1] -mb-[2vw] select-none overflow-hidden">
         <Parallax offset={40}>
           <p className="type-display whitespace-nowrap text-center text-[21vw] leading-[0.8] text-cream/[0.06]">
-            Pound<span className="accent-serif text-sun/20">Mart</span>
+            Pound<span className="accent-serif">Mart</span>
           </p>
         </Parallax>
       </div>

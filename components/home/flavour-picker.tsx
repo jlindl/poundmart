@@ -69,7 +69,7 @@ export function FlavourPicker({ flavours, priceNote }: { flavours: FlavourOption
     >
       <div aria-hidden className="dot-grid pointer-events-none absolute inset-0 opacity-50" />
 
-      <div className="container-x relative grid items-center gap-16 lg:grid-cols-12 lg:gap-10">
+      <div className="container-x relative grid items-center gap-16 grid-cols-1 lg:grid-cols-12 lg:gap-10">
         {/* Copy + picker */}
         <div className="lg:col-span-5">
           <span className="eyebrow inline-flex items-center gap-2 text-ink">

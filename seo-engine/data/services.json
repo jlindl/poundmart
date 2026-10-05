@@ -1,0 +1,943 @@
+{
+  "_readme": "Topics for PoundMart's national guides (location posts are off). Each 'service' is a topic; paired with an audience and a serviceAngle it gives one article keyword. Audience vars.for adds the audience to keywords that need it (e.g. ' for kids'). 'summary' and 'examples' are treated as true by the writer, so keep them factual. Extra fields: 'category' (one of the blog's four categories: Oral Care, Haircare, Smart Saving, Family & Home) and 'products' (product slugs from lib/products.ts) are written into each post's frontmatter by lib/post-file.ts. excludePairs lists 'topic-id:audience-id' combinations to skip. Check every keyword with npm run seo:generate -- --plan --all.",
+  "services": [
+    {
+      "id": "kids-toothpaste",
+      "name": "Kids' toothpaste",
+      "term": "kids toothpaste",
+      "keyword": "kids toothpaste",
+      "category": "Oral Care",
+      "products": [
+        "nice-smile-3-pack-berry-gummy-candy",
+        "nice-smile-6-pack-toothpaste-bundle"
+      ],
+      "summary": "PoundMart sells Nice Smile flavoured whitening toothpaste with fluoride, made for kids and adults, in 60g tubes: Watermelon Fresh, Feelin' Grape, Peachy Clean, Berry Burst, Yummy Gummy and Candy Clean, as singles and multi-packs.",
+      "relatedPaths": [
+        "/collections/toothpaste",
+        "/shop/nice-smile-3-pack-berry-gummy-candy",
+        "/shop/nice-smile-6-pack-toothpaste-bundle"
+      ],
+      "angles": [
+        "guide",
+        "choose",
+        "mistakes",
+        "routine"
+      ],
+      "keywords": {
+        "guide": "best toothpaste for kids uk",
+        "choose": "how to choose toothpaste for kids",
+        "mistakes": "kids toothpaste mistakes parents make",
+        "routine": "toddler brushing routine"
+      }
+    },
+    {
+      "id": "flavoured-toothpaste",
+      "name": "Flavoured toothpaste",
+      "term": "flavoured toothpaste",
+      "keyword": "flavoured toothpaste",
+      "category": "Oral Care",
+      "products": [
+        "nice-smile-6-pack-toothpaste-bundle",
+        "nice-smile-3-pack-watermelon-grape-peach"
+      ],
+      "summary": "Nice Smile toothpaste comes in six fruity and sweet flavours (Watermelon Fresh, Feelin' Grape, Peachy Clean, Berry Burst, Yummy Gummy and Candy Clean), sold by PoundMart as singles and as 3, 6 and 12 tube bundles.",
+      "relatedPaths": [
+        "/collections/toothpaste",
+        "/shop/nice-smile-6-pack-toothpaste-bundle",
+        "/shop/nice-smile-12-pack-toothpaste-bundle"
+      ],
+      "angles": [
+        "guide",
+        "choose",
+        "benefits",
+        "worth-it"
+      ],
+      "keywords": {
+        "guide": "flavoured toothpaste{for}",
+        "choose": "how to pick a toothpaste flavour{for}",
+        "benefits": "is flavoured toothpaste as good as mint",
+        "worth-it": "is fruit flavoured toothpaste bad for teeth"
+      }
+    },
+    {
+      "id": "fluoride-toothpaste",
+      "name": "Fluoride toothpaste",
+      "term": "fluoride toothpaste",
+      "keyword": "fluoride toothpaste",
+      "category": "Oral Care",
+      "products": [
+        "nice-smile-3-pack-watermelon-grape-peach"
+      ],
+      "summary": "Nice Smile is listed as a whitening toothpaste with fluoride for kids and adults. Its fluoride ppm is not published in PoundMart's data, so readers should check the pack against NHS guidance.",
+      "relatedPaths": [
+        "/collections/toothpaste",
+        "/shop/nice-smile-12-pack-toothpaste-bundle"
+      ],
+      "angles": [
+        "guide",
+        "mistakes",
+        "how-to"
+      ],
+      "keywords": {
+        "guide": "fluoride toothpaste{for}",
+        "mistakes": "fluoride toothpaste mistakes",
+        "how-to": "how to read fluoride levels on toothpaste"
+      }
+    },
+    {
+      "id": "vegan-toothpaste",
+      "name": "Vegan toothpaste",
+      "term": "vegan toothpaste",
+      "keyword": "vegan toothpaste",
+      "category": "Oral Care",
+      "products": [
+        "nice-smile-6-pack-toothpaste-bundle"
+      ],
+      "summary": "Nice Smile toothpaste is described on its listings as vegan, cruelty-free and enamel-safe, in six flavours, sold by PoundMart on Amazon.",
+      "relatedPaths": [
+        "/collections/toothpaste",
+        "/shop/nice-smile-6-pack-toothpaste-bundle"
+      ],
+      "angles": [
+        "guide",
+        "choose",
+        "worth-it"
+      ],
+      "keywords": {
+        "guide": "vegan toothpaste{for}",
+        "choose": "how to check if toothpaste is vegan",
+        "worth-it": "cruelty free toothpaste uk"
+      }
+    },
+    {
+      "id": "whitening-toothpaste",
+      "name": "Whitening toothpaste",
+      "term": "whitening toothpaste",
+      "keyword": "whitening toothpaste",
+      "category": "Oral Care",
+      "products": [
+        "nice-smile-watermelon-fresh-toothpaste",
+        "nice-smile-candy-clean-toothpaste"
+      ],
+      "summary": "Nice Smile is listed as a whitening toothpaste with fluoride for kids and adults. Whitening toothpaste removes surface stains; it does not change natural tooth colour.",
+      "relatedPaths": [
+        "/collections/toothpaste",
+        "/shop/nice-smile-watermelon-fresh-toothpaste"
+      ],
+      "angles": [
+        "guide",
+        "mistakes",
+        "how-to",
+        "worth-it"
+      ],
+      "keywords": {
+        "guide": "whitening toothpaste{for}",
+        "mistakes": "whitening toothpaste mistakes",
+        "how-to": "how to remove tea and coffee stains from teeth",
+        "worth-it": "is whitening toothpaste safe for kids"
+      }
+    },
+    {
+      "id": "brushing-habits",
+      "name": "Brushing habits",
+      "term": "brushing routine",
+      "keyword": "brushing routine",
+      "category": "Oral Care",
+      "products": [
+        "nice-smile-3-pack-berry-gummy-candy",
+        "nice-smile-12-pack-toothpaste-bundle"
+      ],
+      "summary": "PoundMart sells Nice Smile flavoured toothpaste in fun flavours that the listings say are designed to encourage healthy brushing habits for the whole family.",
+      "relatedPaths": [
+        "/collections/toothpaste",
+        "/shop/nice-smile-12-pack-toothpaste-bundle"
+      ],
+      "angles": [
+        "guide",
+        "routine",
+        "mistakes",
+        "how-to"
+      ],
+      "keywords": {
+        "guide": "brushing routine{for}",
+        "routine": "bedtime brushing routine for kids",
+        "mistakes": "common tooth brushing mistakes",
+        "how-to": "how to brush your teeth properly"
+      }
+    },
+    {
+      "id": "leave-in-conditioner",
+      "name": "Leave-in conditioner",
+      "term": "leave in conditioner",
+      "keyword": "leave in conditioner",
+      "category": "Haircare",
+      "products": [
+        "xhc-no-rinse-conditioner-3-pack",
+        "xhc-no-rinse-conditioner"
+      ],
+      "summary": "PoundMart sells XHC Vegan No Rinse Conditioner, a 250ml leave-in conditioner for curly, afro and damaged hair, described as vegan, sulphate-free and cruelty-free, in Cherry & Almond, Dragon Fruit & Vanilla and Mango & Coconut, singly or as a 3 pack.",
+      "relatedPaths": [
+        "/collections/haircare",
+        "/shop/xhc-no-rinse-conditioner-3-pack",
+        "/shop/xhc-no-rinse-conditioner"
+      ],
+      "angles": [
+        "guide",
+        "choose",
+        "how-to",
+        "mistakes",
+        "benefits"
+      ],
+      "keywords": {
+        "guide": "leave in conditioner{for}",
+        "choose": "how to choose a leave in conditioner{for}",
+        "how-to": "how much leave in conditioner to use",
+        "mistakes": "leave in conditioner mistakes",
+        "benefits": "leave in conditioner benefits"
+      }
+    },
+    {
+      "id": "curly-hair",
+      "name": "Curly hair care",
+      "term": "curly hair routine",
+      "keyword": "curly hair routine",
+      "category": "Haircare",
+      "products": [
+        "xhc-no-rinse-conditioner-3-pack",
+        "xhc-argan-oil-conditioner-twin-pack"
+      ],
+      "summary": "XHC No Rinse Conditioner is made for curly, afro and damaged hair; XHC Argan Oil conditioner is described as nourishing and moisturising for soft, smooth hair. Both are sold by PoundMart on Amazon.",
+      "relatedPaths": [
+        "/collections/haircare",
+        "/shop/xhc-no-rinse-conditioner-3-pack",
+        "/shop/xhc-argan-oil-conditioner-twin-pack"
+      ],
+      "angles": [
+        "guide",
+        "routine",
+        "mistakes",
+        "how-to"
+      ],
+      "keywords": {
+        "guide": "curly hair routine for beginners",
+        "routine": "how to refresh curls between washes",
+        "mistakes": "curly hair mistakes to avoid",
+        "how-to": "how to sleep with curly hair"
+      }
+    },
+    {
+      "id": "afro-hair",
+      "name": "Afro hair care",
+      "term": "afro hair care",
+      "keyword": "afro hair care",
+      "category": "Haircare",
+      "products": [
+        "xhc-no-rinse-conditioner"
+      ],
+      "summary": "XHC Vegan No Rinse Conditioner is a leave-in conditioner made for curly, afro and damaged hair, sold by PoundMart on Amazon.",
+      "relatedPaths": [
+        "/collections/haircare",
+        "/shop/xhc-no-rinse-conditioner"
+      ],
+      "angles": [
+        "guide",
+        "routine",
+        "mistakes"
+      ],
+      "keywords": {
+        "guide": "afro hair care routine{for}",
+        "routine": "wash day routine for afro hair",
+        "mistakes": "afro hair care mistakes"
+      }
+    },
+    {
+      "id": "argan-oil",
+      "name": "Argan oil haircare",
+      "term": "argan oil shampoo",
+      "keyword": "argan oil shampoo",
+      "category": "Haircare",
+      "products": [
+        "xhc-argan-oil-shampoo-conditioner-set",
+        "xhc-argan-oil-shampoo-3-pack"
+      ],
+      "summary": "PoundMart sells XHC Argan Oil shampoo and conditioner in 300ml bottles with Moroccan argan oil, described as nourishing, moisturising, vegan friendly and paraben-free, as a set, twin packs, 3 packs and a 6 bottle stock-up.",
+      "relatedPaths": [
+        "/collections/haircare",
+        "/shop/xhc-argan-oil-shampoo-conditioner-set",
+        "/shop/xhc-argan-oil-shampoo-3-pack"
+      ],
+      "angles": [
+        "guide",
+        "how-to",
+        "benefits",
+        "worth-it"
+      ],
+      "keywords": {
+        "guide": "argan oil shampoo{for}",
+        "how-to": "how to use argan oil conditioner",
+        "benefits": "argan oil conditioner benefits",
+        "worth-it": "is argan oil shampoo good for fine hair"
+      }
+    },
+    {
+      "id": "dry-hair",
+      "name": "Dry and damaged hair",
+      "term": "dry hair",
+      "keyword": "dry hair",
+      "category": "Haircare",
+      "products": [
+        "xhc-argan-oil-shampoo-3-pack",
+        "xhc-argan-oil-conditioner-twin-pack"
+      ],
+      "summary": "XHC Argan Oil shampoo is listed for dry or damaged hair and XHC Argan Oil conditioner for soft, smooth hair; XHC No Rinse Conditioner is listed for damaged hair. All are sold by PoundMart on Amazon.",
+      "relatedPaths": [
+        "/collections/haircare",
+        "/shop/xhc-argan-oil-shampoo-3-pack"
+      ],
+      "angles": [
+        "guide",
+        "routine",
+        "mistakes",
+        "how-to"
+      ],
+      "keywords": {
+        "guide": "how to fix dry hair{for}",
+        "routine": "hair care routine for dry hair",
+        "mistakes": "habits that make dry hair worse",
+        "how-to": "how to protect hair from heat damage"
+      }
+    },
+    {
+      "id": "rosemary-shampoo",
+      "name": "Rosemary shampoo",
+      "term": "rosemary shampoo",
+      "keyword": "rosemary shampoo",
+      "category": "Haircare",
+      "products": [
+        "xhc-rosemary-mint-shampoo-3-pack"
+      ],
+      "summary": "PoundMart sells XHC Rosemary & Mint Shampoo as a 3 pack of 300ml bottles, described as revitalising, cleansing and shine-enhancing for dry or damaged hair, vegan and cruelty-free.",
+      "relatedPaths": [
+        "/collections/haircare",
+        "/shop/xhc-rosemary-mint-shampoo-3-pack"
+      ],
+      "angles": [
+        "how-to",
+        "worth-it",
+        "mistakes"
+      ],
+      "keywords": {
+        "how-to": "how to use rosemary shampoo",
+        "worth-it": "rosemary shampoo vs rosemary oil",
+        "mistakes": "rosemary and mint shampoo for oily scalp"
+      }
+    },
+    {
+      "id": "shampoo-bars",
+      "name": "Shampoo bars",
+      "term": "shampoo bars",
+      "keyword": "shampoo bars",
+      "category": "Haircare",
+      "products": [
+        "xhc-shampoo-conditioner-bars"
+      ],
+      "summary": "PoundMart sells XHC 2-in-1 Shampoo & Conditioner Bars in Coconut, Banana and Papaya, described as plastic-free, vegan friendly and travel-friendly, in 3 packs and 6 packs.",
+      "relatedPaths": [
+        "/collections/haircare",
+        "/shop/xhc-shampoo-conditioner-bars"
+      ],
+      "angles": [
+        "guide",
+        "how-to",
+        "mistakes",
+        "worth-it",
+        "benefits"
+      ],
+      "keywords": {
+        "guide": "shampoo bars{for}",
+        "how-to": "how to store a shampoo bar",
+        "mistakes": "shampoo bar mistakes",
+        "worth-it": "are shampoo bars worth it",
+        "benefits": "2 in 1 shampoo bar benefits"
+      }
+    },
+    {
+      "id": "frizz",
+      "name": "Frizzy hair",
+      "term": "frizzy hair",
+      "keyword": "frizzy hair",
+      "category": "Haircare",
+      "products": [
+        "xhc-argan-oil-conditioner-twin-pack",
+        "xhc-no-rinse-conditioner"
+      ],
+      "summary": "XHC Argan Oil conditioner is described as conditioning for soft, smooth hair, and XHC No Rinse Conditioner as a leave-in for curly, afro and damaged hair. Both are sold by PoundMart on Amazon.",
+      "relatedPaths": [
+        "/collections/haircare",
+        "/shop/xhc-argan-oil-conditioner-twin-pack"
+      ],
+      "angles": [
+        "guide",
+        "routine",
+        "how-to"
+      ],
+      "keywords": {
+        "guide": "how to tame frizzy hair{for}",
+        "routine": "how to stop frizz in humid weather",
+        "how-to": "how to dry hair without frizz"
+      }
+    },
+    {
+      "id": "value-bundles",
+      "name": "Toiletry bundles",
+      "term": "toiletry bundles",
+      "keyword": "toiletry bundles",
+      "category": "Smart Saving",
+      "products": [
+        "nice-smile-12-pack-toothpaste-bundle",
+        "xhc-no-rinse-conditioner-3-pack"
+      ],
+      "summary": "PoundMart sells everyday essentials as multi-pack bundles on Amazon (Nice Smile toothpaste in 3, 4, 6 and 12 tube packs; XHC haircare in twin packs, 3 packs and 6 packs). Bigger bundles cost less per item.",
+      "relatedPaths": [
+        "/collections/bundles",
+        "/shop",
+        "/shop/nice-smile-12-pack-toothpaste-bundle"
+      ],
+      "angles": [
+        "guide",
+        "worth-it",
+        "mistakes",
+        "how-to"
+      ],
+      "keywords": {
+        "guide": "toiletry bundles{for}",
+        "worth-it": "is buying toiletries in bulk worth it",
+        "mistakes": "bulk buying mistakes",
+        "how-to": "how to compare price per unit"
+      }
+    },
+    {
+      "id": "save-on-toiletries",
+      "name": "Saving money on toiletries",
+      "term": "cheap toiletries",
+      "keyword": "cheap toiletries",
+      "category": "Smart Saving",
+      "products": [
+        "nice-smile-12-pack-toothpaste-bundle",
+        "xhc-shampoo-conditioner-bars"
+      ],
+      "summary": "PoundMart sells genuine branded toothpaste and haircare as value multi-packs on Amazon, sold by PoundMart and dispatched by Amazon, with 30-day returns through Amazon.",
+      "relatedPaths": [
+        "/collections/bundles",
+        "/shop"
+      ],
+      "angles": [
+        "guide",
+        "how-to",
+        "mistakes",
+        "routine"
+      ],
+      "keywords": {
+        "guide": "how to save money on toiletries{for}",
+        "how-to": "how to make toiletries last longer",
+        "mistakes": "money mistakes in the toiletries aisle",
+        "routine": "monthly toiletries shopping list"
+      }
+    },
+    {
+      "id": "amazon-shopping",
+      "name": "Shopping for essentials on Amazon",
+      "term": "amazon toiletries",
+      "keyword": "amazon toiletries",
+      "category": "Smart Saving",
+      "products": [
+        "xhc-argan-oil-shampoo-conditioner-set"
+      ],
+      "summary": "PoundMart products are sold by PoundMart and dispatched by Amazon on Amazon UK; delivery options and tracking are shown by Amazon, and returns go through Amazon within 30 days.",
+      "relatedPaths": [
+        "/faq",
+        "/shop",
+        "/about"
+      ],
+      "angles": [
+        "how-to",
+        "mistakes",
+        "worth-it"
+      ],
+      "keywords": {
+        "how-to": "how to check who sells a product on amazon",
+        "mistakes": "how to spot fake toiletries online",
+        "worth-it": "dispatched by amazon vs fulfilled by amazon"
+      }
+    },
+    {
+      "id": "travel-toiletries",
+      "name": "Travel toiletries",
+      "term": "travel toiletries",
+      "keyword": "travel toiletries",
+      "category": "Family & Home",
+      "products": [
+        "xhc-shampoo-conditioner-bars",
+        "nice-smile-watermelon-fresh-toothpaste"
+      ],
+      "summary": "PoundMart sells compact 60g Nice Smile toothpaste tubes and XHC 2-in-1 Shampoo & Conditioner Bars, which the listings describe as travel-friendly and carry-on friendly.",
+      "relatedPaths": [
+        "/shop/xhc-shampoo-conditioner-bars",
+        "/collections/toothpaste"
+      ],
+      "angles": [
+        "guide",
+        "how-to",
+        "mistakes"
+      ],
+      "keywords": {
+        "guide": "travel toiletries{for}",
+        "how-to": "how to pack toiletries for a flight",
+        "mistakes": "packing mistakes for hand luggage toiletries"
+      }
+    },
+    {
+      "id": "bathroom-organisation",
+      "name": "Bathroom organisation",
+      "term": "bathroom storage",
+      "keyword": "bathroom storage",
+      "category": "Family & Home",
+      "products": [
+        "nice-smile-12-pack-toothpaste-bundle"
+      ],
+      "summary": "PoundMart sells toothpaste and haircare in multi-pack bundles, so households can keep a small stock of essentials on hand.",
+      "relatedPaths": [
+        "/collections/bundles",
+        "/shop"
+      ],
+      "angles": [
+        "guide",
+        "how-to",
+        "mistakes"
+      ],
+      "keywords": {
+        "guide": "small bathroom storage ideas{for}",
+        "how-to": "how to organise a shared bathroom",
+        "mistakes": "bathroom storage mistakes"
+      }
+    },
+    {
+      "id": "gifts",
+      "name": "Toiletry gifts",
+      "term": "toiletry gifts",
+      "keyword": "toiletry gifts",
+      "category": "Family & Home",
+      "products": [
+        "xhc-argan-oil-shampoo-conditioner-set",
+        "nice-smile-6-pack-toothpaste-bundle"
+      ],
+      "summary": "PoundMart's bundles include the XHC Argan Oil Shampoo & Conditioner Set, XHC No Rinse Conditioner 3 Pack and Nice Smile flavoured toothpaste multi-packs, which the listings suggest for gifting.",
+      "relatedPaths": [
+        "/collections/bundles",
+        "/shop/xhc-argan-oil-shampoo-conditioner-set"
+      ],
+      "angles": [
+        "guide",
+        "how-to"
+      ],
+      "keywords": {
+        "guide": "toiletry gift ideas{for}",
+        "how-to": "how to make a pamper hamper"
+      }
+    },
+    {
+      "id": "plastic-free",
+      "name": "Plastic-free bathroom",
+      "term": "plastic free bathroom",
+      "keyword": "plastic free bathroom",
+      "category": "Family & Home",
+      "products": [
+        "xhc-shampoo-conditioner-bars"
+      ],
+      "summary": "XHC 2-in-1 Shampoo & Conditioner Bars are described as plastic-free, vegan friendly and travel-friendly; PoundMart sells them in 3 packs and 6 packs on Amazon.",
+      "relatedPaths": [
+        "/shop/xhc-shampoo-conditioner-bars",
+        "/collections/haircare"
+      ],
+      "angles": [
+        "guide",
+        "how-to",
+        "worth-it"
+      ],
+      "keywords": {
+        "guide": "eco friendly bathroom products{for}",
+        "how-to": "how to reduce plastic in the bathroom",
+        "worth-it": "are solid toiletries better for the environment"
+      }
+    },
+    {
+      "id": "conditioner-basics",
+      "name": "Conditioner basics",
+      "term": "conditioner",
+      "keyword": "conditioner",
+      "category": "Haircare",
+      "products": [
+        "xhc-argan-oil-conditioner-twin-pack",
+        "xhc-no-rinse-conditioner-3-pack"
+      ],
+      "summary": "PoundMart sells XHC Argan Oil Conditioner (300ml, described as nourishing and moisturising for soft, smooth hair, vegan friendly and paraben-free) and XHC Vegan No Rinse Conditioner (a 250ml leave-in for curly, afro and damaged hair).",
+      "relatedPaths": [
+        "/collections/haircare",
+        "/shop/xhc-argan-oil-conditioner-twin-pack",
+        "/shop/xhc-no-rinse-conditioner-3-pack"
+      ],
+      "angles": [
+        "guide",
+        "how-to",
+        "mistakes",
+        "worth-it",
+        "benefits"
+      ],
+      "keywords": {
+        "guide": "how often should you use conditioner",
+        "how-to": "can you use conditioner without shampoo",
+        "mistakes": "conditioner mistakes",
+        "worth-it": "is co-washing good for curly hair",
+        "benefits": "what does conditioner actually do"
+      }
+    },
+    {
+      "id": "kids-hair",
+      "name": "Kids' hair care",
+      "term": "kids hair care",
+      "keyword": "kids hair care",
+      "category": "Family & Home",
+      "products": [
+        "xhc-no-rinse-conditioner",
+        "xhc-shampoo-conditioner-bars"
+      ],
+      "summary": "PoundMart sells XHC Vegan No Rinse Conditioner, a leave-in conditioner for curly, afro and damaged hair, and XHC 2-in-1 Shampoo & Conditioner Bars, sold on Amazon.",
+      "relatedPaths": [
+        "/collections/haircare",
+        "/shop/xhc-no-rinse-conditioner"
+      ],
+      "angles": [
+        "guide",
+        "how-to",
+        "mistakes",
+        "routine"
+      ],
+      "keywords": {
+        "guide": "how to detangle kids hair",
+        "how-to": "how to wash a toddler's hair without tears",
+        "mistakes": "kids hair care mistakes",
+        "routine": "school morning hair routine"
+      }
+    },
+    {
+      "id": "gym-hair",
+      "name": "Gym hair care",
+      "term": "gym hair care",
+      "keyword": "gym hair care",
+      "category": "Haircare",
+      "products": [
+        "xhc-shampoo-conditioner-bars",
+        "xhc-no-rinse-conditioner"
+      ],
+      "summary": "XHC 2-in-1 Shampoo & Conditioner Bars are described as compact, mess-free and travel and gym friendly; XHC No Rinse Conditioner is a leave-in conditioner. Both are sold by PoundMart on Amazon.",
+      "relatedPaths": [
+        "/shop/xhc-shampoo-conditioner-bars",
+        "/collections/haircare"
+      ],
+      "angles": [
+        "guide",
+        "how-to",
+        "routine",
+        "mistakes"
+      ],
+      "keywords": {
+        "guide": "gym bag toiletries checklist",
+        "how-to": "how to wash hair after the gym",
+        "routine": "post workout hair routine",
+        "mistakes": "gym hair mistakes"
+      }
+    },
+    {
+      "id": "toddler-teeth",
+      "name": "Toddler and baby teeth",
+      "term": "toddler teeth",
+      "keyword": "toddler teeth",
+      "category": "Oral Care",
+      "products": [
+        "nice-smile-3-pack-berry-gummy-candy",
+        "nice-smile-yummy-gummy-toothpaste"
+      ],
+      "summary": "PoundMart sells Nice Smile flavoured toothpaste with fluoride, listed for kids and adults, in 60g tubes. Parents should check the fluoride level on the pack against NHS guidance for their child's age.",
+      "relatedPaths": [
+        "/collections/toothpaste",
+        "/shop/nice-smile-3-pack-berry-gummy-candy"
+      ],
+      "angles": [
+        "guide",
+        "how-to",
+        "mistakes",
+        "routine"
+      ],
+      "keywords": {
+        "guide": "when should babies start using toothpaste",
+        "how-to": "how to brush a toddler's teeth",
+        "mistakes": "baby teeth care mistakes",
+        "routine": "first dentist visit for toddlers"
+      }
+    },
+    {
+      "id": "uni-essentials",
+      "name": "University essentials",
+      "term": "uni essentials",
+      "keyword": "uni essentials",
+      "category": "Family & Home",
+      "products": [
+        "xhc-argan-oil-shampoo-conditioner-set",
+        "nice-smile-3-pack-watermelon-grape-peach"
+      ],
+      "summary": "PoundMart sells value multi-packs of Nice Smile toothpaste and XHC haircare on Amazon, sold by PoundMart and dispatched by Amazon.",
+      "relatedPaths": [
+        "/collections/bundles",
+        "/shop"
+      ],
+      "angles": [
+        "guide",
+        "how-to",
+        "mistakes"
+      ],
+      "keywords": {
+        "guide": "uni bathroom essentials",
+        "how-to": "how to budget for toiletries at university",
+        "mistakes": "freshers packing mistakes"
+      }
+    },
+    {
+      "id": "hair-washing",
+      "name": "Hair washing",
+      "term": "hair washing",
+      "keyword": "hair washing",
+      "category": "Haircare",
+      "products": [
+        "xhc-argan-oil-shampoo-twin-pack",
+        "xhc-rosemary-mint-shampoo-3-pack"
+      ],
+      "summary": "PoundMart sells XHC shampoos on Amazon: Argan Oil Shampoo (300ml, nourishing and moisturising, vegan friendly and paraben-free) and Rosemary & Mint Shampoo (300ml, revitalising, vegan and cruelty-free).",
+      "relatedPaths": [
+        "/collections/haircare",
+        "/shop/xhc-argan-oil-shampoo-twin-pack"
+      ],
+      "angles": [
+        "how-to",
+        "worth-it",
+        "mistakes",
+        "guide"
+      ],
+      "keywords": {
+        "how-to": "how to wash your hair properly",
+        "worth-it": "is it bad to wash your hair every day",
+        "mistakes": "hair washing mistakes",
+        "guide": "how much shampoo should you use"
+      }
+    }
+  ],
+  "audiences": [
+    {
+      "id": "households",
+      "name": "UK households",
+      "singular": "household",
+      "kind": "primary",
+      "examples": "running out of toothpaste mid-week, a family bathroom shared by four, the weekly shop creeping up, trying to cut the cost of essentials, people who just want a straight answer",
+      "vars": {
+        "for": ""
+      }
+    },
+    {
+      "id": "parents",
+      "name": "parents",
+      "singular": "parent",
+      "kind": "primary",
+      "examples": "bedtime brushing battles, toddlers who refuse mint, school mornings, packing for a family holiday, children's hair that tangles, keeping costs down with more than one child",
+      "vars": {
+        "for": " for kids"
+      }
+    },
+    {
+      "id": "curly-hair",
+      "name": "people with curly or afro hair",
+      "singular": "person with curly or afro hair",
+      "kind": "primary",
+      "examples": "dry ends, frizz in damp weather, curls that lose shape by day two, long wash days, detangling, finding products that don't weigh curls down",
+      "vars": {
+        "for": " for curly hair"
+      }
+    },
+    {
+      "id": "students",
+      "name": "students",
+      "singular": "student",
+      "kind": "secondary",
+      "examples": "moving into halls, a tight weekly budget, a shared bathroom, a small shelf for toiletries, stocking up before term",
+      "vars": {
+        "for": " for students"
+      }
+    },
+    {
+      "id": "travellers",
+      "name": "travellers",
+      "singular": "traveller",
+      "kind": "secondary",
+      "examples": "hand luggage only flights, airport liquid rules, weekend breaks, gym bags, keeping a ready-packed wash bag",
+      "vars": {
+        "for": " for travel"
+      }
+    },
+    {
+      "id": "budget",
+      "name": "budget-conscious shoppers",
+      "singular": "budget-conscious shopper",
+      "kind": "secondary",
+      "examples": "comparing price per unit, avoiding knockoffs, buying in bulk without waste, making essentials last, monthly budgeting",
+      "vars": {
+        "for": " on a budget"
+      }
+    }
+  ],
+  "locationAngles": [],
+  "serviceAngles": [
+    {
+      "id": "guide",
+      "keyword": "{service}{for}",
+      "angle": "A practical, honest guide to {service} for {audience}: what matters, what to look for and how to get good value."
+    },
+    {
+      "id": "choose",
+      "keyword": "how to choose {service}{for}",
+      "angle": "How {audience} can choose well: the features that matter, the claims to check on the label, and the trade-offs."
+    },
+    {
+      "id": "how-to",
+      "keyword": "how to use {service}",
+      "angle": "Step-by-step practical advice for {audience}, with the common questions answered."
+    },
+    {
+      "id": "mistakes",
+      "keyword": "{service} mistakes",
+      "angle": "The common mistakes {audience} make with {service} and what to do instead."
+    },
+    {
+      "id": "routine",
+      "keyword": "{service} routine",
+      "angle": "A simple, realistic routine for {audience} that fits real life and a real budget."
+    },
+    {
+      "id": "benefits",
+      "keyword": "{service} benefits",
+      "angle": "What {service} genuinely does and doesn't do, explained plainly for {audience}, without hype."
+    },
+    {
+      "id": "worth-it",
+      "keyword": "is {service} worth it",
+      "angle": "An honest look at whether it's worth it for {audience}: the pros, the cons and who it suits."
+    }
+  ],
+  "excludePairs": [
+    "afro-hair:budget",
+    "afro-hair:curly-hair",
+    "afro-hair:students",
+    "afro-hair:travellers",
+    "amazon-shopping:curly-hair",
+    "amazon-shopping:parents",
+    "amazon-shopping:students",
+    "amazon-shopping:travellers",
+    "argan-oil:budget",
+    "argan-oil:parents",
+    "argan-oil:students",
+    "argan-oil:travellers",
+    "bathroom-organisation:curly-hair",
+    "bathroom-organisation:parents",
+    "bathroom-organisation:travellers",
+    "brushing-habits:budget",
+    "brushing-habits:curly-hair",
+    "brushing-habits:students",
+    "brushing-habits:travellers",
+    "conditioner-basics:budget",
+    "conditioner-basics:students",
+    "conditioner-basics:travellers",
+    "curly-hair:budget",
+    "curly-hair:households",
+    "curly-hair:students",
+    "curly-hair:travellers",
+    "dry-hair:budget",
+    "dry-hair:curly-hair",
+    "dry-hair:students",
+    "dry-hair:travellers",
+    "flavoured-toothpaste:budget",
+    "flavoured-toothpaste:curly-hair",
+    "flavoured-toothpaste:students",
+    "flavoured-toothpaste:travellers",
+    "fluoride-toothpaste:budget",
+    "fluoride-toothpaste:curly-hair",
+    "fluoride-toothpaste:students",
+    "fluoride-toothpaste:travellers",
+    "frizz:budget",
+    "frizz:curly-hair",
+    "frizz:students",
+    "frizz:travellers",
+    "gifts:budget",
+    "gifts:curly-hair",
+    "gifts:travellers",
+    "gym-hair:budget",
+    "gym-hair:parents",
+    "gym-hair:travellers",
+    "hair-washing:budget",
+    "hair-washing:parents",
+    "hair-washing:students",
+    "hair-washing:travellers",
+    "kids-hair:budget",
+    "kids-hair:curly-hair",
+    "kids-hair:households",
+    "kids-hair:students",
+    "kids-hair:travellers",
+    "kids-toothpaste:budget",
+    "kids-toothpaste:curly-hair",
+    "kids-toothpaste:students",
+    "kids-toothpaste:travellers",
+    "leave-in-conditioner:budget",
+    "leave-in-conditioner:students",
+    "leave-in-conditioner:travellers",
+    "plastic-free:curly-hair",
+    "plastic-free:travellers",
+    "rosemary-shampoo:budget",
+    "rosemary-shampoo:curly-hair",
+    "rosemary-shampoo:parents",
+    "rosemary-shampoo:students",
+    "rosemary-shampoo:travellers",
+    "save-on-toiletries:curly-hair",
+    "toddler-teeth:budget",
+    "toddler-teeth:curly-hair",
+    "toddler-teeth:households",
+    "toddler-teeth:students",
+    "toddler-teeth:travellers",
+    "travel-toiletries:budget",
+    "travel-toiletries:curly-hair",
+    "travel-toiletries:travellers",
+    "uni-essentials:budget",
+    "uni-essentials:curly-hair",
+    "uni-essentials:households",
+    "uni-essentials:parents",
+    "uni-essentials:travellers",
+    "value-bundles:budget",
+    "value-bundles:curly-hair",
+    "value-bundles:parents",
+    "value-bundles:travellers",
+    "vegan-toothpaste:budget",
+    "vegan-toothpaste:curly-hair",
+    "vegan-toothpaste:students",
+    "vegan-toothpaste:travellers",
+    "whitening-toothpaste:budget",
+    "whitening-toothpaste:curly-hair",
+    "whitening-toothpaste:parents",
+    "whitening-toothpaste:students",
+    "whitening-toothpaste:travellers"
+  ]
+}

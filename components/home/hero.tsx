@@ -66,7 +66,7 @@ export function HomeHero({ data }: { data: HeroData }) {
         className="dot-grid pointer-events-none absolute inset-0 -z-10 opacity-70 [mask-image:radial-gradient(70%_60%_at_30%_40%,black,transparent)]"
       />
 
-      <div className="container-x grid min-h-[calc(100svh-var(--header-h))] items-center gap-x-8 gap-y-14 pb-20 pt-8 lg:grid-cols-12 lg:pb-24 lg:pt-4">
+      <div className="container-x grid min-h-[calc(100svh-var(--header-h))] items-center gap-x-8 gap-y-14 pb-20 pt-8 grid-cols-1 lg:grid-cols-12 lg:pb-24 lg:pt-4">
         {/* Copy */}
         <motion.div style={reduce ? undefined : { y: textY, opacity: textOpacity }} className="relative z-10 lg:col-span-7">
           <Enter delay={0.05}>

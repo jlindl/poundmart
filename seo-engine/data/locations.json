@@ -1,0 +1,4 @@
+{
+  "_readme": "Places for location posts. PoundMart is a national UK brand that sells on Amazon with no local service area, so location posts are switched off in site.config.ts (postTypes.location: false) and this list is intentionally empty. Location pages that read the same with another town's name are doorway pages; don't add places unless the business genuinely gains a local presence.",
+  "locations": []
+}

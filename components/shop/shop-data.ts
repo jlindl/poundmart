@@ -5,12 +5,14 @@
  * lib/site.ts (verified brand facts). Do not import into client components.
  */
 import {
+  averageRating,
   bestUnitPrice,
   fromPrice,
   getCollection,
   isInStock,
   pricePerUnit,
   products,
+  totalReviews,
   type Collection,
   type Product,
   type Variant,
@@ -68,22 +70,14 @@ export function popularity(p: Product) {
   return Math.max(...p.variants.map((v) => v.reviewCount));
 }
 
-/** Amazon ratings across the range, counting each product's review pool once. */
-export function ratingsCount(list: Product[] = products) {
-  return list.reduce((n, p) => n + popularity(p), 0);
+/** Amazon ratings across a set of products (delegates to the site-wide helper so every page agrees). */
+export function ratingsCount(list: Product[] = products.filter(isInStock)) {
+  return totalReviews(list);
 }
 
-/** Average Amazon rating weighted by number of ratings. */
-export function weightedRating(list: Product[] = products) {
-  let sum = 0;
-  let count = 0;
-  for (const p of list) {
-    const v = ratingVariant(p);
-    if (v.rating === null || v.reviewCount === 0) continue;
-    sum += v.rating * v.reviewCount;
-    count += v.reviewCount;
-  }
-  return count ? sum / count : null;
+/** Average Amazon rating weighted by number of ratings (site-wide helper). */
+export function weightedRating(list: Product[] = products.filter(isInStock)) {
+  return averageRating(list);
 }
 
 export function flavourCount(list: Product[] = products) {

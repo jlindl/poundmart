@@ -14,6 +14,7 @@ import {
   products,
   productsIn,
   totalReviews,
+  averageRating,
   type Product,
   type Variant,
 } from "@/lib/products";
@@ -41,13 +42,7 @@ function variantByAsin(asin: string): { product: Product; variant: Variant } {
 
 /** Weighted average Amazon rating and ratings count across in-stock products (shared variant pools counted once). */
 export function ratingStats(list: Product[] = inStock) {
-  let weighted = 0;
-  for (const p of list) {
-    const pools = new Map(p.variants.map((v) => [`${v.rating}|${v.reviewCount}`, v]));
-    for (const v of pools.values()) if (v.rating && v.reviewCount) weighted += v.rating * v.reviewCount;
-  }
-  const count = totalReviews(list);
-  return { average: count ? weighted / count : 0, count };
+  return { average: averageRating(list) ?? 0, count: totalReviews(list) };
 }
 
 /** Product-level ratings count, for ranking. */

@@ -1,0 +1,109 @@
+{
+  "_readme": "Site pages (other than blog posts) that articles may link to, each with a label telling the writer what the page is. Blog posts, the blog index and the contact page are added automatically. Generated from lib/products.ts; regenerate if products change.",
+  "pages": [
+    {
+      "path": "/",
+      "label": "PoundMart homepage: who PoundMart is, its value bundles and how buying on Amazon works"
+    },
+    {
+      "path": "/shop",
+      "label": "Shop: every PoundMart product with filters and a price-per-tube value table"
+    },
+    {
+      "path": "/collections/toothpaste",
+      "label": "Toothpaste collection: Nice Smile whitening fluoride toothpaste in six fruity and sweet flavours. Vegan, cruelty-free, enamel-safe and loved by kids and grown-ups alike."
+    },
+    {
+      "path": "/collections/haircare",
+      "label": "Haircare collection: No-rinse conditioners for curls, Moroccan argan oil shampoo and conditioner, rosemary and mint, and plastic-free 2-in-1 bars."
+    },
+    {
+      "path": "/collections/bundles",
+      "label": "Value Bundles collection: Our multi-packs are where the value lives. Stock up once, pay less per item, and stop running out on a Tuesday night."
+    },
+    {
+      "path": "/collections/new-arrivals",
+      "label": "New Arrivals collection: The newest PoundMart bundles, from the 12 pack Nice Smile box to rosemary shampoo and tropical haircare bars."
+    },
+    {
+      "path": "/shop/nice-smile-12-pack-toothpaste-bundle",
+      "label": "Product page: Nice Smile 12 Pack Toothpaste Bundle. Twelve 60g tubes: four each of Watermelon Fresh, Feelin' Grape and Peachy Clean. Whitening fluoride toothpaste for kids and adults, vegan, cruelty-free and enamel-safe."
+    },
+    {
+      "path": "/shop/nice-smile-6-pack-toothpaste-bundle",
+      "label": "Product page: Nice Smile 6 Pack Toothpaste Bundle. Six 60g tubes of flavoured fluoride toothpaste. Choose the All Flavours pack (Watermelon, Grape, Peach, Berry, Gummy and Candy) or the Berry, Gummy and Candy pack."
+    },
+    {
+      "path": "/shop/nice-smile-3-pack-berry-gummy-candy",
+      "label": "Product page: Nice Smile 3 Pack: Berry Burst, Yummy Gummy & Candy Clean. Three 60g tubes of flavoured whitening fluoride toothpaste in Berry Burst, Yummy Gummy and Candy Clean. Vegan, cruelty-free and enamel-safe, for kids and adults."
+    },
+    {
+      "path": "/shop/nice-smile-3-pack-watermelon-grape-peach",
+      "label": "Product page: Nice Smile 3 Pack: Watermelon Fresh, Feelin' Grape & Peachy Clean. Three 60g tubes of fruity whitening fluoride toothpaste in Watermelon Fresh, Feelin' Grape and Peachy Clean. Vegan, cruelty-free and enamel-safe."
+    },
+    {
+      "path": "/shop/nice-smile-watermelon-fresh-toothpaste",
+      "label": "Product page: Nice Smile Watermelon Fresh Toothpaste. A 60g tube of watermelon flavoured whitening toothpaste with fluoride. Gentle, enamel-safe, vegan and cruelty-free."
+    },
+    {
+      "path": "/shop/nice-smile-yummy-gummy-toothpaste",
+      "label": "Product page: Nice Smile Yummy Gummy Toothpaste. Gummy bear flavoured whitening toothpaste with fluoride in a 60g tube. Gentle, enamel-safe, vegan and cruelty-free."
+    },
+    {
+      "path": "/shop/nice-smile-feelin-grape-toothpaste",
+      "label": "Product page: Nice Smile Feelin' Grape Toothpaste. Grape flavoured whitening toothpaste with fluoride in a 60g tube. Gentle, enamel-safe, vegan and cruelty-free."
+    },
+    {
+      "path": "/shop/nice-smile-candy-clean-toothpaste",
+      "label": "Product page: Nice Smile Candy Clean Toothpaste. Cotton candy flavoured whitening toothpaste with fluoride in a 60g tube. Gentle, enamel-safe, vegan and cruelty-free."
+    },
+    {
+      "path": "/shop/xhc-no-rinse-conditioner-3-pack",
+      "label": "Product page: XHC No Rinse Conditioner 3 Pack. Three 250ml vegan leave-in conditioners in Cherry & Almond, Dragon Fruit & Vanilla and Mango & Coconut. Made for curly, afro and damaged hair, sulphate-free and cruelty-free."
+    },
+    {
+      "path": "/shop/xhc-no-rinse-conditioner",
+      "label": "Product page: XHC Vegan No Rinse Conditioner. A 250ml vegan leave-in conditioner for curly, afro and damaged hair. Sulphate-free and cruelty-free. Choose Mango & Coconut, Dragon Fruit & Vanilla or Cherry & Almond."
+    },
+    {
+      "path": "/shop/xhc-no-rinse-conditioner-twin-pack",
+      "label": "Product page: XHC No Rinse Conditioner Twin Pack. Two 250ml vegan leave-in conditioners in Cherry & Almond and Dragon Fruit & Vanilla, for curly, afro and damaged hair."
+    },
+    {
+      "path": "/shop/xhc-argan-oil-shampoo-conditioner-set",
+      "label": "Product page: XHC Argan Oil Shampoo & Conditioner Set. One 300ml argan oil shampoo and one 300ml argan oil conditioner. Nourishing, moisturising, vegan friendly and paraben-free, for all hair types."
+    },
+    {
+      "path": "/shop/xhc-argan-oil-shampoo-3-pack",
+      "label": "Product page: XHC Argan Oil Shampoo 3 Pack. Three 300ml Moroccan argan oil shampoos for dry or damaged hair. Nourishing, moisturising and shine boosting."
+    },
+    {
+      "path": "/shop/xhc-argan-oil-shampoo-twin-pack",
+      "label": "Product page: XHC Argan Oil Shampoo Twin Pack. Nourishing and moisturising Moroccan argan oil shampoo in 300ml bottles. Vegan friendly and paraben-free. Available as a twin pack or a 6 bottle stock-up."
+    },
+    {
+      "path": "/shop/xhc-argan-oil-conditioner-twin-pack",
+      "label": "Product page: XHC Argan Oil Conditioner Twin Pack. Two 300ml Moroccan argan oil conditioners for soft, smooth hair. Vegan friendly and paraben-free."
+    },
+    {
+      "path": "/shop/xhc-argan-oil-conditioner-3-pack",
+      "label": "Product page: XHC Argan Oil Conditioner 3 Pack. Three 300ml nourishing and moisturising Moroccan argan oil conditioners. Vegan friendly and paraben-free."
+    },
+    {
+      "path": "/shop/xhc-rosemary-mint-shampoo-3-pack",
+      "label": "Product page: XHC Rosemary & Mint Shampoo 3 Pack. Three 300ml revitalising rosemary and mint shampoos for dry or damaged hair. Cleanses, refreshes and enhances shine. Vegan and cruelty-free."
+    },
+    {
+      "path": "/shop/xhc-shampoo-conditioner-bars",
+      "label": "Product page: XHC 2-in-1 Shampoo & Conditioner Bars. Solid 2-in-1 shampoo and conditioner bars in Coconut, Banana and Papaya. Plastic-free, vegan friendly and travel-friendly. Choose a 3 pack or a 6 pack."
+    },
+    {
+      "path": "/about",
+      "label": "About PoundMart: how bundles are sourced, packed and checked"
+    },
+    {
+      "path": "/faq",
+      "label": "FAQs: ordering on Amazon, delivery, returns, ingredients and value"
+    }
+  ]
+}

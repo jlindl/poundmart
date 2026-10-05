@@ -44,7 +44,7 @@ export function ImageMosaic({
   const sizes = "(min-width: 1024px) 28vw, 45vw";
   return (
     <section className={cn("relative overflow-hidden py-24 lg:py-36", className)}>
-      <div className="container-x grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
+      <div className="container-x grid items-center gap-14 grid-cols-1 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <SectionHeading eyebrow={eyebrow} title={title} intro={body} />
           {children && (

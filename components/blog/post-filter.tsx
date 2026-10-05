@@ -206,7 +206,7 @@ export function PostFilterGrid({
     <div>
       {/* Toolbar */}
       <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
-        <div className="-mx-[clamp(1.25rem,4vw,3rem)] overflow-x-auto px-[clamp(1.25rem,4vw,3rem)] py-1 no-scrollbar lg:mx-0 lg:px-0">
+        <div className="relative -mx-[clamp(1.25rem,4vw,3rem)] overflow-x-auto px-[clamp(1.25rem,4vw,3rem)] py-1 no-scrollbar lg:mx-0 lg:px-0">
           <LayoutGroup id="blog-filter">
             <div
               role="radiogroup"

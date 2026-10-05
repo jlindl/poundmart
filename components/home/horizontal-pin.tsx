@@ -73,7 +73,7 @@ export function HorizontalPin({ header, children, label }: { header: ReactNode; 
           ref={viewportRef}
           className={cn(
             "mt-10 lg:mt-12",
-            pin ? "overflow-visible" : "no-scrollbar snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-smooth pb-4",
+            pin ? "overflow-visible" : "no-scrollbar relative snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-smooth pb-4",
           )}
           style={pin ? undefined : { scrollPaddingInline: GUTTER }}
         >

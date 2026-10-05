@@ -247,7 +247,7 @@ export function BlogIndexView({ page }: { page: number }) {
             <ScrollSpin turns={0.6} className="pointer-events-none absolute -right-28 top-10 size-80 opacity-[0.07] sm:size-[28rem]">
               <Image src="/brand/mark.png" alt="" width={278} height={278} className="size-full" />
             </ScrollSpin>
-            <div className="container-x relative grid gap-12 lg:grid-cols-12 lg:gap-10">
+            <div className="container-x relative grid gap-12 grid-cols-1 lg:grid-cols-12 lg:gap-10">
               <div className="lg:col-span-4">
                 <SectionHeading
                   eyebrow="Popular topics"
@@ -320,7 +320,7 @@ function IndexHero({
       <div aria-hidden className="absolute -right-48 top-24 size-[40rem] rounded-full bg-sun/25 blur-3xl" />
       <div aria-hidden className="absolute -left-40 bottom-0 size-[26rem] rounded-full bg-sky/70 blur-3xl" />
 
-      <div className="container-x relative grid items-center gap-16 lg:grid-cols-12 lg:gap-10">
+      <div className="container-x relative grid items-center gap-16 grid-cols-1 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-7">
           <Reveal y={12}>
             <p className="eyebrow inline-flex items-center gap-2 text-ink-soft">
@@ -422,7 +422,7 @@ function ArchiveHero({
     <section className="relative overflow-hidden bg-cream pb-16 pt-[calc(var(--header-h)_+_2.5rem)] sm:pb-20">
       <div aria-hidden className="dot-grid absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_80%_20%,black,transparent_60%)]" />
       <div aria-hidden className="absolute -right-32 -top-10 size-[30rem] rounded-full bg-sun/20 blur-3xl" />
-      <div className="container-x relative grid items-end gap-10 lg:grid-cols-12">
+      <div className="container-x relative grid items-end gap-10 grid-cols-1 lg:grid-cols-12">
         <div className="lg:col-span-8">
           <Breadcrumbs items={trail} />
           <SplitHeading

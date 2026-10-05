@@ -14,7 +14,7 @@ export function FinalCta({ storeHref, shopAllHref }: { storeHref: string; shopAl
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-70 [background-image:radial-gradient(rgb(4_64_108/0.14)_1.5px,transparent_1.5px)] [background-size:26px_26px] [mask-image:radial-gradient(80%_70%_at_70%_50%,black,transparent)]"
       />
-      <div className="container-x relative grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+      <div className="container-x relative grid items-center gap-14 grid-cols-1 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-7">
           <Reveal y={12}>
             <span className="eyebrow inline-flex items-center gap-2 text-ink">

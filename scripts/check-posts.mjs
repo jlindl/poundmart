@@ -94,7 +94,9 @@ for (const file of files) {
   const comps = [...content.matchAll(/<([A-Z][A-Za-z]+)/g)].map((m) => m[1]);
   for (const c of comps) if (!ALLOWED_COMPONENTS.includes(c)) errors.push(`component <${c}> is not allowed`);
   const ctas = comps.filter((c) => c === "AmazonCta").length;
-  if (ctas !== 1) errors.push(`needs exactly one <AmazonCta /> (found ${ctas})`);
+  // Posts written by the SEO engine (they carry a topicKey) may omit the CTA: the article template always ends with one.
+  const automated = Boolean(data.topicKey);
+  if (automated ? ctas > 1 : ctas !== 1) errors.push(`needs ${automated ? "at most" : "exactly"} one <AmazonCta /> (found ${ctas})`);
   const spots = [...content.matchAll(/<ProductSpotlight\s+slug="([^"]+)"/g)].map((m) => m[1]);
   if (spots.length > 2) errors.push(`at most two <ProductSpotlight /> (found ${spots.length})`);
   for (const s of spots) if (!productSlugs.includes(s)) errors.push(`<ProductSpotlight slug="${s}"> is not a product`);
@@ -104,7 +106,7 @@ for (const file of files) {
   const links = [...content.matchAll(/\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g)].map((m) => m[1]);
   if (!links.some((l) => l === "/")) errors.push("no link to the homepage [..](/)");
   const commerce = links.filter((l) => l.startsWith("/shop/") || l.startsWith("/collections/") || l === "/shop");
-  if (commerce.length < 1) errors.push("no link to a product (/shop/<slug>) or collection (/collections/<slug>)");
+  if (commerce.length < 1) (automated ? warnings : errors).push("no link to a product (/shop/<slug>) or collection (/collections/<slug>)");
   for (const l of links) {
     if (!l.startsWith("/")) continue;
     const clean = l.split("#")[0].replace(/\/$/, "") || "/";

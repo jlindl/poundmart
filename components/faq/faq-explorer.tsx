@@ -375,7 +375,7 @@ export function FaqExplorer({ groups, storeHref }: { groups: FaqGroup[]; storeHr
     : `${total} questions across ${groups.length} topics`;
 
   return (
-    <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+    <div className="grid gap-12 grid-cols-1 lg:grid-cols-12 lg:gap-16">
       {/* Search + mobile topics */}
       <div className="lg:col-span-12">
         <div role="search" className="relative mx-auto max-w-3xl">
@@ -446,7 +446,7 @@ export function FaqExplorer({ groups, storeHref }: { groups: FaqGroup[]; storeHr
         </p>
 
         <nav aria-label="FAQ topics" className="mt-8 lg:hidden">
-          <ul className="no-scrollbar -mx-[clamp(1.25rem,4vw,3rem)] flex gap-2 overflow-x-auto px-[clamp(1.25rem,4vw,3rem)] pb-1">
+          <ul className="no-scrollbar relative -mx-[clamp(1.25rem,4vw,3rem)] flex gap-2 overflow-x-auto px-[clamp(1.25rem,4vw,3rem)] pb-1">
             {results.map((g) => {
               const Icon = groupIcons[g.id];
               return (

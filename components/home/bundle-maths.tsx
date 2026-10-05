@@ -300,7 +300,7 @@ function StackedStory({ data }: { data: BundleMathsData }) {
       <p className="mt-5 max-w-[40ch] text-lg leading-relaxed text-ink-muted">
         Same 60g Nice Smile tube, four ways to buy it. The bigger the bundle, the less each tube costs.
       </p>
-      <ol className="mt-10 grid gap-4 sm:grid-cols-2">
+      <ol className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {steps.map((s, i) => (
           <Reveal as="li" key={s.id} delay={i * 0.06}>
             <StepCard step={s} maxPer={maxPer} best={i === steps.length - 1} />
