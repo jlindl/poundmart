@@ -1,4 +1,16 @@
 {
   "_readme": "Written by the engine: one entry per topic attempted. A topic marked generated is never picked again. Don't edit by hand unless you are deliberately freeing a topic up (delete its entry).",
-  "entries": []
+  "entries": [
+    {
+      "date": "2026-10-06",
+      "type": "service",
+      "key": "service:brushing-habits:households:guide",
+      "status": "generated",
+      "suggestedKeyword": "brushing routine",
+      "angle": "guide",
+      "slug": "how-to-build-a-brushing-routine-that-actually-sticks",
+      "title": "How to build a brushing routine that actually sticks",
+      "targetKeyword": "brushing routine"
+    }
+  ]
 }
