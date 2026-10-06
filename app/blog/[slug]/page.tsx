@@ -24,7 +24,7 @@ import { getCategoryArt } from "@/components/blog/category-art";
 import { absoluteUrl, extractFaq, formatTag, productsForPost, shareImage } from "@/components/blog/blog-utils";
 import { getAllPosts, getCategory, getPost, getRelatedPosts } from "@/lib/blog";
 import { amazon, site } from "@/lib/site";
-import { formatDate } from "@/lib/utils";
+import { formatDate, seoTitle } from "@/lib/utils";
 
 export function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
@@ -37,7 +37,7 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">): Promis
   const image = absoluteUrl(shareImage(post, imageExists(post.heroImage)));
   const path = `/blog/${post.slug}`;
   return {
-    title: post.title,
+    title: seoTitle(post.title),
     description: post.description,
     keywords: [post.targetKeyword, ...post.tags].filter((k): k is string => Boolean(k)),
     alternates: { canonical: path },
@@ -151,7 +151,7 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
             <Reveal y={10}>
               <Breadcrumbs items={trail} />
             </Reveal>
-            <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-12">
+            <div className="mt-10 grid gap-10 grid-cols-1 lg:grid-cols-12 lg:items-end lg:gap-12">
               <div className="lg:col-span-8">
                 <Reveal y={12}>
                   <Link

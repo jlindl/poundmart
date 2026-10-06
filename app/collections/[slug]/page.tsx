@@ -42,7 +42,7 @@ import {
 import { featuredPosts, getAllPosts, postsInCategory, type Post } from "@/lib/blog";
 import { collections, getCollection, isInStock, productsIn, type Collection } from "@/lib/products";
 import { amazon, site } from "@/lib/site";
-import { formatDate } from "@/lib/utils";
+import { formatDate, seoTitle } from "@/lib/utils";
 
 export const dynamicParams = false;
 
@@ -57,7 +57,7 @@ export async function generateMetadata(props: PageProps<"/collections/[slug]">):
   const size = imageSize(c.image) ?? { width: 1000, height: 1000 };
   const url = `/collections/${c.slug}`;
   return {
-    title: c.seoTitle,
+    title: seoTitle(c.seoTitle),
     description: c.seoDescription,
     alternates: { canonical: url },
     openGraph: {
@@ -138,7 +138,7 @@ export default async function CollectionPage(props: PageProps<"/collections/[slu
           <Reveal y={10}>
             <Breadcrumbs items={crumbs} />
           </Reveal>
-          <div className="mt-8 grid items-center gap-12 lg:mt-10 lg:grid-cols-12 lg:gap-8">
+          <div className="mt-8 grid items-center gap-12 lg:mt-10 grid-cols-1 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-7">
               <Reveal y={12}>
                 <span className="eyebrow inline-flex items-center gap-2 rounded-full bg-paper/80 px-3.5 py-1.5 text-ink shadow-soft backdrop-blur">
@@ -231,7 +231,7 @@ export default async function CollectionPage(props: PageProps<"/collections/[slu
 
       {/* Collection-specific editorial */}
       {c.slug === "toothpaste" && (
-        <section className="bg-paper py-24 lg:py-36">
+        <section className="overflow-x-clip bg-paper py-24 lg:py-36">
           <div className="container-x">
             <SectionHeading
               eyebrow="The flavour guide"
@@ -281,7 +281,7 @@ export default async function CollectionPage(props: PageProps<"/collections/[slu
       )}
 
       {c.slug === "new-arrivals" && (
-        <section className="bg-paper py-24 lg:py-36">
+        <section className="overflow-x-clip bg-paper py-24 lg:py-36">
           <div className="container-x">
             <SectionHeading
               eyebrow="Just landed"

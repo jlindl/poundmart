@@ -542,12 +542,35 @@ export function isInStock(p: Product) {
   return p.variants.some((v) => v.inStock);
 }
 
-export function totalReviews(list: Product[] = products) {
-  // Variants under one Amazon parent listing report the same shared ratings, so count each pool once.
-  return list.reduce((n, p) => {
-    const pools = new Map(p.variants.map((v) => [`${v.rating}|${v.reviewCount}`, v.reviewCount]));
-    return n + [...pools.values()].reduce((m, c) => m + c, 0);
-  }, 0);
+/**
+ * Distinct Amazon rating pools for a product. Variants under one Amazon parent
+ * listing report the same shared ratings, so each pool is counted once.
+ * This is the single source for every ratings figure on the site.
+ */
+function ratingPools(p: Product) {
+  const pools = new Map<string, { rating: number; count: number }>();
+  for (const v of p.variants) {
+    if (v.rating !== null && v.reviewCount > 0) pools.set(`${v.rating}|${v.reviewCount}`, { rating: v.rating, count: v.reviewCount });
+  }
+  return [...pools.values()];
+}
+
+/** Total Amazon ratings across products. Site-wide figures use in-stock products. */
+export function totalReviews(list: Product[] = products.filter(isInStock)) {
+  return list.reduce((n, p) => n + ratingPools(p).reduce((m, x) => m + x.count, 0), 0);
+}
+
+/** Average Amazon star rating, weighted by number of ratings. */
+export function averageRating(list: Product[] = products.filter(isInStock)) {
+  let sum = 0;
+  let count = 0;
+  for (const p of list) {
+    for (const x of ratingPools(p)) {
+      sum += x.rating * x.count;
+      count += x.count;
+    }
+  }
+  return count ? sum / count : null;
 }
 
 export function relatedProducts(p: Product, limit = 4) {
@@ -598,7 +621,7 @@ export const collections: Collection[] = [
     headline: "Haircare for *every* hair type, bundled for less.",
     description:
       "No-rinse conditioners for curls, Moroccan argan oil shampoo and conditioner, rosemary and mint, and plastic-free 2-in-1 bars.",
-    seoTitle: "Vegan Haircare Bundles: Leave-In Conditioner, Argan Oil & Shampoo Bars",
+    seoTitle: "Vegan Haircare Bundles: Leave-In, Argan Oil & Bars",
     seoDescription:
       "Shop XHC haircare bundles: vegan no-rinse conditioner for curly and afro hair, argan oil shampoo and conditioner, rosemary shampoo and plastic-free shampoo bars.",
     accent: "#9A6A3A",

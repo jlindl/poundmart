@@ -60,7 +60,7 @@ export function ProductFeatures({ product, image }: { product: Product; image?: 
   if (feats.length === 0) return null;
   const title = product.category === "toothpaste" ? "Small tube, *big* personality." : "Good hair days, *on repeat*.";
   return (
-    <section className="bg-paper py-24 lg:py-36">
+    <section className="overflow-x-clip bg-paper py-24 lg:py-36">
       <div className="container-x">
         <SectionHeading eyebrow="Why you'll love it" title={title} intro="Straight from the Amazon listing, minus the waffle." />
         <RevealGroup className="mt-14 grid gap-4 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-5" stagger={0.08}>
@@ -129,7 +129,7 @@ export function ProductStory({ product, rows }: { product: Product; rows: StoryR
           {rows.map((r, i) => {
             const flip = i % 2 === 1;
             return (
-              <article key={r.title} className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+              <article key={r.title} className="grid items-center gap-8 grid-cols-1 lg:grid-cols-12 lg:gap-12">
                 <div className={cn("lg:col-span-6 lg:row-start-1", flip ? "lg:col-start-7" : "lg:col-start-1")}>
                   <Parallax offset={36} rotate={flip ? 1.5 : -1.5}>
                     <ClipReveal className="relative aspect-square overflow-hidden rounded-[2rem] shadow-lift sm:rounded-5xl" inset={10}>
@@ -235,7 +235,7 @@ export function ProductBestFor({ product }: { product: Product }) {
   return (
     <section className="grain relative overflow-hidden bg-sun py-20 lg:py-28">
       <div aria-hidden className="absolute -right-20 -top-24 size-96 rounded-full bg-white/30 blur-3xl" />
-      <div className="container-x relative z-[2] grid items-center gap-10 lg:grid-cols-12">
+      <div className="container-x relative z-[2] grid items-center gap-10 grid-cols-1 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <Reveal y={12}>
             <span className="eyebrow inline-flex items-center gap-2 text-ink">
@@ -359,7 +359,7 @@ export function ProductFaq({ faq, product }: { faq: { q: string; a: string }[]; 
   if (faq.length === 0) return null;
   return (
     <section className="bg-cream py-24 lg:py-36">
-      <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div className="container-x grid gap-12 grid-cols-1 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
             <SectionHeading

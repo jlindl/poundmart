@@ -124,7 +124,7 @@ function BrandPanel({ panel, index }: { panel: Panel; index: number }) {
   return (
     <article
       aria-labelledby={`brand-${index}`}
-      className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16"
+      className="grid items-center gap-10 grid-cols-1 lg:grid-cols-12 lg:gap-16"
       style={{ ["--accent" as string]: panel.accent }}
     >
       {/* Stage */}

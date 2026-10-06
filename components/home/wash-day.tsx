@@ -75,7 +75,7 @@ export function WashDay({ products, haircareHref, priceNote }: { products: WashD
         />
       </div>
 
-      <div className="container-x relative mt-14 grid gap-16 lg:mt-20 lg:grid-cols-12 lg:gap-14">
+      <div className="container-x relative mt-14 grid gap-16 lg:mt-20 grid-cols-1 lg:grid-cols-12 lg:gap-14">
         {/* Mosaic */}
         <div className="lg:col-span-7">
           <div className="grid grid-cols-2 gap-3 sm:gap-5">

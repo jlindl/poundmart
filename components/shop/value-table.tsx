@@ -24,7 +24,7 @@ export function ValueTable() {
     <section className="grain relative overflow-clip bg-ink py-24 text-cream lg:py-36">
       <div aria-hidden className="absolute -right-40 top-10 size-[36rem] rounded-full bg-ink-soft/40 blur-3xl" />
       <div aria-hidden className="absolute -left-32 bottom-0 size-[28rem] rounded-full bg-sun/10 blur-3xl" />
-      <div className="container-x relative z-[2] grid gap-14 lg:grid-cols-12 lg:gap-16">
+      <div className="container-x relative z-[2] grid gap-14 grid-cols-1 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-[calc(var(--header-h)+2rem)]">
             <SectionHeading

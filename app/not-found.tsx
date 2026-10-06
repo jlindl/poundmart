@@ -30,7 +30,7 @@ export default function NotFound() {
     <>
       <section aria-label="Page not found" className="relative overflow-x-clip bg-cream pt-[var(--header-h)]">
         <div aria-hidden className="dot-grid pointer-events-none absolute inset-0 opacity-50 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
-        <div className="container-x relative grid items-center gap-12 pb-20 pt-10 sm:pt-14 lg:grid-cols-12 lg:gap-8 lg:pb-28 lg:pt-16">
+        <div className="container-x relative grid items-center gap-12 pb-20 pt-10 sm:pt-14 grid-cols-1 lg:grid-cols-12 lg:gap-8 lg:pb-28 lg:pt-16">
           <div className="lg:col-span-7">
             <Reveal y={12}>
               <span className="eyebrow inline-flex items-center gap-2 text-ink-soft">

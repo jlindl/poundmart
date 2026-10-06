@@ -15,7 +15,7 @@ type Stats = { products: number; flavours: number; ratings: number; average: num
 export function WhyPoundMart({ stats, storeHref }: { stats: Stats; storeHref: string }) {
   return (
     <section className="grain relative bg-ink py-24 text-cream md:py-32 lg:py-40">
-      <div className="container-x relative z-[2] grid gap-16 lg:grid-cols-12 lg:gap-12">
+      <div className="container-x relative z-[2] grid gap-16 grid-cols-1 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-5">
           <div className="[@media(min-width:1024px)_and_(min-height:800px)]:sticky [@media(min-width:1024px)_and_(min-height:800px)]:top-[calc(var(--header-h)+2.5rem)]">
             <SectionHeading

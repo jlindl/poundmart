@@ -302,7 +302,7 @@ export default function AboutPage() {
             />
           </HeroScrollFx>
 
-          <div className="mt-10 grid gap-12 lg:mt-12 lg:grid-cols-12 lg:items-end">
+          <div className="mt-10 grid gap-12 lg:mt-12 grid-cols-1 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-6">
               <Reveal y={20} delay={0.45}>
                 <p className="max-w-[46ch] text-lg leading-relaxed text-ink-muted sm:text-xl">

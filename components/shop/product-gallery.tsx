@@ -150,7 +150,7 @@ export function ProductGallery({ images, slug, name, accentSoft }: { images: Gal
       </div>
 
       {count > 1 && (
-        <div ref={thumbsRef} className="no-scrollbar -mx-1 flex gap-2.5 overflow-x-auto px-1 py-1.5 sm:gap-3">
+        <div ref={thumbsRef} className="no-scrollbar relative -mx-1 flex gap-2.5 overflow-x-auto px-1 py-1.5 sm:gap-3">
           {images.map((img, i) => {
             const active = i === index;
             return (

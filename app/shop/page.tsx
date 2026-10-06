@@ -28,14 +28,14 @@ import {
 } from "@/components/shop/shop-data";
 import { isInStock, products } from "@/lib/products";
 import { amazon, site } from "@/lib/site";
-import { formatDate } from "@/lib/utils";
+import { formatDate, seoTitle } from "@/lib/utils";
 
-const title = "Shop All Bundles: Flavoured Toothpaste & Haircare Multi-Packs";
+const title = "Shop Toothpaste & Haircare Bundles";
 const description =
   "Browse every PoundMart bundle: Nice Smile flavoured toothpaste and XHC haircare multi-packs. Compare the price per tube, then buy on Amazon, dispatched by Amazon.";
 
 export const metadata: Metadata = {
-  title,
+  title: seoTitle(title),
   description,
   alternates: { canonical: "/shop" },
   openGraph: {
@@ -89,7 +89,7 @@ export default function ShopPage() {
           <Reveal y={10}>
             <Breadcrumbs items={crumbs} />
           </Reveal>
-          <div className="mt-8 grid items-center gap-14 lg:mt-10 lg:grid-cols-12 lg:gap-8">
+          <div className="mt-8 grid items-center gap-14 lg:mt-10 grid-cols-1 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-7">
               <Reveal y={12}>
                 <span className="eyebrow inline-flex items-center gap-2 rounded-full border border-ink/10 bg-paper/70 px-3.5 py-1.5 text-ink-soft backdrop-blur">

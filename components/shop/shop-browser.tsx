@@ -189,7 +189,7 @@ export function ShopBrowser({ items, cards }: { items: ShopItem[]; cards: Record
               id="shop-filter-panel"
               inert={collapsed}
               className={cn(
-                "grid transition-[grid-template-rows,opacity] duration-500 ease-[var(--ease-out-expo)] lg:flex-1 lg:grid-rows-[1fr] lg:opacity-100",
+                "grid min-w-0 grid-cols-[minmax(0,1fr)] transition-[grid-template-rows,opacity] duration-500 ease-[var(--ease-out-expo)] lg:flex-1 lg:grid-rows-[1fr] lg:opacity-100",
                 collapsed ? "grid-rows-[0fr] opacity-0" : "grid-rows-[1fr] opacity-100",
               )}
             >
@@ -201,7 +201,7 @@ export function ShopBrowser({ items, cards }: { items: ShopItem[]; cards: Record
                       <div
                         role="group"
                         aria-label="Product type"
-                        className="no-scrollbar -mx-1 flex gap-1.5 overflow-x-auto px-1 py-1 lg:mask-fade-x lg:px-2"
+                        className="no-scrollbar relative -mx-1 flex gap-1.5 overflow-x-auto px-1 py-1 lg:mask-fade-x lg:px-2"
                       >
                         <Chip active={!filters.type} onClick={() => update({ type: null })}>
                           All types

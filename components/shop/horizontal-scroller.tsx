@@ -45,7 +45,7 @@ export function HorizontalScroller({
 
   if (reduce) {
     return (
-      <div ref={sectionRef} tabIndex={0} role="region" aria-label={label} className={cn("overflow-x-auto py-20", className)}>
+      <div ref={sectionRef} tabIndex={0} role="region" aria-label={label} className={cn("relative overflow-x-auto py-20", className)}>
         <div className="flex w-max items-center gap-6 px-[5vw]">{children}</div>
       </div>
     );

@@ -212,6 +212,13 @@ html.lenis body {
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
 
+/* Screen-reader-only text is absolutely positioned; anchor it to its containing
+   block's corner so it can never widen the page from inside a horizontal scroller. */
+.sr-only {
+  top: 0;
+  left: 0;
+}
+
 /* ------------------------------------------------------------------
    Route transitions (React <ViewTransition>)
 ------------------------------------------------------------------- */

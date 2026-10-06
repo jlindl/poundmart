@@ -65,7 +65,7 @@ export function BacklinkBand({
         <Image src="/brand/mark.png" alt="" width={278} height={278} className="size-full" />
       </ScrollSpin>
 
-      <div className="container-x relative z-[2] grid items-center gap-16 lg:grid-cols-12 lg:gap-10">
+      <div className="container-x relative z-[2] grid items-center gap-16 grid-cols-1 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-7">
           <Reveal y={12}>
             <p className="eyebrow inline-flex items-center gap-2 text-ink">

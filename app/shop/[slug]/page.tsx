@@ -29,7 +29,7 @@ import { ProductVariantProvider } from "@/components/shop/variant-context";
 import { postsForProduct, postsInCategory, type Post } from "@/lib/blog";
 import { getProduct, isInStock, products, relatedProducts, type Product } from "@/lib/products";
 import { amazon, brandFacts, site } from "@/lib/site";
-import { formatDate } from "@/lib/utils";
+import { formatDate, seoTitle } from "@/lib/utils";
 
 export const dynamicParams = false;
 
@@ -45,7 +45,7 @@ export async function generateMetadata(props: PageProps<"/shop/[slug]">): Promis
   const size = imageSize(image) ?? { width: 1000, height: 1000 };
   const url = `/shop/${product.slug}`;
   return {
-    title: product.name,
+    title: seoTitle(product.name),
     description: product.summary,
     keywords: product.keywords,
     alternates: { canonical: url },
@@ -153,7 +153,7 @@ export default async function ProductPage(props: PageProps<"/shop/[slug]">) {
             <Breadcrumbs items={crumbs} />
           </Reveal>
           <ProductVariantProvider variantImages={variantImages}>
-            <div className="mt-6 grid gap-10 lg:mt-8 lg:grid-cols-12 lg:gap-12 xl:gap-16">
+            <div className="mt-6 grid gap-10 lg:mt-8 grid-cols-1 lg:grid-cols-12 lg:gap-12 xl:gap-16">
               <div className="lg:col-span-7">
                 <div className="lg:sticky lg:top-[calc(var(--header-h)+1.5rem)]">
                   <ProductGallery images={gallery} slug={product.slug} name={product.name} accentSoft={product.accentSoft} />
@@ -228,7 +228,7 @@ export default async function ProductPage(props: PageProps<"/shop/[slug]">) {
             </div>
             <RevealGroup
               as="ul"
-              className="no-scrollbar -mx-5 mt-12 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4"
+              className="no-scrollbar relative -mx-5 mt-12 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4"
               stagger={0.08}
             >
               {related.map((p) => (

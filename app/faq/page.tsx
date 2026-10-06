@@ -92,7 +92,7 @@ export default function FaqPage() {
       {/* Hero */}
       <section aria-label="PoundMart FAQs" className="relative overflow-x-clip bg-cream pt-[var(--header-h)]">
         <div aria-hidden className="dot-grid pointer-events-none absolute inset-0 opacity-50 [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_60%)]" />
-        <div className="container-x relative grid gap-14 pb-20 pt-10 sm:pt-14 lg:grid-cols-12 lg:items-center lg:gap-10 lg:pb-28 lg:pt-14">
+        <div className="container-x relative grid gap-14 pb-20 pt-10 sm:pt-14 grid-cols-1 lg:grid-cols-12 lg:items-center lg:gap-10 lg:pb-28 lg:pt-14">
           <div className="relative z-2 lg:col-span-7">
             <Reveal y={12}>
               <span className="eyebrow inline-flex items-center gap-2 text-ink-soft">
@@ -219,7 +219,7 @@ export default function FaqPage() {
           <ScrollScale>
             <div className="grain relative overflow-hidden rounded-5xl bg-ink px-6 py-16 text-cream sm:px-12 sm:py-20 lg:px-20 lg:py-24 [&_:focus-visible]:outline-sun">
               <div aria-hidden className="absolute -right-24 -top-24 size-96 rounded-full bg-sun/15 blur-2xl" />
-              <div className="relative z-2 grid items-center gap-14 lg:grid-cols-12">
+              <div className="relative z-2 grid items-center gap-14 grid-cols-1 lg:grid-cols-12">
                 <div className="lg:col-span-7">
                   <Reveal y={12}>
                     <span className="eyebrow inline-flex items-center gap-2 text-sun">

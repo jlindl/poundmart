@@ -22,7 +22,7 @@ export default function ErrorPage({ error, retry }: { error: Error & { digest?: 
   return (
     <section aria-label="Something went wrong" className="relative overflow-x-clip bg-cream pt-[var(--header-h)]">
       <div aria-hidden className="dot-grid pointer-events-none absolute inset-0 opacity-50 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
-      <div className="container-x relative grid min-h-[70svh] items-center gap-14 pb-24 pt-10 sm:pt-14 lg:grid-cols-12 lg:pt-16">
+      <div className="container-x relative grid min-h-[70svh] items-center gap-14 pb-24 pt-10 sm:pt-14 grid-cols-1 lg:grid-cols-12 lg:pt-16">
         <div className="lg:col-span-7">
           <Reveal y={12}>
             <span className="eyebrow inline-flex items-center gap-2 text-ink-soft">

@@ -46,4 +46,31 @@ Wherever a photo hasn't been shot yet, the site shows a branded placeholder. In 
 
 ## Blog
 
-Posts are MDX with frontmatter compatible with the `seo-content-engine` automation. A post dated in the future stays hidden until that date. RSS is at `/blog/rss.xml`; every post, product, collection and category is in `/sitemap.xml`.
+Posts are MDX in `content/blog/` ([format and rules](content/README.md)). A post dated in the future stays hidden until that date. RSS is at `/blog/rss.xml`; every post, product, collection and category is in `/sitemap.xml`.
+
+## Daily SEO automation
+
+`seo-engine/` writes one new blog post every day via GitHub Actions (`.github/workflows/seo-generate.yml`, 05:00 UTC). Claude writes the article; a code quality gate then rejects anything with invented facts, prices, banned filler, broken links, a missing homepage backlink or FAQ, or a near-duplicate of an existing post. A failed post is retried once, then skipped and reported as a GitHub issue.
+
+- **What it writes:** national topic guides (oral care, haircare, saving money, family and home) from the topic matrix in `seo-engine/data/services.json`: 27 topics × audiences × angles = 122 unique keywords (about four months of daily posts). Location pages are deliberately off: PoundMart has no local service area.
+- **Facts it may state:** only the list in `seo-engine/site.config.ts` (`about`), verified against the Amazon listings. Edit that file if the business changes.
+- **Every post** links back to the homepage (enforced by the gate), links to relevant product/collection pages, gets a category and featured products from its topic, and ends with the site's Amazon CTA.
+- **Publishing:** by default posts collect in one rolling pull request ("SEO engine: new blog posts to review"); merging publishes them. To publish automatically instead: `gh variable set PUBLISH_MODE --body auto`.
+- **Cost:** roughly $0.05 to $0.10 per post in Anthropic API usage.
+
+One-time setup (the API key never goes in code or chat):
+1. Merge the engine into `master` (scheduled workflows only run from the default branch).
+2. Add the key: `gh secret set ANTHROPIC_API_KEY --repo jlindl/poundmart` (or GitHub → Settings → Secrets and variables → Actions). It needs credit at console.anthropic.com → Billing.
+3. Set the live domain: `gh variable set SITE_URL --repo jlindl/poundmart --body https://www.yourdomain.co.uk`
+4. Test it: `gh workflow run seo-generate.yml --repo jlindl/poundmart`
+
+Useful commands:
+
+```bash
+npm run seo:generate -- --stats        # topics left (free)
+npm run seo:generate -- --plan --all   # every upcoming keyword (free)
+npm run seo:generate -- --dry-run      # write a test post to a temp folder (needs ANTHROPIC_API_KEY in .env.local)
+npm run seo:check -- content/blog/<file>.mdx   # run the engine's gate on one post
+```
+
+When topics run low the engine opens a GitHub issue: add topics, audiences or angles to `seo-engine/data/services.json`. To pause, disable the "SEO generate" workflow in the Actions tab. Hand-written posts are held to `npm run check:posts`, which allows richer components (product spotlights, tables) than the automated gate.

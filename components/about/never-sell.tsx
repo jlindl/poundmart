@@ -29,7 +29,7 @@ function StrikeRow({ word, note, index }: { word: string; note: string; index: n
   const parts = word.split(" ");
 
   return (
-    <li ref={ref} className="grid gap-6 border-b border-cream/10 py-10 lg:grid-cols-12 lg:items-center lg:gap-10 lg:py-14">
+    <li ref={ref} className="grid gap-6 border-b border-cream/10 py-10 grid-cols-1 lg:grid-cols-12 lg:items-center lg:gap-10 lg:py-14">
       <motion.p style={still ? undefined : { opacity, x }} className="lg:col-span-8">
         <span className="sr-only">We will never sell </span>
         <span className="type-display flex flex-wrap gap-x-[0.28em] text-[clamp(2.9rem,9.5vw,8.5rem)] text-cream">

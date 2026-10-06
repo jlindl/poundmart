@@ -22,7 +22,7 @@ export function AboutCta() {
     <section aria-labelledby="about-cta-title" className="grain relative overflow-hidden bg-ink py-28 text-cream sm:py-36 lg:py-44 [&_:focus-visible]:outline-sun">
       <div aria-hidden className="absolute -bottom-1/3 -left-1/4 aspect-square w-[70vw] max-w-[900px] rounded-full bg-ink-soft/30 blur-3xl" />
 
-      <div className="container-x relative z-2 grid items-center gap-16 lg:grid-cols-12">
+      <div className="container-x relative z-2 grid items-center gap-16 grid-cols-1 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <Reveal y={12}>
             <span className="eyebrow inline-flex items-center gap-2 text-sun">

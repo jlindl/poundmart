@@ -1,0 +1,144 @@
+name: SEO generate
+
+# Writes blog posts with the SEO engine (seo-engine/). Articles only.
+#
+# Schedule: every day at 05:00 UTC (06:00 UK in summer, 05:00 in winter)
+# GitHub cron runs in UTC. Re-running on the same day is safe: post types
+# already generated that day are skipped.
+#
+# PUBLISH_MODE (repository variable, default "pr"):
+#   pr    Posts are added to one rolling pull request (branch seo/pending-posts).
+#         Nothing goes live until you merge it. While that PR is open, each
+#         run's posts are added to it, so the ledger stays continuous and
+#         topics can't repeat.
+#   auto  Posts are committed straight to the default branch and go live on
+#         the next deploy.
+
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch:
+    inputs:
+      only:
+        description: Which posts to generate
+        type: choice
+        options: [both, location, service]
+        default: both
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: seo-generate
+  cancel-in-progress: false
+
+env:
+  PENDING_BRANCH: seo/pending-posts
+  CONTENT_DIR: content/blog
+  DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+  # Local time for commit messages and issue titles (the engine uses site.config.ts timeZone).
+  TZ: Europe/London
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # Optional: overrides the url in seo-engine/site.config.ts.
+      SITE_URL: ${{ vars.SITE_URL || secrets.SITE_URL }}
+      PUBLISH_MODE: ${{ vars.PUBLISH_MODE || 'pr' }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ONLY: ${{ inputs.only || 'both' }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Git identity and issue label
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          gh label create seo-engine --color 0E8A16 --description "Opened by the SEO engine" --force
+
+      - name: Continue the open pending-posts PR
+        if: env.PUBLISH_MODE == 'pr'
+        run: |
+          pr=$(gh pr list --head "$PENDING_BRANCH" --state open --json number --jq '.[0].number // empty')
+          if [ -n "$pr" ]; then
+            echo "Adding today's posts to open PR #$pr"
+            git fetch origin "$PENDING_BRANCH"
+            git checkout -B "$PENDING_BRANCH" "origin/$PENDING_BRANCH"
+            git merge --no-edit "origin/$DEFAULT_BRANCH"
+            echo "PR_NUMBER=$pr" >> "$GITHUB_ENV"
+          else
+            echo "No open PR; starting a fresh branch from $DEFAULT_BRANCH"
+            git checkout -B "$PENDING_BRANCH"
+            echo "FRESH_BRANCH=true" >> "$GITHUB_ENV"
+          fi
+
+      - name: Generate posts
+        run: |
+          if [ "$ONLY" = "both" ]; then npm run seo:generate; else npm run seo:generate -- --only "$ONLY"; fi
+
+      - name: Commit
+        id: commit
+        run: |
+          git add "$CONTENT_DIR" seo-engine/data/ledger.json
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit."
+            exit 0
+          fi
+          git commit -m "SEO engine: posts for $(date +%F)"
+          echo "committed=true" >> "$GITHUB_OUTPUT"
+          if [ "$PUBLISH_MODE" = "auto" ]; then
+            # Pick up anything pushed while the posts were being written.
+            git pull --rebase origin "$DEFAULT_BRANCH"
+            git push origin "HEAD:$DEFAULT_BRANCH"
+          elif [ "${FRESH_BRANCH:-}" = "true" ]; then
+            # Replaces a leftover branch from a merged or closed PR.
+            git push --force origin "HEAD:refs/heads/$PENDING_BRANCH"
+          else
+            git push origin "HEAD:refs/heads/$PENDING_BRANCH"
+          fi
+
+      - name: Open or update the review PR
+        # Only when this run committed something, or there's an open PR to refresh.
+        if: env.PUBLISH_MODE == 'pr' && (steps.commit.outputs.committed == 'true' || env.PR_NUMBER != '')
+        run: |
+          log=$(ls -t seo-engine/logs/generate-*.json 2>/dev/null | head -1 || true)
+          npx tsx seo-engine/pr-body.ts --base "origin/$DEFAULT_BRANCH" ${log:+--log "$log"} > "$RUNNER_TEMP/pr-body.md"
+          if [ -n "${PR_NUMBER:-}" ]; then
+            gh pr edit "$PR_NUMBER" --body-file "$RUNNER_TEMP/pr-body.md"
+          else
+            gh pr create --base "$DEFAULT_BRANCH" --head "$PENDING_BRANCH" \
+              --title "SEO engine: new blog posts to review" \
+              --body-file "$RUNNER_TEMP/pr-body.md" \
+              --label seo-engine
+          fi
+
+      - name: Keep the run log
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: seo-generate-log
+          path: seo-engine/logs/
+          if-no-files-found: ignore
+
+      - name: Report a failed run
+        if: failure()
+        run: |
+          gh issue create --label seo-engine \
+            --title "SEO engine: generation run failed ($(date +%F))" \
+            --body "The generate run stopped before finishing. Log: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
