@@ -4,6 +4,7 @@ import { Logo } from "@/components/ui/logo";
 import { AmazonButton, AmazonLink } from "@/components/ui/amazon-link";
 import { Parallax } from "@/components/motion/parallax";
 import { BackToTop } from "@/components/layout/back-to-top";
+import { CookieSettingsLink } from "@/components/analytics/cookie-banner";
 import { amazon, brandFacts, footerNav, site } from "@/lib/site";
 import { formatDate } from "@/lib/utils";
 
@@ -90,7 +91,13 @@ export function Footer() {
             © {new Date().getFullYear()} PoundMart. Prices, ratings and availability checked {formatDate(site.catalogCheckedAt)} and may have
             changed; Amazon always shows the live price. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates.
           </p>
-          <BackToTop />
+          <div className="flex shrink-0 items-center gap-5">
+            <Link href="/cookies" className="hover:text-cream">
+              Cookie Policy
+            </Link>
+            <CookieSettingsLink className="hover:text-cream" />
+            <BackToTop />
+          </div>
         </div>
       </div>
     </footer>

@@ -18,6 +18,7 @@ import {
   type Variant,
 } from "@/lib/products";
 import { amazon, site } from "@/lib/site";
+import { gtinFor } from "@/lib/gtins";
 import type { ShopItem } from "@/components/shop/filters";
 
 /* ---------- Copy ---------- */
@@ -188,6 +189,19 @@ export function brandName(p: Product) {
   return p.brand === "XHC" ? "XHC Xpert Haircare" : "Nice Smile";
 }
 
+/**
+ * 30-day returns through Amazon (brandFacts.returns, verified on the listings).
+ * Delivery cost and speed are set by Amazon per address, so no shippingDetails
+ * are asserted rather than guessing a rate.
+ */
+const returnPolicy = {
+  "@type": "MerchantReturnPolicy",
+  applicableCountry: "GB",
+  returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+  merchantReturnDays: 30,
+  returnMethod: "https://schema.org/ReturnByMail",
+};
+
 /** Product schema. Deliberately no aggregateRating or Review: the ratings belong to Amazon. */
 export function productJsonLd(p: Product) {
   const offers = p.variants
@@ -195,6 +209,7 @@ export function productJsonLd(p: Product) {
     .map((v) => ({
       "@type": "Offer",
       sku: v.asin,
+      ...(gtinFor(v.asin) ? { gtin: gtinFor(v.asin) } : {}),
       name: v.label,
       price: (v.price as number).toFixed(2),
       priceCurrency: "GBP",
@@ -202,7 +217,9 @@ export function productJsonLd(p: Product) {
       itemCondition: "https://schema.org/NewCondition",
       url: amazon.product(v.asin),
       seller: { "@type": "Organization", name: site.name, url: site.url },
+      hasMerchantReturnPolicy: returnPolicy,
     }));
+  const primaryGtin = gtinFor(p.primary.asin);
   return {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -211,6 +228,7 @@ export function productJsonLd(p: Product) {
     image: p.images.slice(0, 8).map(absoluteUrl),
     description: p.summary,
     sku: p.primary.asin,
+    ...(primaryGtin ? { gtin: primaryGtin } : {}),
     brand: { "@type": "Brand", name: brandName(p) },
     category: p.category === "toothpaste" ? "Toothpaste" : "Haircare",
     keywords: p.keywords.join(", "),
