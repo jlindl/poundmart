@@ -11,10 +11,21 @@ export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-1DE44DYMNE";
 /** localStorage key holding the visitor's cookie choice: "granted" | "denied". */
 export const CONSENT_KEY = "cookie-consent";
 
+/** Events fired before the GA init script has run; it sends them once consent and config are set. */
+export const QUEUE_KEY = "gaQueue";
+
+declare global {
+  interface Window {
+    gaQueue?: [string, Record<string, unknown>][];
+  }
+}
+
 /** Send a GA4 event. Safe to call before the tag loads and on the server. */
 export function track(event: string, params: Record<string, unknown> = {}) {
-  if (typeof window === "undefined" || !window.gtag) return;
-  window.gtag("event", event, params);
+  if (typeof window === "undefined") return;
+  if (window.gtag) window.gtag("event", event, params);
+  // Effects that run during hydration (view_item) can beat the afterInteractive init script.
+  else (window[QUEUE_KEY] ??= []).push([event, params]);
 }
 
 /** Apply a consent choice to GA (Consent Mode v2) and remember it. */

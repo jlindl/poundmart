@@ -1,11 +1,12 @@
 import Script from "next/script";
-import { CONSENT_KEY, GA_ID } from "@/lib/gtag";
+import { CONSENT_KEY, GA_ID, QUEUE_KEY } from "@/lib/gtag";
 
 /**
  * Google Analytics 4 with Consent Mode v2. Everything defaults to "denied"
  * (UK PECR), so no analytics cookies are set until the visitor accepts in the
  * cookie banner. A visitor who accepted before is restored from localStorage
- * before the tag fires.
+ * before the tag fires. Events queued by track() before this runs are sent
+ * straight after the config.
  */
 export function GoogleAnalytics() {
   if (!GA_ID) return null;
@@ -26,6 +27,9 @@ gtag("consent", "default", {
 });
 gtag("js", new Date());
 gtag("config", ${JSON.stringify(GA_ID)});
+var q = window[${JSON.stringify(QUEUE_KEY)}] || [];
+window[${JSON.stringify(QUEUE_KEY)}] = [];
+q.forEach(function (e) { gtag("event", e[0], e[1]); });
 `;
 
   return (
