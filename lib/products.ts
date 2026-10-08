@@ -46,6 +46,8 @@ export type Variant = {
 export type Product = {
   slug: string;
   name: string;
+  /** Shorter name for the <title> tag when `name` is over ~60 characters. */
+  seoName?: string;
   brand: Brand;
   category: CategorySlug;
   type: ProductType;
@@ -184,6 +186,7 @@ export const products: Product[] = [
   define({
     slug: "nice-smile-3-pack-watermelon-grape-peach",
     name: "Nice Smile 3 Pack: Watermelon Fresh, Feelin' Grape & Peachy Clean",
+    seoName: "Nice Smile 3 Pack: Watermelon, Grape & Peach Toothpaste",
     brand: "Nice Smile",
     category: "toothpaste",
     type: "Toothpaste",
@@ -623,7 +626,7 @@ export const collections: Collection[] = [
       "No-rinse conditioners for curls, Moroccan argan oil shampoo and conditioner, rosemary and mint, and plastic-free 2-in-1 bars.",
     seoTitle: "Vegan Haircare Bundles: Leave-In, Argan Oil & Bars",
     seoDescription:
-      "Shop XHC haircare bundles: vegan no-rinse conditioner for curly and afro hair, argan oil shampoo and conditioner, rosemary shampoo and plastic-free shampoo bars.",
+      "XHC haircare bundles: vegan no-rinse conditioner for curly and afro hair, argan oil shampoo and conditioner, rosemary shampoo and plastic-free bars.",
     accent: "#9A6A3A",
     image: "/products/B0GBMH1N54/g1.jpg",
     amazonPage: "haircare",

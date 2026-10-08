@@ -32,7 +32,7 @@ import { formatDate, seoTitle } from "@/lib/utils";
 
 const title = "Shop Toothpaste & Haircare Bundles";
 const description =
-  "Browse every PoundMart bundle: Nice Smile flavoured toothpaste and XHC haircare multi-packs. Compare the price per tube, then buy on Amazon, dispatched by Amazon.";
+  "Browse every PoundMart bundle: Nice Smile flavoured toothpaste and XHC haircare multi-packs. Compare the price per tube, then buy on Amazon.";
 
 export const metadata: Metadata = {
   title: seoTitle(title),

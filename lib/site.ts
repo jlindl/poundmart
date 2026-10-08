@@ -11,7 +11,7 @@ export const site = {
   name: "PoundMart",
   tagline: "Home of Great Value Bundles",
   description:
-    "PoundMart bundles the everyday essentials you actually use: flavoured Nice Smile toothpaste, XHC haircare and more, packed into great value multi-packs, sold on Amazon and dispatched by Amazon.",
+    "Great value bundles of everyday essentials: flavoured Nice Smile toothpaste and XHC haircare multi-packs, sold on Amazon and dispatched by Amazon.",
   url: siteUrl.replace(/\/$/, ""),
   locale: "en_GB",
   /** Date the prices, ratings and stock on this site were last checked against Amazon. */

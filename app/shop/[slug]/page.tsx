@@ -5,6 +5,7 @@ import { ArrowRight, BadgeCheck, MapPin, PackageCheck, RotateCcw, ShieldCheck, T
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { ProductCard } from "@/components/product/product-card";
 import { JsonLd } from "@/components/seo/json-ld";
+import { ViewItem } from "@/components/analytics/view-item";
 import { ButtonLink } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Breadcrumbs } from "@/components/shop/breadcrumbs";
@@ -29,7 +30,7 @@ import { ProductVariantProvider } from "@/components/shop/variant-context";
 import { postsForProduct, postsInCategory, type Post } from "@/lib/blog";
 import { getProduct, isInStock, products, relatedProducts, type Product } from "@/lib/products";
 import { amazon, brandFacts, site } from "@/lib/site";
-import { formatDate, seoTitle } from "@/lib/utils";
+import { formatDate, seoDescription, seoTitle } from "@/lib/utils";
 
 export const dynamicParams = false;
 
@@ -45,8 +46,8 @@ export async function generateMetadata(props: PageProps<"/shop/[slug]">): Promis
   const size = imageSize(image) ?? { width: 1000, height: 1000 };
   const url = `/shop/${product.slug}`;
   return {
-    title: seoTitle(product.name),
-    description: product.summary,
+    title: seoTitle(product.seoName ?? product.name),
+    description: seoDescription(product.summary),
     keywords: product.keywords,
     alternates: { canonical: url },
     openGraph: {
@@ -140,6 +141,13 @@ export default async function ProductPage(props: PageProps<"/shop/[slug]">) {
   return (
     <>
       <JsonLd data={[productJsonLd(product), breadcrumbJsonLd(crumbs)]} />
+      <ViewItem
+        id={product.primary.asin}
+        name={product.name}
+        brand={brandName(product)}
+        category={product.category}
+        price={product.primary.price}
+      />
 
       {/* Buy section */}
       <section className="relative bg-cream pb-20 pt-[calc(var(--header-h)+1.5rem)] lg:pb-28">

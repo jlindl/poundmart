@@ -25,6 +25,19 @@ export function parseAccent(text: string) {
  * result fits Google's ~60 character display, otherwise drops it so the
  * meaningful part of the title isn't truncated in search results.
  */
-export function seoTitle(title: string, suffix = " | PoundMart", max = 62): string | { absolute: string } {
+export function seoTitle(title: string, suffix = " | PoundMart", max = 60): string | { absolute: string } {
   return title.length + suffix.length <= max ? title : { absolute: title };
+}
+
+/**
+ * Meta description capped at Google's ~160 character display limit. Cuts at
+ * the last full sentence that fits, otherwise at a word boundary.
+ */
+export function seoDescription(text: string, max = 160): string {
+  const t = text.replace(/\s+/g, " ").trim();
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max);
+  const lastStop = Math.max(cut.lastIndexOf(". "), cut.lastIndexOf("! "), cut.lastIndexOf("? "));
+  if (lastStop > 90) return cut.slice(0, lastStop + 1);
+  return `${cut.slice(0, cut.lastIndexOf(" ", max - 1)).replace(/[,;:\s]+$/, "")}.`;
 }
