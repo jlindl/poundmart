@@ -3,7 +3,7 @@ import { CookieSettingsLink } from "@/components/analytics/cookie-banner";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
-  description: "How PoundMart uses cookies and Google Analytics on poundmart.co.uk, and how to change your choice at any time.",
+  description: "How PoundMart uses cookies, Google Analytics and Vercel Web Analytics on poundmart.co.uk, and how to change your choice at any time.",
   alternates: { canonical: "/cookies" },
 };
 
@@ -25,6 +25,11 @@ export default function CookiesPage() {
             click through to Amazon. Google Analytics sets first-party cookies named <code>_ga</code> and <code>_ga_&lt;ID&gt;</code> that
             last up to 2 years. These are only set if you click &quot;Accept&quot; in our cookie banner. If you click &quot;Reject&quot;, or
             make no choice, no analytics cookies are set and Google receives only basic, cookieless signals without identifiers.
+          </p>
+          <p>
+            <strong className="text-ink">Visit counts (no cookies).</strong> We also use Vercel Web Analytics, provided by Vercel Inc., to
+            count page views and see which pages are visited and where visitors come from. It does not set cookies or store anything on
+            your device, and it does not identify you: visits are grouped using a short-lived hash of the request that resets every day.
           </p>
           <p>
             <strong className="text-ink">Your choice.</strong> We remember whether you accepted or rejected in your browser&apos;s local
