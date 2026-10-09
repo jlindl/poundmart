@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Bricolage_Grotesque, Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { ViewTransition } from "react";
 import { SmoothScroll } from "@/components/providers/smooth-scroll";
@@ -90,6 +91,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </ViewTransition>
           <Footer />
         </SmoothScroll>
+        {/* Vercel Web Analytics: cookieless visit counts for every visitor (see the Cookie Policy). */}
+        <Analytics />
         <CookieBanner />
         <GoogleAnalytics />
       </body>
