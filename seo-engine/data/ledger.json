@@ -77,6 +77,17 @@
       "slug": "how-to-pick-a-toothpaste-flavour-for-kids",
       "title": "How to pick a toothpaste flavour for kids",
       "targetKeyword": "how to pick a toothpaste flavour for kids"
+    },
+    {
+      "date": "2026-10-13",
+      "type": "service",
+      "key": "service:uni-essentials:students:mistakes",
+      "status": "generated",
+      "suggestedKeyword": "freshers packing mistakes",
+      "angle": "mistakes",
+      "slug": "freshers-packing-mistakes-to-avoid-before-moving-into-halls",
+      "title": "Freshers packing mistakes to avoid before moving into halls",
+      "targetKeyword": "freshers packing mistakes"
     }
   ]
 }
