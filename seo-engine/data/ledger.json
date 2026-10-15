@@ -99,6 +99,17 @@
       "slug": "how-much-shampoo-should-you-use",
       "title": "How much shampoo should you use? A straight answer for UK homes",
       "targetKeyword": "how much shampoo should you use"
+    },
+    {
+      "date": "2026-10-15",
+      "type": "service",
+      "key": "service:amazon-shopping:budget:worth-it",
+      "status": "generated",
+      "suggestedKeyword": "dispatched by amazon vs fulfilled by amazon",
+      "angle": "worth-it",
+      "slug": "dispatched-by-amazon-vs-fulfilled-by-amazon-explained",
+      "title": "Dispatched by Amazon vs fulfilled by Amazon explained",
+      "targetKeyword": "dispatched by amazon vs fulfilled by amazon"
     }
   ]
 }
