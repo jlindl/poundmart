@@ -102,6 +102,7 @@ export const footerNav: { title: string; links: NavItem[] }[] = [
     links: [
       { label: "About us", href: "/about" },
       { label: "FAQs", href: "/faq" },
+      { label: "Newsletter", href: "/newsletter" },
       { label: "Our Amazon store", href: amazonStore.home },
     ],
   },
