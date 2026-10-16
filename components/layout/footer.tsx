@@ -7,6 +7,8 @@ import { BackToTop } from "@/components/layout/back-to-top";
 import { CookieSettingsLink } from "@/components/analytics/cookie-banner";
 import { amazon, brandFacts, footerNav, site } from "@/lib/site";
 import { formatDate } from "@/lib/utils";
+import { newsletter } from "@/lib/newsletter";
+import { SignupForm } from "@/components/newsletter/signup-form";
 
 const facts = [
   { icon: BadgeCheck, label: brandFacts.soldBy },
@@ -18,6 +20,22 @@ const facts = [
 export function Footer() {
   return (
     <footer className="grain relative overflow-hidden bg-ink-deep text-cream">
+      {/* Newsletter band */}
+      <div className="relative z-[2] border-b border-cream/10">
+        <div className="container-x grid items-center gap-8 py-14 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-6">
+            <p className="eyebrow text-sun">{newsletter.name}</p>
+            <h2 className="type-display mt-3 text-[clamp(2rem,4.4vw,3.25rem)] leading-[0.95] text-cream">
+              Never miss a <span className="accent-serif text-sun">bargain</span>.
+            </h2>
+            <p className="mt-4 max-w-[46ch] leading-relaxed text-cream/70">{newsletter.pitch}</p>
+          </div>
+          <div className="lg:col-span-6">
+            <SignupForm source="footer" tone="dark" />
+          </div>
+        </div>
+      </div>
+
       {/* Facts strip */}
       <div className="border-b border-cream/10">
         <ul className="container-x grid grid-cols-2 gap-x-6 gap-y-4 py-7 lg:grid-cols-4">

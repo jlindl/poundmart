@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: url("/blog"), lastModified: latestPost, changeFrequency: "daily", priority: 0.8 },
     { url: url("/about"), lastModified: catalogChecked, changeFrequency: "monthly", priority: 0.6 },
     { url: url("/faq"), lastModified: catalogChecked, changeFrequency: "monthly", priority: 0.6 },
+    { url: url("/newsletter"), lastModified: day("2026-10-16"), changeFrequency: "monthly", priority: 0.5 },
   ];
 
   const collectionRoutes: MetadataRoute.Sitemap = collections.map((c) => ({
