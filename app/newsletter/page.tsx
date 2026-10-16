@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 
 const perks = [
   { icon: PackagePlus, title: "New bundles first", text: "Hear about new multi-packs the week they land in our Amazon store." },
-  { icon: TrendingDown, title: "Price drops", text: "When a bundle gets cheaper per tube, bottle or bar, you'll know." },
-  { icon: BellRing, title: "Restock alerts", text: "Favourite flavour sold out? We'll tell you when it's back." },
+  { icon: TrendingDown, title: "Price drops", text: "When one of our bundles gets cheaper, you'll be the first to know." },
+  { icon: BellRing, title: "Restock alerts", text: "Favourite bundle sold out? We'll tell you when it's back." },
 ];
 
 export default function NewsletterPage() {
