@@ -132,6 +132,17 @@
       "slug": "monthly-toiletries-shopping-list-for-travellers-who-fly-often",
       "title": "A monthly toiletries shopping list for travellers who fly often",
       "targetKeyword": "monthly toiletries shopping list"
+    },
+    {
+      "date": "2026-10-18",
+      "type": "service",
+      "key": "service:vegan-toothpaste:households:choose",
+      "status": "generated",
+      "suggestedKeyword": "how to check if toothpaste is vegan",
+      "angle": "choose",
+      "slug": "how-to-check-if-toothpaste-is-vegan-before-you-buy",
+      "title": "How to check if toothpaste is vegan before you buy",
+      "targetKeyword": "how to check if toothpaste is vegan"
     }
   ]
 }
