@@ -99,6 +99,61 @@
       "slug": "how-much-shampoo-should-you-use",
       "title": "How much shampoo should you use? A straight answer for UK homes",
       "targetKeyword": "how much shampoo should you use"
+    },
+    {
+      "date": "2026-10-15",
+      "type": "service",
+      "key": "service:amazon-shopping:budget:worth-it",
+      "status": "generated",
+      "suggestedKeyword": "dispatched by amazon vs fulfilled by amazon",
+      "angle": "worth-it",
+      "slug": "dispatched-by-amazon-vs-fulfilled-by-amazon-explained",
+      "title": "Dispatched by Amazon vs fulfilled by Amazon explained",
+      "targetKeyword": "dispatched by amazon vs fulfilled by amazon"
+    },
+    {
+      "date": "2026-10-16",
+      "type": "service",
+      "key": "service:argan-oil:curly-hair:how-to",
+      "status": "generated",
+      "suggestedKeyword": "how to use argan oil conditioner",
+      "angle": "how-to",
+      "slug": "how-to-use-argan-oil-conditioner-for-curly-and-afro-hair",
+      "title": "How to use argan oil conditioner for curly and afro hair",
+      "targetKeyword": "how to use argan oil conditioner"
+    },
+    {
+      "date": "2026-10-17",
+      "type": "service",
+      "key": "service:save-on-toiletries:travellers:routine",
+      "status": "generated",
+      "suggestedKeyword": "monthly toiletries shopping list",
+      "angle": "routine",
+      "slug": "monthly-toiletries-shopping-list-for-travellers-who-fly-often",
+      "title": "A monthly toiletries shopping list for travellers who fly often",
+      "targetKeyword": "monthly toiletries shopping list"
+    },
+    {
+      "date": "2026-10-18",
+      "type": "service",
+      "key": "service:vegan-toothpaste:households:choose",
+      "status": "generated",
+      "suggestedKeyword": "how to check if toothpaste is vegan",
+      "angle": "choose",
+      "slug": "how-to-check-if-toothpaste-is-vegan-before-you-buy",
+      "title": "How to check if toothpaste is vegan before you buy",
+      "targetKeyword": "how to check if toothpaste is vegan"
+    },
+    {
+      "date": "2026-10-19",
+      "type": "service",
+      "key": "service:frizz:parents:routine",
+      "status": "generated",
+      "suggestedKeyword": "how to stop frizz in humid weather",
+      "angle": "routine",
+      "slug": "how-to-stop-frizz-in-humid-weather",
+      "title": "How to stop frizz in humid weather",
+      "targetKeyword": "how to stop frizz in humid weather"
     }
   ]
 }
