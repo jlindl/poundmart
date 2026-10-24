@@ -154,6 +154,61 @@
       "slug": "how-to-stop-frizz-in-humid-weather",
       "title": "How to stop frizz in humid weather",
       "targetKeyword": "how to stop frizz in humid weather"
+    },
+    {
+      "date": "2026-10-20",
+      "type": "service",
+      "key": "service:travel-toiletries:students:mistakes",
+      "status": "generated",
+      "suggestedKeyword": "packing mistakes for hand luggage toiletries",
+      "angle": "mistakes",
+      "slug": "packing-mistakes-for-hand-luggage-toiletries-students-make",
+      "title": "Packing mistakes for hand luggage toiletries students make",
+      "targetKeyword": "packing mistakes for hand luggage toiletries"
+    },
+    {
+      "date": "2026-10-21",
+      "type": "service",
+      "key": "service:curly-hair:curly-hair:how-to",
+      "status": "generated",
+      "suggestedKeyword": "how to sleep with curly hair",
+      "angle": "how-to",
+      "slug": "how-to-sleep-with-curly-hair",
+      "title": "How to sleep with curly hair and wake up with curls intact",
+      "targetKeyword": "how to sleep with curly hair"
+    },
+    {
+      "date": "2026-10-22",
+      "type": "service",
+      "key": "service:plastic-free:budget:worth-it",
+      "status": "generated",
+      "suggestedKeyword": "are solid toiletries better for the environment",
+      "angle": "worth-it",
+      "slug": "are-solid-toiletries-better-for-the-environment",
+      "title": "Are solid toiletries better for the environment? An honest look",
+      "targetKeyword": "are solid toiletries better for the environment"
+    },
+    {
+      "date": "2026-10-23",
+      "type": "service",
+      "key": "service:kids-toothpaste:parents:guide",
+      "status": "generated",
+      "suggestedKeyword": "best toothpaste for kids uk",
+      "angle": "guide",
+      "slug": "best-toothpaste-for-kids-uk-parents-can-actually-rely-on",
+      "title": "Best toothpaste for kids UK parents can actually rely on",
+      "targetKeyword": "best toothpaste for kids uk"
+    },
+    {
+      "date": "2026-10-24",
+      "type": "service",
+      "key": "service:gifts:students:guide",
+      "status": "generated",
+      "suggestedKeyword": "toiletry gift ideas for students",
+      "angle": "guide",
+      "slug": "toiletry-gift-ideas-for-students-that-actually-get-used",
+      "title": "Toiletry gift ideas for students that actually get used",
+      "targetKeyword": "toiletry gift ideas for students"
     }
   ]
 }
