@@ -209,6 +209,17 @@
       "slug": "toiletry-gift-ideas-for-students-that-actually-get-used",
       "title": "Toiletry gift ideas for students that actually get used",
       "targetKeyword": "toiletry gift ideas for students"
+    },
+    {
+      "date": "2026-10-25",
+      "type": "service",
+      "key": "service:fluoride-toothpaste:households:how-to",
+      "status": "failed",
+      "suggestedKeyword": "how to read fluoride levels on toothpaste",
+      "angle": "how-to",
+      "reasons": [
+        "at least one \"## \" heading must contain the target keyword \"how to read fluoride levels on toothpaste\" exactly."
+      ]
     }
   ]
 }
