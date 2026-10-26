@@ -18,8 +18,14 @@ Set these in `.env.local` locally and in your host (e.g. Vercel project settings
 | Variable | Purpose |
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | The live domain, e.g. `https://www.yourdomain.co.uk`. Used for canonical URLs, the sitemap, Open Graph and JSON-LD. **Set this before launch.** |
-| `NEXT_PUBLIC_AMAZON_ATTRIBUTION` | Optional. Query string from an **Amazon Attribution** tag, e.g. `maas=maas_adg_XXXX&ref_=aa_maas`. Appended to every Amazon link. Attribution tracks which off-Amazon traffic converts and qualifies external traffic for Amazon's **Brand Referral Bonus**. Strongly recommended. |
-| `NEXT_PUBLIC_AMAZON_TAG` | Optional Amazon Associates tag, e.g. `poundmart-21`. |
+| `NEXT_PUBLIC_AMAZON_ATTRIBUTION` | Optional fallback. Query string from an **Amazon Attribution** tag, e.g. `maas=maas_adg_XXXX&ref_=aa_maas&tag=maas`, used only on Amazon links that have no tag of their own in `lib/attribution.ts`. |
+| `NEXT_PUBLIC_AMAZON_TAG` | Optional Amazon Associates tag, e.g. `poundmart-21`. Never added to a link that already carries an Attribution tag. |
+
+## Amazon Attribution
+
+Every Amazon link carries its own **Amazon Attribution** tag from `lib/attribution.ts`: one ad group per store page and per ASIN, in the "PoundMart website" campaign (publisher poundmart.co.uk, channel Search). Attribution reports clicks and sales for each destination, and those sales qualify for Amazon's **Brand Referral Bonus**. Review links open the tagged product page at its reviews section.
+
+Linking a new product or store page? Create an ad group for its URL in Amazon Attribution, then add the tag's query string to `lib/attribution.ts`. Only use a tag on the URL it was created for.
 
 Every Amazon link also fires an `amazon_click` event (to `dataLayer`, `gtag` and Plausible if installed) with the link's `placement`, so you can see which buttons drive the most outbound clicks.
 
@@ -28,6 +34,7 @@ Every Amazon link also fires an `amazon_click` event (to `dataLayer`, `gtag` and
 | Path | What |
 |---|---|
 | `lib/site.ts` | Site config, Amazon store URLs, tracking, nav, and **verified brand facts** (the only claims copy may make). |
+| `lib/attribution.ts` | Amazon Attribution tag for every Amazon link (store pages and ASINs). |
 | `lib/products.ts` | The curated catalogue: 18 products grouped from 26 Amazon listings, with variants, value maths and styling. |
 | `data/amazon-catalog.json` | Snapshot of the live listings (prices, ratings, bullets, images) taken 24 September 2026. |
 | `public/products/<ASIN>/` | Product gallery (`g1…`) and A+ (`a1…`) images from the listings. |

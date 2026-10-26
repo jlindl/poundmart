@@ -32,7 +32,7 @@ function A({ href = "", children, ...rest }: ComponentPropsWithoutRef<"a">) {
   }
   if (/amazon\.co\.uk/.test(href)) {
     return (
-      <AmazonLink href={href} placement="blog-inline" className={cn(cls, "inline-flex items-baseline gap-0.5")}>
+      <AmazonLink href={amazon.track(href)} placement="blog-inline" className={cn(cls, "inline-flex items-baseline gap-0.5")}>
         {children}
         <ArrowUpRight aria-hidden className="size-3.5 self-center" />
       </AmazonLink>
