@@ -3,6 +3,8 @@
  * (URLs, Amazon tracking, nav, verified brand facts) lives here.
  */
 
+import { productAttribution, storeAttribution } from "./attribution";
+
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000");
@@ -22,9 +24,10 @@ export const site = {
 
 /**
  * Amazon destinations. Store page ids come from the live PoundMart brand store.
- * Add an Amazon Attribution tag (recommended: it unlocks the Brand Referral Bonus
- * on external traffic) or an Associates tag via env vars; they are appended to
- * every outbound Amazon link.
+ * Every outbound Amazon link carries its own Amazon Attribution tag from
+ * lib/attribution.ts, which unlocks the Brand Referral Bonus on the sales this
+ * site sends to Amazon. A destination without a tag there falls back to the
+ * NEXT_PUBLIC_AMAZON_ATTRIBUTION / NEXT_PUBLIC_AMAZON_TAG env vars.
  */
 const AMAZON = "https://www.amazon.co.uk";
 
@@ -36,23 +39,57 @@ export const amazonStore = {
   shopAll: `${AMAZON}/stores/PoundMart/page/F2F6538A-824B-4B85-9361-8CA4D47252DC`,
 } as const;
 
-/** Raw query string appended to Amazon links, e.g. "maas=maas_adg_XXXX&ref_=aa_maas". */
+type StorePage = keyof typeof amazonStore;
+
+/** Fallback query string for links with no tag of their own, e.g. "maas=maas_adg_XXXX&ref_=aa_maas&tag=maas". */
 const attribution = process.env.NEXT_PUBLIC_AMAZON_ATTRIBUTION ?? "";
 /** Amazon Associates tag, e.g. "poundmart-21". */
 const associateTag = process.env.NEXT_PUBLIC_AMAZON_TAG ?? "";
 
-function withTracking(url: string) {
+function fallbackQuery() {
   const params = new URLSearchParams(attribution);
-  if (associateTag) params.set("tag", associateTag);
-  const qs = params.toString();
+  // An Attribution tag carries its own tag=maas, which an Associates tag would overwrite.
+  if (associateTag && !params.has("maas")) params.set("tag", associateTag);
+  return params.toString();
+}
+
+/** Appends the destination's own Attribution tag, exactly as Amazon issued it, or the fallback. */
+function withTracking(url: string, ownTag?: string) {
+  const qs = ownTag || fallbackQuery();
   if (!qs) return url;
   return `${url}${url.includes("?") ? "&" : "?"}${qs}`;
 }
 
+function storeUrl(page: StorePage = "home") {
+  return withTracking(amazonStore[page], storeAttribution[page]);
+}
+
+function productUrl(asin: string) {
+  return withTracking(`${AMAZON}/dp/${asin}`, productAttribution[asin]);
+}
+
+const storeByPageId = Object.fromEntries(
+  Object.entries(amazonStore).map(([page, url]) => [url.slice(url.lastIndexOf("/") + 1), page as StorePage]),
+) as Record<string, StorePage>;
+
+/** Tags a hand-written Amazon URL (e.g. a link inside a blog post) with the matching product or store page tag. */
+function trackUrl(href: string) {
+  const asin = href.match(/\/(?:dp|gp\/product)\/(B0[A-Z0-9]{8})/i)?.[1];
+  if (asin) return productUrl(asin.toUpperCase());
+  const pageId = href.match(/\/stores\/[^/?#]+\/page\/([0-9A-F-]{36})/i)?.[1]?.toUpperCase();
+  if (pageId && storeByPageId[pageId]) return storeUrl(storeByPageId[pageId]);
+  return withTracking(href);
+}
+
 export const amazon = {
-  store: (page: keyof typeof amazonStore = "home") => withTracking(amazonStore[page]),
-  product: (asin: string) => withTracking(`${AMAZON}/dp/${asin}`),
-  reviews: (asin: string) => withTracking(`${AMAZON}/product-reviews/${asin}`),
+  store: storeUrl,
+  product: productUrl,
+  /**
+   * Attribution tags are made for product and store page URLs, so review links open the
+   * tagged product page at its customer reviews section.
+   */
+  reviews: (asin: string) => `${productUrl(asin)}#customerReviews`,
+  track: trackUrl,
 };
 
 /** Facts verified on the live Amazon listings. Copy may state these and nothing stronger. */
@@ -103,7 +140,7 @@ export const footerNav: { title: string; links: NavItem[] }[] = [
       { label: "About us", href: "/about" },
       { label: "FAQs", href: "/faq" },
       { label: "Newsletter", href: "/newsletter" },
-      { label: "Our Amazon store", href: amazonStore.home },
+      { label: "Our Amazon store", href: amazon.store() },
     ],
   },
 ];
