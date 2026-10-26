@@ -114,6 +114,9 @@ export function Footer() {
               Cookie Policy
             </Link>
             <CookieSettingsLink className="hover:text-cream" />
+            <a href="https://www.integrate-tech.co.uk" target="_blank" rel="noopener" className="hover:text-cream">
+              Website by Integrate Tech
+            </a>
             <BackToTop />
           </div>
         </div>
