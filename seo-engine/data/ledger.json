@@ -220,6 +220,17 @@
       "reasons": [
         "at least one \"## \" heading must contain the target keyword \"how to read fluoride levels on toothpaste\" exactly."
       ]
+    },
+    {
+      "date": "2026-10-26",
+      "type": "service",
+      "key": "service:fluoride-toothpaste:households:how-to",
+      "status": "generated",
+      "suggestedKeyword": "how to read fluoride levels on toothpaste",
+      "angle": "how-to",
+      "slug": "how-to-read-fluoride-levels-on-toothpaste",
+      "title": "How to read fluoride levels on toothpaste",
+      "targetKeyword": "how to read fluoride levels on toothpaste"
     }
   ]
 }
