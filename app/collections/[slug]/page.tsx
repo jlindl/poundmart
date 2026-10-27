@@ -72,7 +72,7 @@ export async function generateMetadata(props: PageProps<"/collections/[slug]">):
 }
 
 function shopLink(c: Collection) {
-  if (c.slug === "toothpaste" || c.slug === "haircare") return `/shop?category=${c.slug}#range`;
+  if (c.slug === "toothpaste" || c.slug === "haircare" || c.slug === "essentials") return `/shop?category=${c.slug}#range`;
   if (c.slug === "bundles") return "/shop?bundles=1#range";
   return "/shop#range";
 }

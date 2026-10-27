@@ -8,6 +8,7 @@ export const CATEGORY_OPTIONS = [
   { value: "all", label: "All" },
   { value: "toothpaste", label: "Toothpaste" },
   { value: "haircare", label: "Haircare" },
+  { value: "essentials", label: "Essentials" },
 ] as const;
 
 export type CategoryFilter = (typeof CATEGORY_OPTIONS)[number]["value"];
@@ -25,7 +26,7 @@ export type SortKey = (typeof SORT_OPTIONS)[number]["value"];
 export type ShopItem = {
   slug: string;
   name: string;
-  category: "toothpaste" | "haircare";
+  category: "toothpaste" | "haircare" | "essentials";
   type: string;
   isBundle: boolean;
   inStock: boolean;

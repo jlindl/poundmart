@@ -181,6 +181,7 @@ function interleave<T>(a: T[], b: T[]) {
 export function productsForCategory(categorySlug: string, limit = 4): Product[] {
   const toothpaste = rank(productsIn(getCollection("toothpaste")!));
   const haircare = rank(productsIn(getCollection("haircare")!));
+  const essentials = rank(productsIn(getCollection("essentials")!));
   let pool: Product[];
   switch (categorySlug) {
     case "oral-care":
@@ -191,6 +192,9 @@ export function productsForCategory(categorySlug: string, limit = 4): Product[] 
       break;
     case "smart-saving":
       pool = rank(productsIn(getCollection("bundles")!));
+      break;
+    case "family-home":
+      pool = interleave(essentials.filter((p) => p.isBundle), interleave(toothpaste.filter((p) => p.isBundle), haircare.filter((p) => p.isBundle)));
       break;
     default:
       pool = interleave(toothpaste.filter((p) => p.isBundle), haircare.filter((p) => p.isBundle));

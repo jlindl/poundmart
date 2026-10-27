@@ -45,7 +45,7 @@ export function WhyPoundMart({ stats, storeHref }: { stats: Stats; storeHref: st
               icon={BadgeCheck}
               eyebrow="Genuine brands"
               title="The real thing, *every* time."
-              text={`${brandFacts.authenticity} Just Nice Smile and XHC Xpert Haircare, the brands on the box.`}
+              text={`${brandFacts.authenticity} Just the brands on the box, from Nice Smile and XHC Xpert Haircare to Mucky Pup and XBC.`}
               className="bg-sun text-ink-deep"
               media={
                 <Image

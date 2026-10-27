@@ -90,7 +90,7 @@ export function HomeHero({ data }: { data: HeroData }) {
 
           <Enter delay={0.55}>
             <p className="mt-7 max-w-[46ch] text-lg leading-relaxed text-ink-soft sm:text-xl">
-              Flavoured Nice Smile toothpaste and XHC haircare, packed into multi-packs that cost less per tube, bottle and bar. Sold by
+              Flavoured Nice Smile toothpaste, XHC haircare and everyday essentials, packed into multi-packs that cost less per tube, bottle and bar. Sold by
               PoundMart, dispatched by Amazon.
             </p>
           </Enter>

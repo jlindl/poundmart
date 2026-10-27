@@ -28,7 +28,7 @@ import {
 } from "@/components/shop/shop-data";
 import { ProductVariantProvider } from "@/components/shop/variant-context";
 import { postsForProduct, postsInCategory, type Post } from "@/lib/blog";
-import { getProduct, isInStock, products, relatedProducts, type Product } from "@/lib/products";
+import { categoryInfo, getProduct, isInStock, products, relatedProducts, type Product } from "@/lib/products";
 import { amazon, brandFacts, site } from "@/lib/site";
 import { formatDate, seoDescription, seoTitle } from "@/lib/utils";
 
@@ -62,6 +62,7 @@ export async function generateMetadata(props: PageProps<"/shop/[slug]">): Promis
 }
 
 function flavourLabel(p: Product) {
+  if (p.flavourLabel) return p.flavourLabel;
   if (p.category === "toothpaste") return p.flavours.length > 1 ? "Flavours" : "Flavour";
   if (p.type === "Leave-in conditioner" || p.type === "Haircare bars") return p.flavours.length > 1 ? "Scents" : "Scent";
   return "Signature ingredient";
@@ -70,8 +71,7 @@ function flavourLabel(p: Product) {
 /** Posts that feature this product, topped up from its blog category. */
 function productPosts(p: Product): Post[] {
   const picked = postsForProduct(p.slug, 3);
-  const category = p.category === "toothpaste" ? "oral-care" : "haircare";
-  for (const post of postsInCategory(category)) {
+  for (const post of postsInCategory(categoryInfo[p.category].blogCategory)) {
     if (picked.length >= 3) break;
     if (!picked.some((x) => x.slug === post.slug)) picked.push(post);
   }
@@ -253,14 +253,14 @@ export default async function ProductPage(props: PageProps<"/shop/[slug]">) {
         posts={posts}
         title={collectionArt[collection.slug]?.blogTitle ?? "From the *blog*."}
         intro="Straight-talking guides from the PoundMart team, written to help you choose and use."
-        viewAll={{ href: `/blog/category/${product.category === "toothpaste" ? "oral-care" : "haircare"}`, label: "More guides" }}
+        viewAll={{ href: `/blog/category/${categoryInfo[product.category].blogCategory}`, label: "More guides" }}
         className="bg-cream"
       />
 
       <CtaBand
         id="pdp-closing-cta"
         eyebrow={inStock ? "Ready when you are" : "Currently unavailable"}
-        title={product.category === "toothpaste" ? "Brighter brushing is *one tap* away." : "Your next wash day, *sorted*."}
+        title={categoryInfo[product.category].closingTitle}
         body={`${product.name}. ${brandFacts.soldBy}, ${lowerFirst(brandFacts.dispatchedBy)}, with ${lowerFirst(brandFacts.returns)}.`}
         primary={{
           href: amazon.product(product.primary.asin),

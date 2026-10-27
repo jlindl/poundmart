@@ -21,7 +21,7 @@ import { amazon, brandFacts, site } from "@/lib/site";
 
 const title = "FAQs: Ordering, Delivery, Returns & Ingredients";
 const description =
-  "Answers to common questions about PoundMart bundles: buying on Amazon, delivery, 30-day returns, and Nice Smile toothpaste and XHC haircare ingredients.";
+  "Answers to common questions about PoundMart bundles: buying on Amazon, delivery, 30-day returns, Nice Smile toothpaste, XHC haircare and our everyday essentials.";
 
 export const metadata: Metadata = {
   title,
