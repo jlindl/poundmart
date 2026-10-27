@@ -30,9 +30,9 @@ import { isInStock, products } from "@/lib/products";
 import { amazon, site } from "@/lib/site";
 import { formatDate, seoTitle } from "@/lib/utils";
 
-const title = "Shop Toothpaste & Haircare Bundles";
+const title = "Shop Toothpaste, Haircare & Everyday Bundles";
 const description =
-  "Browse every PoundMart bundle: Nice Smile flavoured toothpaste and XHC haircare multi-packs. Compare the price per tube, then buy on Amazon.";
+  "Browse every PoundMart bundle: Nice Smile toothpaste, XHC haircare, Mucky Pup dog shampoo, XBC liquid talc and more. Compare the price per item, then buy on Amazon.";
 
 export const metadata: Metadata = {
   title: seoTitle(title),
@@ -107,7 +107,7 @@ export default function ShopPage() {
               />
               <Reveal delay={0.45} y={16}>
                 <p className="mt-7 max-w-[52ch] text-lg leading-relaxed text-ink-muted sm:text-xl">
-                  Flavoured Nice Smile toothpaste and XHC haircare, packed into multi-packs that cost less per tube, bottle and bar. Compare
+                  Flavoured Nice Smile toothpaste, XHC haircare and everyday essentials, packed into multi-packs that cost less per tube, bottle and bar. Compare
                   everything here, then check out on Amazon.
                 </p>
               </Reveal>

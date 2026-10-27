@@ -24,9 +24,73 @@ type RawListing = {
 
 const listings = catalog.products as Record<string, RawListing>;
 
-export type CategorySlug = "toothpaste" | "haircare";
-export type Brand = "Nice Smile" | "XHC";
-export type ProductType = "Toothpaste" | "Leave-in conditioner" | "Conditioner" | "Shampoo" | "Shampoo & conditioner" | "Haircare bars";
+export type CategorySlug = "toothpaste" | "haircare" | "essentials";
+export type Brand = "Nice Smile" | "XHC" | "XBC" | "Mucky Pup" | "Medex" | "Clear & Simple" | "Super Bright" | "CloudKicks";
+export type ProductType =
+  | "Toothpaste"
+  | "Leave-in conditioner"
+  | "Conditioner"
+  | "Shampoo"
+  | "Shampoo & conditioner"
+  | "Haircare bars"
+  | "Dog shampoo"
+  | "Liquid talc"
+  | "Cotton buds"
+  | "Breath spray"
+  | "Pregnancy tests"
+  | "Car sponges"
+  | "Slippers";
+
+/** Full brand names, for product schema and "in their own words" copy. */
+export const brandNames: Record<Brand, string> = {
+  "Nice Smile": "Nice Smile",
+  XHC: "XHC Xpert Haircare",
+  XBC: "XBC Xpel Body Care",
+  "Mucky Pup": "Mucky Pup",
+  Medex: "Medex",
+  "Clear & Simple": "Clear & Simple",
+  "Super Bright": "Super Bright",
+  CloudKicks: "CloudKicks",
+};
+
+/** Copy and routing that differ by category. */
+export const categoryInfo: Record<
+  CategorySlug,
+  {
+    label: string;
+    /** Blog category whose guides sit under products in this category. */
+    blogCategory: "oral-care" | "haircare" | "family-home";
+    featuresTitle: string;
+    storyTitle: string;
+    bestForTitle: string;
+    closingTitle: string;
+  }
+> = {
+  toothpaste: {
+    label: "Toothpaste",
+    blogCategory: "oral-care",
+    featuresTitle: "Small tube, *big* personality.",
+    storyTitle: "The *story* behind the tube.",
+    bestForTitle: "Made for *real* routines.",
+    closingTitle: "Brighter brushing is *one tap* away.",
+  },
+  haircare: {
+    label: "Haircare",
+    blogCategory: "haircare",
+    featuresTitle: "Good hair days, *on repeat*.",
+    storyTitle: "The *good stuff*, explained.",
+    bestForTitle: "Made for *your* wash day.",
+    closingTitle: "Your next wash day, *sorted*.",
+  },
+  essentials: {
+    label: "Everyday essentials",
+    blogCategory: "family-home",
+    featuresTitle: "The everyday, *sorted*.",
+    storyTitle: "The *details*, explained.",
+    bestForTitle: "Made for *real* homes.",
+    closingTitle: "One less thing to *run out of*.",
+  },
+};
 
 export type Variant = {
   asin: string;
@@ -55,8 +119,10 @@ export type Product = {
   tagline: string;
   /** 1-2 sentence description for product pages and meta descriptions. */
   summary: string;
-  /** Flavours or scents inside. */
+  /** Flavours or scents inside (or colours, key ingredients: see flavourLabel). */
   flavours: string[];
+  /** Heading for `flavours` on the product page when "Flavour" or "Scent" doesn't fit, e.g. "Colour". */
+  flavourLabel?: string;
   /** Size of a single unit, e.g. "60g tube". */
   unitSize: string;
   /** Noun for one unit: "tube", "bottle", "bar". */
@@ -115,6 +181,8 @@ function define(def: Definition): Product {
 const TOOTHPASTE_KEYWORDS = ["flavoured toothpaste", "kids toothpaste", "fluoride toothpaste", "vegan toothpaste", "toothpaste bundle"];
 const NO_RINSE_KEYWORDS = ["leave-in conditioner", "no rinse conditioner", "curly hair conditioner", "vegan conditioner"];
 const ARGAN_KEYWORDS = ["argan oil shampoo", "argan oil conditioner", "shampoo for dry hair", "paraben-free shampoo"];
+const CAFFEINE_KEYWORDS = ["caffeine shampoo", "caffeine conditioner", "menopause shampoo", "shampoo for fine hair"];
+const BAR_KEYWORDS = ["shampoo bar", "shampoo and conditioner bar", "2 in 1 shampoo bar", "plastic free shampoo"];
 
 export const products: Product[] = [
   define({
@@ -144,23 +212,21 @@ export const products: Product[] = [
     brand: "Nice Smile",
     category: "toothpaste",
     type: "Toothpaste",
-    tagline: "Every flavour, one happy bathroom shelf.",
+    tagline: "The fruity trio, two of each.",
     summary:
-      "Six 60g tubes of flavoured fluoride toothpaste. Choose the All Flavours pack (Watermelon, Grape, Peach, Berry, Gummy and Candy) or the Berry, Gummy and Candy pack.",
-    flavours: ["Watermelon Fresh", "Feelin' Grape", "Peachy Clean", "Berry Burst", "Yummy Gummy", "Candy Clean"],
+      "Six 60g tubes, two each of Watermelon Fresh, Feelin' Grape and Peachy Clean. Whitening fluoride toothpaste for kids and adults, vegan, cruelty-free and enamel-safe.",
+    flavours: ["Watermelon Fresh", "Feelin' Grape", "Peachy Clean"],
     unitSize: "60g tube",
     unitNoun: "tube",
     accent: "#8E4BC4",
     accentSoft: "#EFE3FA",
-    badges: ["6 tubes", "Mix & match"],
+    badges: ["6 tubes"],
     isBundle: true,
     isNew: false,
-    bestFor: ["Trying every flavour", "Families", "Gifting"],
+    bestFor: ["Families", "Fruit fans", "Gifting"],
     keywords: [...TOOTHPASTE_KEYWORDS, "toothpaste 6 pack"],
-    variants: [
-      { asin: "B0G318R9JG", label: "All Flavours (6 pack)", units: 6 },
-      { asin: "B0GTWGV3Q5", label: "Berry, Gummy & Candy (6 pack)", units: 6 },
-    ],
+    // The All Flavours (B0G318R9JG) and Berry, Gummy & Candy (B0GTWGV3Q5) 6 packs were delisted in Oct 2026.
+    variants: [{ asin: "B0GTW7L1FM", label: "Watermelon, Peach & Grape (6 pack)", units: 6 }],
   }),
   define({
     slug: "nice-smile-3-pack-berry-gummy-candy",
@@ -271,27 +337,93 @@ export const products: Product[] = [
       { asin: "B0H34WYZB2", label: "Pack of 2", units: 2 },
     ],
   }),
+  // Candy Clean single (B0FPDJXQRG) and pack of 4 (B0H34TJ7QT) were delisted in Oct 2026; its old page
+  // redirects to the Berry, Gummy & Candy 3 pack (next.config.ts).
   define({
-    slug: "nice-smile-candy-clean-toothpaste",
-    name: "Nice Smile Candy Clean Toothpaste",
+    slug: "nice-smile-peachy-clean-toothpaste",
+    name: "Nice Smile Peachy Clean Toothpaste",
     brand: "Nice Smile",
     category: "toothpaste",
     type: "Toothpaste",
-    tagline: "Hello, sweet tooth.",
-    summary: "Cotton candy flavoured whitening toothpaste with fluoride in a 60g tube. Gentle, enamel-safe, vegan and cruelty-free.",
-    flavours: ["Candy Clean"],
+    tagline: "Peach, please.",
+    summary: "Peach flavoured whitening toothpaste with fluoride in a 60g tube. Gentle, enamel-safe, vegan and cruelty-free, for kids and adults.",
+    flavours: ["Peachy Clean"],
     unitSize: "60g tube",
     unitNoun: "tube",
-    accent: "#FF7EB6",
-    accentSoft: "#FFE4F0",
+    accent: "#FF9B54",
+    accentSoft: "#FFEBDC",
     badges: [],
     isBundle: false,
     isNew: false,
-    bestFor: ["Mint haters", "Bedtime routines"],
-    keywords: [...TOOTHPASTE_KEYWORDS, "cotton candy toothpaste"],
+    bestFor: ["Peach fans", "Trying a flavour", "Travel"],
+    keywords: [...TOOTHPASTE_KEYWORDS, "peach toothpaste"],
+    variants: [{ asin: "B0FNY3JP8L", label: "Single 60g", units: 1 }],
+  }),
+  define({
+    slug: "nice-smile-2-pack-grape-peach",
+    name: "Nice Smile 2 Pack: Feelin' Grape & Peachy Clean",
+    brand: "Nice Smile",
+    category: "toothpaste",
+    type: "Toothpaste",
+    tagline: "A grape and a peach walk into a bathroom.",
+    summary:
+      "Two 60g tubes of flavoured whitening fluoride toothpaste, one Feelin' Grape and one Peachy Clean. Vegan, cruelty-free and enamel-safe, for kids and adults.",
+    flavours: ["Feelin' Grape", "Peachy Clean"],
+    unitSize: "60g tube",
+    unitNoun: "tube",
+    accent: "#C0569F",
+    accentSoft: "#F9E1EF",
+    badges: ["2 tubes"],
+    isBundle: true,
+    isNew: false,
+    bestFor: ["Mint haters", "Sharing", "Wash bags"],
+    keywords: [...TOOTHPASTE_KEYWORDS, "grape toothpaste", "peach toothpaste"],
+    variants: [{ asin: "B0FNZ7BHH9", label: "2 × 60g", units: 2 }],
+  }),
+  define({
+    slug: "nice-smile-2-pack-watermelon-peach",
+    name: "Nice Smile 2 Pack: Watermelon Fresh & Peachy Clean",
+    brand: "Nice Smile",
+    category: "toothpaste",
+    type: "Toothpaste",
+    tagline: "Summer fruits, all year round.",
+    summary:
+      "Two 60g tubes of flavoured whitening fluoride toothpaste, one Watermelon Fresh and one Peachy Clean. Vegan, cruelty-free and enamel-safe, for kids and adults.",
+    flavours: ["Watermelon Fresh", "Peachy Clean"],
+    unitSize: "60g tube",
+    unitNoun: "tube",
+    accent: "#FF7A5C",
+    accentSoft: "#FFE6DE",
+    badges: ["2 tubes"],
+    isBundle: true,
+    isNew: false,
+    bestFor: ["Fruit fans", "Sharing", "Wash bags"],
+    keywords: [...TOOTHPASTE_KEYWORDS, "watermelon toothpaste", "peach toothpaste"],
+    variants: [{ asin: "B0FSBKNHNC", label: "2 × 60g", units: 2 }],
+  }),
+  define({
+    slug: "nice-smile-3-pack-single-flavour",
+    name: "Nice Smile Single Flavour 3 Pack",
+    brand: "Nice Smile",
+    category: "toothpaste",
+    type: "Toothpaste",
+    tagline: "Found your favourite? Triple it.",
+    summary:
+      "Three 60g tubes of one Nice Smile flavour: Yummy Gummy, Peachy Clean or Feelin' Grape. Whitening fluoride toothpaste, vegan, cruelty-free and enamel-safe.",
+    flavours: ["Yummy Gummy", "Peachy Clean", "Feelin' Grape"],
+    unitSize: "60g tube",
+    unitNoun: "tube",
+    accent: "#E6508F",
+    accentSoft: "#FCE1EC",
+    badges: ["3 tubes"],
+    isBundle: true,
+    isNew: false,
+    bestFor: ["Fussy brushers", "Stocking up on a favourite"],
+    keywords: [...TOOTHPASTE_KEYWORDS, "toothpaste 3 pack"],
     variants: [
-      { asin: "B0FPDJXQRG", label: "Single 60g", units: 1 },
-      { asin: "B0H34TJ7QT", label: "Pack of 4", units: 4 },
+      { asin: "B0HBQLWB9J", label: "Triple Yummy Gummy", units: 3 },
+      { asin: "B0H2B9N4TP", label: "Triple Peachy Clean", units: 3 },
+      { asin: "B0G62MSX9T", label: "Triple Feelin' Grape", units: 3 },
     ],
   }),
   define({
@@ -313,7 +445,10 @@ export const products: Product[] = [
     isNew: false,
     bestFor: ["Curly & afro hair", "Wash-day skippers", "Gym bags"],
     keywords: [...NO_RINSE_KEYWORDS, "leave-in conditioner bundle"],
-    variants: [{ asin: "B0G3BS11B8", label: "3 × 250ml", units: 3 }],
+    variants: [
+      { asin: "B0G3BS11B8", label: "3 pack (1 of each)", units: 3 },
+      { asin: "B0HLXX21N5", label: "6 pack (2 of each)", units: 6 },
+    ],
   }),
   define({
     slug: "xhc-no-rinse-conditioner",
@@ -359,7 +494,7 @@ export const products: Product[] = [
     isNew: false,
     bestFor: ["Curly & afro hair", "Sharing"],
     keywords: NO_RINSE_KEYWORDS,
-    variants: [{ asin: "B0GK9LFDFX", label: "2 × 250ml", units: 2, inStock: false }],
+    variants: [{ asin: "B0GK9LFDFX", label: "2 × 250ml", units: 2 }],
   }),
   define({
     slug: "xhc-argan-oil-shampoo-conditioner-set",
@@ -411,20 +546,21 @@ export const products: Product[] = [
     type: "Shampoo",
     tagline: "Salon-style shine for everyday washing.",
     summary:
-      "Nourishing and moisturising Moroccan argan oil shampoo in 300ml bottles. Vegan friendly and paraben-free. Available as a twin pack or a 6 bottle stock-up.",
+      "Nourishing and moisturising Moroccan argan oil shampoo in 300ml bottles. Vegan friendly and paraben-free. Available as a twin pack or a single bottle.",
     flavours: ["Moroccan Argan Oil"],
     unitSize: "300ml bottle",
     unitNoun: "bottle",
     accent: "#8C5A2E",
     accentSoft: "#F1E5D8",
-    badges: ["Twin or 6 pack"],
+    badges: ["Twin or single"],
     isBundle: true,
     isNew: false,
     bestFor: ["Everyday washing", "Households who share"],
     keywords: ARGAN_KEYWORDS,
+    // The 6 bottle stock-up (B0H34SJXPD) was delisted in Oct 2026.
     variants: [
       { asin: "B0GG7J6QCM", label: "Twin pack (2 × 300ml)", units: 2 },
-      { asin: "B0H34SJXPD", label: "Stock-up (6 × 300ml)", units: 6 },
+      { asin: "B0HB199B8W", label: "Single 300ml", units: 1 },
     ],
   }),
   define({
@@ -435,7 +571,7 @@ export const products: Product[] = [
     type: "Conditioner",
     tagline: "Soft, smooth and our highest rated.",
     summary:
-      "Two 300ml Moroccan argan oil conditioners for soft, smooth hair. Vegan friendly and paraben-free.",
+      "Moroccan argan oil conditioner in 300ml tubes for soft, smooth hair. Vegan friendly and paraben-free. Available as a twin pack or a single tube.",
     flavours: ["Moroccan Argan Oil"],
     unitSize: "300ml bottle",
     unitNoun: "bottle",
@@ -446,7 +582,10 @@ export const products: Product[] = [
     isNew: false,
     bestFor: ["Frizz", "Softness", "Pairing with the shampoo"],
     keywords: [...ARGAN_KEYWORDS, "argan oil conditioner"],
-    variants: [{ asin: "B0GG7YNXRZ", label: "2 × 300ml", units: 2 }],
+    variants: [
+      { asin: "B0GG7YNXRZ", label: "Twin pack (2 × 300ml)", units: 2 },
+      { asin: "B0HB122VYS", label: "Single 300ml", units: 1 },
+    ],
   }),
   define({
     slug: "xhc-argan-oil-conditioner-3-pack",
@@ -466,7 +605,7 @@ export const products: Product[] = [
     isNew: false,
     bestFor: ["Dry hair", "Stocking up"],
     keywords: [...ARGAN_KEYWORDS, "argan oil conditioner"],
-    variants: [{ asin: "B0GBMTMS6T", label: "3 × 300ml", units: 3, inStock: false }],
+    variants: [{ asin: "B0GBMTMS6T", label: "3 × 300ml", units: 3 }],
   }),
   define({
     slug: "xhc-rosemary-mint-shampoo-3-pack",
@@ -499,7 +638,7 @@ export const products: Product[] = [
     summary:
       "Solid 2-in-1 shampoo and conditioner bars in Coconut, Banana and Papaya. Plastic-free, vegan friendly and travel-friendly. Choose a 3 pack or a 6 pack.",
     flavours: ["Coconut", "Banana", "Papaya"],
-    unitSize: "70g bar",
+    unitSize: "60g bar",
     unitNoun: "bar",
     accent: "#F4A52B",
     accentSoft: "#FEEFD6",
@@ -507,10 +646,266 @@ export const products: Product[] = [
     isBundle: true,
     isNew: true,
     bestFor: ["Travel", "Low-waste bathrooms", "Gym bags"],
-    keywords: ["shampoo bar", "shampoo and conditioner bar", "2 in 1 shampoo bar", "plastic free shampoo"],
+    keywords: BAR_KEYWORDS,
     variants: [
       { asin: "B0GKYHKMRG", label: "3 pack (Coconut, Banana, Papaya)", units: 3 },
       { asin: "B0H9YX3DG3", label: "6 pack (2 of each)", units: 6 },
+    ],
+  }),
+  define({
+    slug: "xhc-2-in-1-shampoo-bar",
+    name: "XHC 2-in-1 Shampoo & Conditioner Bar",
+    brand: "XHC",
+    category: "haircare",
+    type: "Haircare bars",
+    tagline: "One bar, one scent, zero bottles.",
+    summary:
+      "A single 60g solid shampoo and conditioner bar, 97% plant based and suitable for vegans, with cocoa and shea butter. Choose Banana, Coconut or Papaya.",
+    flavours: ["Banana", "Coconut", "Papaya"],
+    unitSize: "60g bar",
+    unitNoun: "bar",
+    accent: "#F2C94C",
+    accentSoft: "#FDF3D3",
+    badges: ["Plastic-free", "Vegan"],
+    isBundle: false,
+    isNew: true,
+    bestFor: ["Trying a bar", "Wash bags", "Gym bags"],
+    keywords: BAR_KEYWORDS,
+    variants: [
+      { asin: "B0H9YYTF42", label: "Banana", units: 1 },
+      { asin: "B0H9YYNF25", label: "Coconut", units: 1 },
+      { asin: "B0H9Z4FVN4", label: "Papaya", units: 1 },
+    ],
+  }),
+  define({
+    slug: "xhc-silver-shampoo-3-pack",
+    name: "XHC Shimmer of Silver Purple Shampoo 3 Pack",
+    seoName: "XHC Purple Silver Shampoo 3 Pack",
+    brand: "XHC",
+    category: "haircare",
+    type: "Shampoo",
+    tagline: "Bright blondes, silver greys.",
+    summary:
+      "Three 400ml bottles of XHC Shimmer of Silver purple shampoo, made to lighten blonde, grey and white hair. For women and men, for daily use.",
+    flavours: ["Blonde", "Grey", "White"],
+    flavourLabel: "Made for",
+    unitSize: "400ml bottle",
+    unitNoun: "bottle",
+    accent: "#8B6FC6",
+    accentSoft: "#ECE6F7",
+    badges: ["3 bottles", "1.2 litres"],
+    isBundle: true,
+    isNew: false,
+    bestFor: ["Blonde hair", "Grey and silver hair", "Brassy tones"],
+    keywords: ["purple shampoo", "silver shampoo", "shampoo for grey hair", "blonde shampoo"],
+    variants: [{ asin: "B0GFXSFDY3", label: "3 × 400ml", units: 3 }],
+  }),
+  define({
+    slug: "xhc-caffeine-shampoo-3-pack",
+    name: "XHC Plant Essence Caffeine Shampoo 3 Pack",
+    seoName: "XHC Caffeine Shampoo 3 Pack for Men & Women",
+    brand: "XHC",
+    category: "haircare",
+    type: "Shampoo",
+    tagline: "Caffeine and zinc for everyday washing.",
+    summary:
+      "Three 300ml bottles of XHC Plant Essence caffeine shampoo, infused with caffeine and zinc to help boost hair and scalp health. For men and women, fine or dry hair, and menopausal hair.",
+    flavours: ["Caffeine", "Zinc", "Vitamin C"],
+    flavourLabel: "Key ingredients",
+    unitSize: "300ml bottle",
+    unitNoun: "bottle",
+    accent: "#1E9E7E",
+    accentSoft: "#DDF3EC",
+    badges: ["3 bottles", "Men & women"],
+    isBundle: true,
+    isNew: false,
+    bestFor: ["Fine, dry hair", "Menopausal hair", "Scalp care routines"],
+    keywords: CAFFEINE_KEYWORDS,
+    variants: [{ asin: "B0GG8DF2RB", label: "3 × 300ml", units: 3 }],
+  }),
+  define({
+    slug: "xhc-caffeine-conditioner-3-pack",
+    name: "XHC Plant Essence Caffeine Conditioner 3 Pack",
+    seoName: "XHC Caffeine Conditioner 3 Pack for Men & Women",
+    brand: "XHC",
+    category: "haircare",
+    type: "Conditioner",
+    tagline: "The other half of the caffeine routine.",
+    summary:
+      "Three 200ml tubes of XHC Plant Essence caffeine conditioner, infused with caffeine and zinc to help boost hair and scalp health. For men and women, fine or dry hair, and menopausal hair.",
+    flavours: ["Caffeine", "Zinc", "Vitamin C"],
+    flavourLabel: "Key ingredients",
+    unitSize: "200ml tube",
+    unitNoun: "tube",
+    accent: "#17A589",
+    accentSoft: "#D9F2EC",
+    badges: ["3 tubes", "Men & women"],
+    isBundle: true,
+    isNew: false,
+    bestFor: ["Fine, dry hair", "Menopausal hair", "Pairing with the shampoo"],
+    keywords: CAFFEINE_KEYWORDS,
+    variants: [{ asin: "B0GGC9W86R", label: "3 × 200ml", units: 3 }],
+  }),
+
+  /* ---------- Everyday essentials ---------- */
+
+  define({
+    slug: "mucky-pup-flea-repellent-dog-shampoo",
+    name: "Mucky Pup Flea Repellent Dog Shampoo",
+    brand: "Mucky Pup",
+    category: "essentials",
+    type: "Dog shampoo",
+    tagline: "Every bath does two jobs.",
+    summary:
+      "Flea repellent dog shampoo made with the insect repellent IR3535. Lifts mud and dirt, helps reduce tangles and leaves a shiny coat. A grooming shampoo, not a flea treatment. Choose a 3 pack or a 6 pack.",
+    flavours: [],
+    unitSize: "475ml bottle",
+    unitNoun: "bottle",
+    accent: "#2E9E6B",
+    accentSoft: "#DFF3E9",
+    badges: ["Flea repellent", "3 or 6 bottles"],
+    isBundle: true,
+    isNew: true,
+    bestFor: ["Muddy walks", "Multi-dog homes", "Regular bath time"],
+    keywords: ["flea shampoo for dogs", "dog shampoo", "flea repellent dog shampoo", "dog shampoo multipack"],
+    variants: [
+      { asin: "B0GJQ4H9GM", label: "3 pack", units: 3 },
+      { asin: "B0H6TRBT99", label: "6 pack", units: 6 },
+    ],
+  }),
+  define({
+    slug: "xbc-liquid-talc",
+    name: "XBC Liquid Talc Bundle",
+    brand: "XBC",
+    category: "essentials",
+    type: "Liquid talc",
+    tagline: "The feel of talc, without the cloud.",
+    summary:
+      "Talc free liquid talc in 200ml flip cap tubes. Goes on like a lotion and dries to a soft, powdery finish, helping keep skin soft and prevent chafing. Made with cornstarch, for the whole family. Choose 5 or 12 tubes.",
+    flavours: [],
+    unitSize: "200ml tube",
+    unitNoun: "tube",
+    accent: "#5AA9E6",
+    accentSoft: "#E3F1FC",
+    badges: ["Talc free", "5 or 12 tubes"],
+    isBundle: true,
+    isNew: true,
+    bestFor: ["Nappy changes", "After the bath", "Chafing"],
+    keywords: ["liquid talc", "talc free powder", "baby powder lotion", "anti chafing"],
+    variants: [
+      { asin: "B0GL9KRBLS", label: "5 pack", units: 5 },
+      { asin: "B0HCCR1P9M", label: "12 pack", units: 12 },
+    ],
+  }),
+  define({
+    slug: "xbc-bamboo-cotton-buds-3-pack",
+    name: "XBC Bamboo Cotton Buds 3 Pack",
+    brand: "XBC",
+    category: "essentials",
+    type: "Cotton buds",
+    tagline: "900 buds, zero plastic stems.",
+    summary:
+      "Three tubs of 300 bamboo cotton buds, 900 in total. Biodegradable bamboo stems with 100% cotton tips, for beauty, personal care and household jobs.",
+    flavours: [],
+    unitSize: "tub of 300",
+    unitNoun: "tub",
+    accent: "#A47E5B",
+    accentSoft: "#F1E9E0",
+    badges: ["900 buds", "Plastic-free stems"],
+    isBundle: true,
+    isNew: false,
+    bestFor: ["Make-up touch-ups", "Low-waste bathrooms", "Household cleaning"],
+    keywords: ["bamboo cotton buds", "plastic free cotton buds", "biodegradable cotton buds"],
+    variants: [{ asin: "B0GL9H92HP", label: "3 tubs (900 buds)", units: 3 }],
+  }),
+  define({
+    slug: "medex-minty-fresh-breath-spray",
+    name: "Medex Minty Fresh Breath Spray",
+    brand: "Medex",
+    category: "essentials",
+    type: "Breath spray",
+    tagline: "Fresh breath, pocket-sized.",
+    summary: "A compact, sugar free mint breath spray that gives a quick burst of freshness at work, after meals or on the go.",
+    flavours: ["Mint"],
+    unitSize: "spray",
+    unitNoun: "spray",
+    accent: "#2D7FD3",
+    accentSoft: "#E0EDFA",
+    badges: ["Sugar free", "Travel size"],
+    isBundle: false,
+    isNew: false,
+    bestFor: ["Pockets and handbags", "After meals", "Meetings and dates"],
+    keywords: ["breath spray", "mouth spray", "fresh breath spray"],
+    variants: [
+      { asin: "B0GNSCTDVJ", label: "Single spray", units: 1 },
+      { asin: "B0GFFLZZ1R", label: "2 pack", units: 2 },
+    ],
+  }),
+  define({
+    slug: "clear-and-simple-pregnancy-tests-3-pack",
+    name: "Clear & Simple Pregnancy Test Sticks 3 Pack",
+    brand: "Clear & Simple",
+    category: "essentials",
+    type: "Pregnancy tests",
+    tagline: "Six tests, clear lines.",
+    summary:
+      "Three boxes of two Clear & Simple pregnancy test sticks, six tests in total. Urine test sticks with 20 mIU/mL hCG sensitivity and results in 5 minutes, each in a sealed pouch.",
+    flavours: [],
+    unitSize: "test stick",
+    unitNoun: "test",
+    accent: "#3D6FE8",
+    accentSoft: "#E1E9FC",
+    badges: ["6 tests"],
+    isBundle: true,
+    isNew: false,
+    bestFor: ["Testing again", "Keeping spares at home"],
+    keywords: ["pregnancy test", "pregnancy test sticks", "early pregnancy test"],
+    variants: [{ asin: "B0GG8GRWQ7", label: "3 boxes (6 tests)", units: 6 }],
+  }),
+  define({
+    slug: "jumbo-car-wash-sponges-6-pack",
+    name: "Jumbo Car Wash Sponges 6 Pack",
+    brand: "Super Bright",
+    category: "essentials",
+    type: "Car sponges",
+    tagline: "Big, soft and ready for wash day.",
+    summary:
+      "Six large, thick foam car wash sponges with an easy grip shape. Soft on paintwork, glass and wheels, and handy around the house and garage too.",
+    flavours: [],
+    unitSize: "jumbo sponge",
+    unitNoun: "sponge",
+    accent: "#F2B705",
+    accentSoft: "#FFF4CC",
+    badges: ["6 sponges"],
+    isBundle: true,
+    isNew: false,
+    bestFor: ["Car wash day", "Wheels and windows", "Household jobs"],
+    keywords: ["car wash sponge", "car sponges", "jumbo sponge"],
+    variants: [{ asin: "B0H3789PPL", label: "6 sponges", units: 6 }],
+  }),
+  define({
+    slug: "cloudkicks-air-110-sneaker-slippers",
+    name: "CloudKicks Air 110 Sneaker Slippers",
+    brand: "CloudKicks",
+    category: "essentials",
+    type: "Slippers",
+    tagline: "Sneaker style for the sofa.",
+    summary:
+      "Oversized plush house slippers with a sneaker-inspired look and a chunky cushioned sole. One size fits most adults (UK 3 to 11). Choose Hyper Turquoise or OG Neon.",
+    flavours: ["Hyper Turquoise", "OG Neon"],
+    flavourLabel: "Colours",
+    unitSize: "pair",
+    unitNoun: "pair",
+    accent: "#16A3A3",
+    accentSoft: "#DAF3F3",
+    badges: ["One size fits most"],
+    isBundle: false,
+    isNew: false,
+    bestFor: ["Lounging at home", "Working from home", "Gifting"],
+    keywords: ["sneaker slippers", "house slippers", "plush slippers"],
+    variants: [
+      { asin: "B0GSSL287J", label: "Hyper Turquoise", units: 1 },
+      { asin: "B0GSS5MXNG", label: "OG Neon", units: 1 },
     ],
   }),
 ];
@@ -598,6 +993,8 @@ export type Collection = {
   accent: string;
   image: string;
   amazonPage: "toothpaste" | "haircare" | "newArrivals" | "shopAll";
+  /** Short label for counts and filters, e.g. "Essentials". */
+  shortTitle?: string;
   filter: (p: Product) => boolean;
 };
 
@@ -633,6 +1030,22 @@ export const collections: Collection[] = [
     filter: (p) => p.category === "haircare",
   },
   {
+    slug: "essentials",
+    title: "Everyday Essentials",
+    shortTitle: "Essentials",
+    eyebrow: "Around the house",
+    headline: "The rest of the house, *bundled* too.",
+    description:
+      "Mucky Pup dog shampoo, XBC liquid talc and bamboo cotton buds, Medex breath spray, pregnancy tests, car sponges and CloudKicks slippers.",
+    seoTitle: "Everyday Essentials: Dog Shampoo, Liquid Talc & More",
+    seoDescription:
+      "PoundMart everyday essentials on Amazon: Mucky Pup flea repellent dog shampoo, XBC liquid talc and bamboo cotton buds, Medex breath spray and more.",
+    accent: "#2E9E6B",
+    image: "/products/B0GJQ4H9GM/g1.jpg",
+    amazonPage: "shopAll",
+    filter: (p) => p.category === "essentials",
+  },
+  {
     slug: "bundles",
     title: "Value Bundles",
     eyebrow: "The PoundMart way",
@@ -652,9 +1065,9 @@ export const collections: Collection[] = [
     title: "New Arrivals",
     eyebrow: "Just landed",
     headline: "Fresh *in* the bundle bin.",
-    description: "The newest PoundMart bundles, from the 12 pack Nice Smile box to rosemary shampoo and tropical haircare bars.",
+    description: "The newest PoundMart bundles, from the 12 pack Nice Smile box to tropical haircare bars, Mucky Pup dog shampoo and XBC liquid talc.",
     seoTitle: "New Arrivals: The Latest PoundMart Bundles",
-    seoDescription: "Discover the newest PoundMart bundles on Amazon: Nice Smile 12 pack, XHC rosemary and mint shampoo, argan oil multi-packs and shampoo bars.",
+    seoDescription: "Discover the newest PoundMart bundles on Amazon: Nice Smile 12 pack, XHC shampoo bars and argan oil, Mucky Pup dog shampoo and XBC liquid talc.",
     accent: "#2FB59B",
     image: "/products/B0H9YX3DG3/g1.jpg",
     amazonPage: "newArrivals",

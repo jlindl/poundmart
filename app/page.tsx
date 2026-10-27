@@ -34,7 +34,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: `${site.name} | Great Value Toothpaste & Haircare Bundles` },
   description:
-    "Great value multi-packs of Nice Smile flavoured toothpaste and XHC haircare. Pay less per tube, bottle and bar. Dispatched by Amazon, with 30-day returns.",
+    "Great value multi-packs of Nice Smile flavoured toothpaste, XHC haircare and everyday essentials. Pay less per tube, bottle and bar. Dispatched by Amazon, with 30-day returns.",
   alternates: { canonical: "/" },
 };
 

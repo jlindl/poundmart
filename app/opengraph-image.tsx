@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { brandFacts, site } from "@/lib/site";
 
-export const alt = `${site.name}: ${site.tagline}. Nice Smile toothpaste and XHC haircare multi-packs, sold on Amazon.`;
+export const alt = `${site.name}: ${site.tagline}. Nice Smile toothpaste, XHC haircare and everyday essentials, sold on Amazon.`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -111,7 +111,7 @@ export default async function OpengraphImage() {
               <span>Bundles</span>
             </div>
             <div style={{ display: "flex", marginTop: 20, fontSize: 24, lineHeight: 1.35, color: "rgba(251,247,238,0.82)", maxWidth: 540 }}>
-              Nice Smile toothpaste and XHC haircare, bundled into great value multi-packs.
+              Nice Smile toothpaste, XHC haircare and everyday essentials, bundled into great value multi-packs.
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
