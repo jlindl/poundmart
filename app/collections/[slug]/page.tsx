@@ -77,8 +77,13 @@ function shopLink(c: Collection) {
   return "/shop#range";
 }
 
+/** Guides always shown first on a collection: the main buying guide for that category. */
+const PINNED_POSTS: Record<string, string> = { haircare: "best-shampoo-for-dry-hair" };
+
 function collectionPosts(category: string): Post[] {
-  const base = category === "latest" ? getAllPosts() : postsInCategory(category);
+  const all = category === "latest" ? getAllPosts() : postsInCategory(category);
+  const pinned = all.find((p) => p.slug === PINNED_POSTS[category]);
+  const base = pinned ? [pinned, ...all.filter((p) => p !== pinned)] : all;
   const picked = base.slice(0, 3);
   if (picked.length < 3) {
     for (const p of featuredPosts(8)) {
