@@ -264,6 +264,17 @@
       "slug": "wash-day-routine-for-afro-hair",
       "title": "A wash day routine for afro hair that works on a school night",
       "targetKeyword": "wash day routine for afro hair"
+    },
+    {
+      "date": "2026-10-30",
+      "type": "service",
+      "key": "service:value-bundles:students:worth-it",
+      "status": "generated",
+      "suggestedKeyword": "is buying toiletries in bulk worth it",
+      "angle": "worth-it",
+      "slug": "is-buying-toiletries-in-bulk-worth-it-for-students",
+      "title": "Is buying toiletries in bulk worth it for students?",
+      "targetKeyword": "is buying toiletries in bulk worth it"
     }
   ]
 }
