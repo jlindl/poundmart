@@ -275,6 +275,17 @@
       "slug": "is-buying-toiletries-in-bulk-worth-it-for-students",
       "title": "Is buying toiletries in bulk worth it for students?",
       "targetKeyword": "is buying toiletries in bulk worth it"
+    },
+    {
+      "date": "2026-10-31",
+      "type": "service",
+      "key": "service:toddler-teeth:parents:how-to",
+      "status": "generated",
+      "suggestedKeyword": "how to brush a toddler's teeth",
+      "angle": "how-to",
+      "slug": "how-to-brush-a-toddlers-teeth-without-a-nightly-battle",
+      "title": "How to brush a toddler's teeth without a nightly battle",
+      "targetKeyword": "how to brush a toddler's teeth"
     }
   ]
 }
