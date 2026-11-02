@@ -13,11 +13,11 @@ export const site = {
   name: "PoundMart",
   tagline: "Home of Great Value Bundles",
   description:
-    "Great value bundles of everyday essentials: flavoured Nice Smile toothpaste and XHC haircare multi-packs, sold on Amazon and dispatched by Amazon.",
+    "Great value bundles of everyday essentials: flavoured Nice Smile toothpaste, XHC haircare, Mucky Pup dog shampoo and more multi-packs, sold on Amazon and dispatched by Amazon.",
   url: siteUrl.replace(/\/$/, ""),
   locale: "en_GB",
   /** Date the prices, ratings and stock on this site were last checked against Amazon. */
-  catalogCheckedAt: "2026-09-24",
+  catalogCheckedAt: "2026-10-27",
   logo: "/brand/logo-square.png",
   ogImage: "/brand/family-bundle-poster.png",
 } as const;
@@ -100,7 +100,7 @@ export const brandFacts = {
   base: "UK-based",
   packing: "Packaged and quality-checked by PoundMart",
   authenticity: "Genuine branded products. No knockoffs, no grey-market stock.",
-  brands: ["Nice Smile", "XHC Xpert Haircare"],
+  brands: ["Nice Smile", "XHC Xpert Haircare", "XBC", "Mucky Pup", "Medex", "Clear & Simple", "CloudKicks"],
 } as const;
 
 export type NavItem = { label: string; href: string; description?: string };
@@ -109,6 +109,7 @@ export const mainNav: NavItem[] = [
   { label: "Shop", href: "/shop" },
   { label: "Toothpaste", href: "/collections/toothpaste" },
   { label: "Haircare", href: "/collections/haircare" },
+  { label: "Essentials", href: "/collections/essentials" },
   { label: "Bundles", href: "/collections/bundles" },
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
@@ -122,6 +123,7 @@ export const footerNav: { title: string; links: NavItem[] }[] = [
       { label: "Value bundles", href: "/collections/bundles" },
       { label: "Toothpaste", href: "/collections/toothpaste" },
       { label: "Haircare", href: "/collections/haircare" },
+      { label: "Everyday essentials", href: "/collections/essentials" },
       { label: "New arrivals", href: "/collections/new-arrivals" },
     ],
   },

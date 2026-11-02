@@ -18,12 +18,16 @@
       "label": "Haircare collection: No-rinse conditioners for curls, Moroccan argan oil shampoo and conditioner, rosemary and mint, and plastic-free 2-in-1 bars."
     },
     {
+      "path": "/collections/essentials",
+      "label": "Everyday Essentials collection: Mucky Pup dog shampoo, XBC liquid talc and bamboo cotton buds, Medex breath spray, pregnancy tests, car sponges and CloudKicks slippers."
+    },
+    {
       "path": "/collections/bundles",
       "label": "Value Bundles collection: Our multi-packs are where the value lives. Stock up once, pay less per item, and stop running out on a Tuesday night."
     },
     {
       "path": "/collections/new-arrivals",
-      "label": "New Arrivals collection: The newest PoundMart bundles, from the 12 pack Nice Smile box to rosemary shampoo and tropical haircare bars."
+      "label": "New Arrivals collection: The newest PoundMart bundles, from the 12 pack Nice Smile box to tropical haircare bars, Mucky Pup dog shampoo and XBC liquid talc."
     },
     {
       "path": "/shop/nice-smile-12-pack-toothpaste-bundle",
@@ -31,7 +35,7 @@
     },
     {
       "path": "/shop/nice-smile-6-pack-toothpaste-bundle",
-      "label": "Product page: Nice Smile 6 Pack Toothpaste Bundle. Six 60g tubes of flavoured fluoride toothpaste. Choose the All Flavours pack (Watermelon, Grape, Peach, Berry, Gummy and Candy) or the Berry, Gummy and Candy pack."
+      "label": "Product page: Nice Smile 6 Pack Toothpaste Bundle. Six 60g tubes, two each of Watermelon Fresh, Feelin' Grape and Peachy Clean. Whitening fluoride toothpaste for kids and adults, vegan, cruelty-free and enamel-safe."
     },
     {
       "path": "/shop/nice-smile-3-pack-berry-gummy-candy",
@@ -54,8 +58,20 @@
       "label": "Product page: Nice Smile Feelin' Grape Toothpaste. Grape flavoured whitening toothpaste with fluoride in a 60g tube. Gentle, enamel-safe, vegan and cruelty-free."
     },
     {
-      "path": "/shop/nice-smile-candy-clean-toothpaste",
-      "label": "Product page: Nice Smile Candy Clean Toothpaste. Cotton candy flavoured whitening toothpaste with fluoride in a 60g tube. Gentle, enamel-safe, vegan and cruelty-free."
+      "path": "/shop/nice-smile-peachy-clean-toothpaste",
+      "label": "Product page: Nice Smile Peachy Clean Toothpaste. Peach flavoured whitening toothpaste with fluoride in a 60g tube. Gentle, enamel-safe, vegan and cruelty-free, for kids and adults."
+    },
+    {
+      "path": "/shop/nice-smile-2-pack-grape-peach",
+      "label": "Product page: Nice Smile 2 Pack: Feelin' Grape & Peachy Clean. Two 60g tubes of flavoured whitening fluoride toothpaste, one Feelin' Grape and one Peachy Clean. Vegan, cruelty-free and enamel-safe, for kids and adults."
+    },
+    {
+      "path": "/shop/nice-smile-2-pack-watermelon-peach",
+      "label": "Product page: Nice Smile 2 Pack: Watermelon Fresh & Peachy Clean. Two 60g tubes of flavoured whitening fluoride toothpaste, one Watermelon Fresh and one Peachy Clean. Vegan, cruelty-free and enamel-safe, for kids and adults."
+    },
+    {
+      "path": "/shop/nice-smile-3-pack-single-flavour",
+      "label": "Product page: Nice Smile Single Flavour 3 Pack. Three 60g tubes of one Nice Smile flavour: Yummy Gummy, Peachy Clean or Feelin' Grape. Whitening fluoride toothpaste, vegan, cruelty-free and enamel-safe."
     },
     {
       "path": "/shop/xhc-no-rinse-conditioner-3-pack",
@@ -79,11 +95,11 @@
     },
     {
       "path": "/shop/xhc-argan-oil-shampoo-twin-pack",
-      "label": "Product page: XHC Argan Oil Shampoo Twin Pack. Nourishing and moisturising Moroccan argan oil shampoo in 300ml bottles. Vegan friendly and paraben-free. Available as a twin pack or a 6 bottle stock-up."
+      "label": "Product page: XHC Argan Oil Shampoo Twin Pack. Nourishing and moisturising Moroccan argan oil shampoo in 300ml bottles. Vegan friendly and paraben-free. Available as a twin pack or a single bottle."
     },
     {
       "path": "/shop/xhc-argan-oil-conditioner-twin-pack",
-      "label": "Product page: XHC Argan Oil Conditioner Twin Pack. Two 300ml Moroccan argan oil conditioners for soft, smooth hair. Vegan friendly and paraben-free."
+      "label": "Product page: XHC Argan Oil Conditioner Twin Pack. Moroccan argan oil conditioner in 300ml tubes for soft, smooth hair. Vegan friendly and paraben-free. Available as a twin pack or a single tube."
     },
     {
       "path": "/shop/xhc-argan-oil-conditioner-3-pack",
@@ -96,6 +112,50 @@
     {
       "path": "/shop/xhc-shampoo-conditioner-bars",
       "label": "Product page: XHC 2-in-1 Shampoo & Conditioner Bars. Solid 2-in-1 shampoo and conditioner bars in Coconut, Banana and Papaya. Plastic-free, vegan friendly and travel-friendly. Choose a 3 pack or a 6 pack."
+    },
+    {
+      "path": "/shop/xhc-2-in-1-shampoo-bar",
+      "label": "Product page: XHC 2-in-1 Shampoo & Conditioner Bar. A single 60g solid shampoo and conditioner bar, 97% plant based and suitable for vegans, with cocoa and shea butter. Choose Banana, Coconut or Papaya."
+    },
+    {
+      "path": "/shop/xhc-silver-shampoo-3-pack",
+      "label": "Product page: XHC Shimmer of Silver Purple Shampoo 3 Pack. Three 400ml bottles of XHC Shimmer of Silver purple shampoo, made to lighten blonde, grey and white hair. For women and men, for daily use."
+    },
+    {
+      "path": "/shop/xhc-caffeine-shampoo-3-pack",
+      "label": "Product page: XHC Plant Essence Caffeine Shampoo 3 Pack. Three 300ml bottles of XHC Plant Essence caffeine shampoo, infused with caffeine and zinc to help boost hair and scalp health. For men and women, fine or dry hair, and menopausal hair."
+    },
+    {
+      "path": "/shop/xhc-caffeine-conditioner-3-pack",
+      "label": "Product page: XHC Plant Essence Caffeine Conditioner 3 Pack. Three 200ml tubes of XHC Plant Essence caffeine conditioner, infused with caffeine and zinc to help boost hair and scalp health. For men and women, fine or dry hair, and menopausal hair."
+    },
+    {
+      "path": "/shop/mucky-pup-flea-repellent-dog-shampoo",
+      "label": "Product page: Mucky Pup Flea Repellent Dog Shampoo. Flea repellent dog shampoo made with the insect repellent IR3535. Lifts mud and dirt, helps reduce tangles and leaves a shiny coat. A grooming shampoo, not a flea treatment. Choose a 3 pack or a 6 pack."
+    },
+    {
+      "path": "/shop/xbc-liquid-talc",
+      "label": "Product page: XBC Liquid Talc Bundle. Talc free liquid talc in 200ml flip cap tubes. Goes on like a lotion and dries to a soft, powdery finish, helping keep skin soft and prevent chafing. Made with cornstarch, for the whole family. Choose 5 or 12 tubes."
+    },
+    {
+      "path": "/shop/xbc-bamboo-cotton-buds-3-pack",
+      "label": "Product page: XBC Bamboo Cotton Buds 3 Pack. Three tubs of 300 bamboo cotton buds, 900 in total. Biodegradable bamboo stems with 100% cotton tips, for beauty, personal care and household jobs."
+    },
+    {
+      "path": "/shop/medex-minty-fresh-breath-spray",
+      "label": "Product page: Medex Minty Fresh Breath Spray. A compact, sugar free mint breath spray that gives a quick burst of freshness at work, after meals or on the go."
+    },
+    {
+      "path": "/shop/clear-and-simple-pregnancy-tests-3-pack",
+      "label": "Product page: Clear & Simple Pregnancy Test Sticks 3 Pack. Three boxes of two Clear & Simple pregnancy test sticks, six tests in total. Urine test sticks with 20 mIU/mL hCG sensitivity and results in 5 minutes, each in a sealed pouch."
+    },
+    {
+      "path": "/shop/jumbo-car-wash-sponges-6-pack",
+      "label": "Product page: Jumbo Car Wash Sponges 6 Pack. Six large, thick foam car wash sponges with an easy grip shape. Soft on paintwork, glass and wheels, and handy around the house and garage too."
+    },
+    {
+      "path": "/shop/cloudkicks-air-110-sneaker-slippers",
+      "label": "Product page: CloudKicks Air 110 Sneaker Slippers. Oversized plush house slippers with a sneaker-inspired look and a chunky cushioned sole. One size fits most adults (UK 3 to 11). Choose Hyper Turquoise or OG Neon."
     },
     {
       "path": "/about",

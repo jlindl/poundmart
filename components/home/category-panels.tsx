@@ -20,22 +20,24 @@ type Panel = {
 type Props = {
   toothpaste: Panel;
   haircare: Panel;
+  essentials: Panel;
   bundles: Panel;
   fresh: Panel;
 };
 
 /** Big lifestyle panels per category that widen on hover, plus two smaller collection tiles. */
-export function CategoryPanels({ toothpaste, haircare, bundles, fresh }: Props) {
+export function CategoryPanels({ toothpaste, haircare, essentials, bundles, fresh }: Props) {
   return (
     <section className="relative bg-cream py-24 md:py-32 lg:py-40">
       <div className="container-x">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             eyebrow="Shop by category"
-            title="Two brands. *One* happy bathroom."
+            title="Every shelf. *One* happy home."
             intro={
               <p className="text-ink-soft">
-                Nice Smile makes brushing the best bit of the day. XHC Xpert Haircare sorts wash day. We bundle both for less.
+                Nice Smile makes brushing the best bit of the day. XHC Xpert Haircare sorts wash day. Mucky Pup, XBC and friends cover the rest of the
+                house. We bundle the lot for less.
               </p>
             }
           />
@@ -70,10 +72,14 @@ export function CategoryPanels({ toothpaste, haircare, bundles, fresh }: Props) 
               countLabel={`${haircare.flavours?.length ?? 0} scents`}
               objectPosition="35% 40%"
             />
+
           </div>
         </Reveal>
 
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <Reveal delay={0.02} className="sm:col-span-2 lg:col-span-1">
+            <SmallTile panel={essentials} tone="leaf" packshot="/products/B0GJQ4H9GM/g1.jpg" label="Around the house" />
+          </Reveal>
           <Reveal delay={0.05}>
             <SmallTile panel={bundles} tone="sun" packshot="/products/B0H9YX3DG3/g1.jpg" label="Stock up and save" />
           </Reveal>
@@ -171,13 +177,13 @@ function BigPanel({
   );
 }
 
-function SmallTile({ panel, tone, packshot, label }: { panel: Panel; tone: "sun" | "mint"; packshot: string; label: string }) {
+function SmallTile({ panel, tone, packshot, label }: { panel: Panel; tone: "sun" | "mint" | "leaf"; packshot: string; label: string }) {
   return (
     <Link
       href={`/collections/${panel.slug}`}
       className={cn(
         "group relative flex min-h-[220px] cursor-pointer items-center gap-4 overflow-hidden rounded-5xl p-6 transition-[translate,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:shadow-lift sm:p-8",
-        tone === "sun" ? "bg-sun text-ink-deep" : "bg-[#DDF5EF] text-ink-deep",
+        tone === "sun" ? "bg-sun text-ink-deep" : tone === "leaf" ? "bg-[#E4F1D9] text-ink-deep" : "bg-[#DDF5EF] text-ink-deep",
       )}
     >
       <div className="relative z-10 flex flex-1 flex-col gap-2">

@@ -35,8 +35,8 @@ Every Amazon link also fires an `amazon_click` event (to `dataLayer`, `gtag` and
 |---|---|
 | `lib/site.ts` | Site config, Amazon store URLs, tracking, nav, and **verified brand facts** (the only claims copy may make). |
 | `lib/attribution.ts` | Amazon Attribution tag for every Amazon link (store pages and ASINs). |
-| `lib/products.ts` | The curated catalogue: 18 products grouped from 26 Amazon listings, with variants, value maths and styling. |
-| `data/amazon-catalog.json` | Snapshot of the live listings (prices, ratings, bullets, images) taken 24 September 2026. |
+| `lib/products.ts` | The curated catalogue: 32 products grouped from 48 Amazon listings (toothpaste, haircare and everyday essentials), with variants, value maths and styling. |
+| `data/amazon-catalog.json` | Snapshot of the live listings (prices, ratings, bullets, images), last refreshed 27 October 2026. Delisted ASINs stay in the file, marked `delisted`, because older pages and posts still use their photos. |
 | `public/products/<ASIN>/` | Product gallery (`g1…`) and A+ (`a1…`) images from the listings. |
 | `public/brand/` | Logo (dark + white), cart mark, brand film + captions, family poster. |
 | `content/blog/*.mdx` | Blog posts. Format, components and rules: [`content/README.md`](content/README.md). |

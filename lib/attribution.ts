@@ -8,6 +8,10 @@
  * Each value is the query string of that ad group's tag. amazon.store() and amazon.product() in
  * lib/site.ts append it to the matching Amazon URL. Only use a tag on the URL it was created for.
  *
+ * Retired 27 Oct 2026, because Amazon delisted the ASIN: "PM - NS 6 Pack" (B0G318R9JG), "PM - NS 6 Pack Sweet
+ * Six" (B0GTWGV3Q5), "PM - NS Candy Clean" (B0FPDJXQRG), "PM - NS Candy Clean 4 Pack" (B0H34TJ7QT) and
+ * "PM - XHC Argan Shampoo 6 Pack" (B0H34SJXPD).
+ *
  * Linking a new product or store page? Create an ad group for its URL in Amazon Attribution (same
  * campaign, publisher and channel), then add its tag here. Until then the link falls back to
  * NEXT_PUBLIC_AMAZON_ATTRIBUTION if that is set, or goes untagged.
@@ -35,14 +39,6 @@ export const productAttribution: Record<string, string> = {
   B0FLFZ2Z6C: "maas=maas_adg_EE642A01EFA254120AF6E57C8EFC3A53_afap_abs&ref_=aa_maas&tag=maas",
   // PM - NS 3 Pack Watermelon Grape Peach
   B0FLWZ7D6T: "maas=maas_adg_4326EB45699DC30E008D9322F0D6246A_afap_abs&ref_=aa_maas&tag=maas",
-  // PM - NS 6 Pack
-  B0G318R9JG: "maas=maas_adg_167D5E9CE8D9388160C794B6B1CADDC7_afap_abs&ref_=aa_maas&tag=maas",
-  // PM - NS 6 Pack Sweet Six
-  B0GTWGV3Q5: "maas=maas_adg_9BF516D6A40DF4592CA08E7ECD4A202B_afap_abs&ref_=aa_maas&tag=maas",
-  // PM - NS Candy Clean
-  B0FPDJXQRG: "maas=maas_adg_A8D3EEAB4EDA9DA08D30E6FE253416E6_afap_abs&ref_=aa_maas&tag=maas",
-  // PM - NS Candy Clean 4 Pack
-  B0H34TJ7QT: "maas=maas_adg_C779C2D55E98A0F771F075F7D507EFCB_afap_abs&ref_=aa_maas&tag=maas",
   // PM - NS Feelin Grape
   B0FNYH9TFC: "maas=maas_adg_7E77E5EF6D6E91DCB4959ADDF53DC56B_afap_abs&ref_=aa_maas&tag=maas",
   // PM - NS Feelin Grape 2 Pack
@@ -65,8 +61,6 @@ export const productAttribution: Record<string, string> = {
   B0GBMH1N54: "maas=maas_adg_3DC7F9F6DB3BCAF17A625489113F0A59_afap_abs&ref_=aa_maas&tag=maas",
   // PM - XHC Argan Shampoo 3 Pack
   B0GNS29WY9: "maas=maas_adg_F5DFDAF4AB38D7FD50C324E89D94E869_afap_abs&ref_=aa_maas&tag=maas",
-  // PM - XHC Argan Shampoo 6 Pack
-  B0H34SJXPD: "maas=maas_adg_E9185CFA7289794533F12475F77F1092_afap_abs&ref_=aa_maas&tag=maas",
   // PM - XHC Argan Shampoo Twin
   B0GG7J6QCM: "maas=maas_adg_76959591BE21751FDD0BC8E885DC38C6_afap_abs&ref_=aa_maas&tag=maas",
   // PM - XHC No Rinse 3 Pack

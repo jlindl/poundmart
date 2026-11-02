@@ -28,7 +28,7 @@ import { formatDate, formatPrice } from "@/lib/utils";
 
 const title = "About Us: Genuine Brands, Great Value Bundles";
 const description =
-  "UK-based PoundMart bundles genuine Nice Smile toothpaste and XHC haircare into great value multi-packs. Packed and checked by us, dispatched by Amazon.";
+  "UK-based PoundMart bundles genuine Nice Smile toothpaste, XHC haircare and everyday essentials into great value multi-packs. Packed and checked by us, dispatched by Amazon.";
 
 export const metadata: Metadata = {
   title,
@@ -506,8 +506,8 @@ export default function AboutPage() {
         <div className="container-x">
           <SectionHeading
             eyebrow="The brands we bundle"
-            title="Two brands. *Plenty* of personality."
-            intro="We keep the line-up tight and the quality high: brands we're proud to put in a PoundMart box."
+            title="Our core brands. *Plenty* of personality."
+            intro="Nice Smile and XHC are where it started. Today Mucky Pup, XBC, Medex and more sit alongside them, all brands we're proud to put in a PoundMart box."
           />
           <div className="mt-16 lg:mt-24">
             <BrandPanels />

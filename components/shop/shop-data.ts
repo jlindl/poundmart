@@ -7,6 +7,8 @@
 import {
   averageRating,
   bestUnitPrice,
+  brandNames,
+  categoryInfo,
   fromPrice,
   getCollection,
   isInStock,
@@ -124,7 +126,7 @@ export function niceSmileValueRows() {
 
 /** Short display name without the brand, e.g. "12 Pack Toothpaste Bundle". */
 export function shortName(p: Product) {
-  return p.name.replace(/^Nice Smile\s+/, "").replace(/^XHC\s+/, "");
+  return p.name.startsWith(`${p.brand} `) ? p.name.slice(p.brand.length + 1) : p.name;
 }
 
 /* ---------- Flavour colours ---------- */
@@ -144,6 +146,15 @@ const FLAVOUR_COLOURS: Record<string, string> = {
   Coconut: "#5BB8D6",
   Banana: "#F2C94C",
   Papaya: "#FF8A3D",
+  Caffeine: "#1E9E7E",
+  Zinc: "#6B8FA3",
+  "Vitamin C": "#F2A93B",
+  Blonde: "#E8C66A",
+  Grey: "#9AA3AD",
+  White: "#D9DEE3",
+  Mint: "#2FB59B",
+  "Hyper Turquoise": "#1FB5A8",
+  "OG Neon": "#B9D531",
 };
 
 export function flavourColour(name: string) {
@@ -186,7 +197,7 @@ export function itemListJsonLd(list: Product[], name: string) {
 }
 
 export function brandName(p: Product) {
-  return p.brand === "XHC" ? "XHC Xpert Haircare" : "Nice Smile";
+  return brandNames[p.brand];
 }
 
 /**
@@ -230,7 +241,7 @@ export function productJsonLd(p: Product) {
     sku: p.primary.asin,
     ...(primaryGtin ? { gtin: primaryGtin } : {}),
     brand: { "@type": "Brand", name: brandName(p) },
-    category: p.category === "toothpaste" ? "Toothpaste" : "Haircare",
+    category: categoryInfo[p.category].label,
     keywords: p.keywords.join(", "),
     ...(offers.length ? { offers: offers.length === 1 ? offers[0] : offers } : {}),
   };
@@ -259,7 +270,7 @@ export type CollectionArt = {
   gridTitle: string;
   gridIntro: string;
   /** Blog category to pull guides from; "latest" means newest posts overall. */
-  blogCategory: "oral-care" | "haircare" | "smart-saving" | "latest";
+  blogCategory: "oral-care" | "haircare" | "smart-saving" | "family-home" | "latest";
   blogTitle: string;
   ctaTitle: string;
   ctaBody: string;
@@ -331,6 +342,32 @@ export const collectionArt: Record<string, CollectionArt> = {
       height: 1000,
       position: "30% 40%",
     },
+  },
+  essentials: {
+    soft: "#DFF3E9",
+    ticker: ["Mucky Pup dog shampoo", "XBC Liquid Talc", "Bamboo cotton buds", "Medex breath spray", "Clear & Simple tests", "CloudKicks slippers"],
+    stickers: ["Flea repellent dog shampoo", "Talc free liquid talc", "Plastic-free bud stems"],
+    hero: img("/products/B0GJQ4H9GM/g1.jpg", "Three bottles of Mucky Pup flea repellent dog shampoo", 947, 1000),
+    supporting: [
+      img("/products/B0GJQ4H9GM/g6.jpg", "Bath time sorted: a dog being washed with Mucky Pup flea repellent shampoo", 1000, 1000, false),
+      img("/products/B0GL9KRBLS/g4.jpg", "XBC Liquid Talc going on as a liquid and drying to a silky powder", 1000, 1000, false),
+      img("/products/B0GL9H92HP/g4.jpg", "A woman using an XBC bamboo cotton bud at the bathroom mirror", 1000, 1000, false),
+    ],
+    gridEyebrow: "Around the house",
+    gridTitle: "Everything *else*, bundled.",
+    gridIntro: "Dog shampoo for muddy walks, liquid talc for the changing bag, cotton buds, breath spray and more, all sold by PoundMart on Amazon.",
+    blogCategory: "family-home",
+    blogTitle: "Guides for a *busy* home.",
+    ctaTitle: "Stock the cupboard *once*.",
+    ctaBody: "Every PoundMart essential is sold by PoundMart and dispatched by Amazon, with 30-day returns through Amazon.",
+    mosaic: [
+      { src: "/products/B0GJQ4H9GM/g7.jpg", alt: "Mucky Pup flea repellent shampoo for every dog in the house" },
+      { src: "/products/B0GL9KRBLS/g3.jpg", alt: "XBC Liquid Talc: talc free and cornstarch based" },
+      { src: "/products/B0GL9H92HP/g3.jpg", alt: "A tub of XBC bamboo cotton buds beside bamboo leaves" },
+      { src: "/products/B0GSSL287J/g6.jpg", alt: "A pair of CloudKicks Air 110 sneaker slippers" },
+    ],
+    moodTitle: "The little things, *sorted*.",
+    moodBody: "The bits every house runs out of, from muddy-dog shampoo to talc for the changing bag, bundled so you're not caught short.",
   },
   bundles: {
     soft: "#FFF3B8",
@@ -435,12 +472,14 @@ export function savingsRows(): SavingsRow[] {
     rows.push(make("Nice Smile toothpaste", "tube", singles[0].p, singles[0].v, "Single tube", bundles[0].p, bundles[0].v, bundles[0].v.label));
   }
 
-  // 2. Same flavour, bigger pack (Candy Clean single vs pack of 4)
-  const candy = find("nice-smile-candy-clean-toothpaste");
-  if (candy && candy.variants.length > 1) {
-    const s = candy.variants.find((v) => v.units === 1);
-    const b = [...candy.variants].sort((a, z) => z.units - a.units)[0];
-    if (buyable(s) && buyable(b) && b.units > 1) rows.push(make("Candy Clean, same flavour", "tube", candy, s, "Single tube", candy, b, b.label));
+  // 2. Same product, bigger pack: the smallest vs the biggest in-stock option of a multi-size listing
+  for (const [slug, title] of [
+    ["xbc-liquid-talc", "XBC Liquid Talc"],
+    ["mucky-pup-flea-repellent-dog-shampoo", "Mucky Pup dog shampoo"],
+  ] as const) {
+    const p = find(slug);
+    const opts = p ? [...p.variants].filter(buyable).sort((a, z) => a.units - z.units) : [];
+    if (p && opts.length > 1) rows.push(make(title, p.unitNoun, p, opts[0], opts[0].label, p, opts[opts.length - 1], opts[opts.length - 1].label));
   }
 
   // 3. XHC No Rinse single vs 3 pack

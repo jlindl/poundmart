@@ -117,7 +117,7 @@
       "category": "Oral Care",
       "products": [
         "nice-smile-watermelon-fresh-toothpaste",
-        "nice-smile-candy-clean-toothpaste"
+        "nice-smile-peachy-clean-toothpaste"
       ],
       "summary": "Nice Smile is listed as a whitening toothpaste with fluoride for kids and adults. Whitening toothpaste removes surface stains; it does not change natural tooth colour.",
       "relatedPaths": [
@@ -738,6 +738,35 @@
         "mistakes": "hair washing mistakes",
         "guide": "how much shampoo should you use"
       }
+    },
+    {
+      "id": "caffeine-shampoo",
+      "name": "Caffeine shampoo",
+      "term": "caffeine shampoo",
+      "keyword": "caffeine shampoo",
+      "category": "Haircare",
+      "products": [
+        "xhc-caffeine-shampoo-3-pack",
+        "xhc-caffeine-conditioner-3-pack"
+      ],
+      "summary": "PoundMart sells XHC Plant Essence Caffeine Shampoo as a 3 pack of 300ml bottles and the matching Caffeine Conditioner as a 3 pack of 200ml tubes. Both are infused with caffeine and zinc, with vitamin C, and the listings describe them as helping boost hair and scalp health, for men and women, fine or dry hair and menopausal hair.",
+      "relatedPaths": [
+        "/collections/haircare",
+        "/shop/xhc-caffeine-shampoo-3-pack",
+        "/shop/xhc-caffeine-conditioner-3-pack"
+      ],
+      "angles": [
+        "guide",
+        "benefits",
+        "how-to",
+        "worth-it"
+      ],
+      "keywords": {
+        "guide": "caffeine shampoo",
+        "benefits": "caffeine shampoo benefits",
+        "how-to": "how to use caffeine shampoo",
+        "worth-it": "does caffeine shampoo work"
+      }
     }
   ],
   "audiences": [
@@ -938,6 +967,10 @@
     "whitening-toothpaste:curly-hair",
     "whitening-toothpaste:parents",
     "whitening-toothpaste:students",
-    "whitening-toothpaste:travellers"
+    "whitening-toothpaste:travellers",
+    "caffeine-shampoo:parents",
+    "caffeine-shampoo:curly-hair",
+    "caffeine-shampoo:students",
+    "caffeine-shampoo:travellers"
   ]
 }

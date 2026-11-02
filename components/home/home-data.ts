@@ -19,6 +19,7 @@ import {
   type Variant,
 } from "@/lib/products";
 import { formatDate, formatPrice } from "@/lib/utils";
+import { listJoin } from "@/components/shop/shop-data";
 import type { BundleMathsData, FaqItem, FlavourOption, HeroData, TickerItem } from "./types";
 
 export const priceNote = `Prices checked ${formatDate(site.catalogCheckedAt)}; Amazon shows the live price.`;
@@ -109,11 +110,11 @@ export function heroData(): HeroData {
 const BUNDLE_STEPS = [
   { asin: "B0FNYGR43T", id: "single", label: "1 tube", title: "The single", note: "Watermelon Fresh, one 60g tube" },
   { asin: "B0FLWZ7D6T", id: "three", label: "3 pack", title: "The fruity trio", note: "Watermelon, Grape and Peach" },
-  { asin: "B0GTWGV3Q5", id: "six", label: "6 pack", title: "The sweet six", note: "Berry, Gummy and Candy, two of each" },
+  { asin: "B0GTW7L1FM", id: "six", label: "6 pack", title: "The fruity six", note: "Watermelon, Grape and Peach, two of each" },
   { asin: "B0HBXLVW4S", id: "twelve", label: "12 pack", title: "The big box", note: "Four each of Watermelon, Grape and Peach" },
 ] as const;
 
-const STEP_TINTS = ["#FFE3E6", "#FFEBDC", "#E1E9FC", "#FFF3B8"];
+const STEP_TINTS = ["#FFE3E6", "#FFEBDC", "#EFE3FA", "#FFF3B8"];
 
 export function bundleMathsData(): BundleMathsData {
   const rows = BUNDLE_STEPS.map((s) => ({ ...s, ...variantByAsin(s.asin) })).filter((r) => r.variant.inStock && r.variant.price !== null);
@@ -186,13 +187,12 @@ const FLAVOUR_PICKS: {
     id: "peach",
     name: "Peachy Clean",
     pun: "Peach, please.",
-    slug: "nice-smile-3-pack-watermelon-grape-peach",
+    slug: "nice-smile-peachy-clean-toothpaste",
     panel: "/products/B0FLWZ7D6T/g5.jpg",
     panelAlt: "Nice Smile Peachy Clean toothpaste with fresh peaches and the line Peach please",
-    pack: "/products/B0FLWZ7D6T/g1.jpg",
-    packWide: true,
-    packLabel: "In the fruity 3 pack",
-    description: "Soft, sunny peach flavour. Find it in our fruity 3 pack alongside Watermelon Fresh and Feelin' Grape.",
+    pack: "/products/B0FNY3JP8L/g1.jpg",
+    packLabel: "Single 60g tube",
+    description: "Soft, sunny peach flavour. Grab a single tube, or find it in the fruity 3, 6 and 12 packs alongside Watermelon Fresh and Feelin' Grape.",
   },
   {
     id: "berry",
@@ -221,12 +221,13 @@ const FLAVOUR_PICKS: {
     id: "candy",
     name: "Candy Clean",
     pun: "Hello, sweet tooth.",
-    slug: "nice-smile-candy-clean-toothpaste",
+    slug: "nice-smile-3-pack-berry-gummy-candy",
     panel: "/products/B0FPDJXQRG/g2.jpg",
     panelAlt: "Nice Smile Candy Clean toothpaste with pink cotton candy and the line Hello sweet tooth",
-    pack: "/products/B0FPDJXQRG/g1.jpg",
-    packLabel: "Single 60g tube",
-    description: "Cotton candy sweetness in a gentle whitening fluoride toothpaste. Bedtime brushing, sorted.",
+    pack: "/products/B0FLFZ2Z6C/g1.jpg",
+    packWide: true,
+    packLabel: "In the sweet-tooth 3 pack",
+    description: "Cotton candy sweetness in a gentle whitening fluoride toothpaste. Find it in our most reviewed bundle, next to Berry Burst and Yummy Gummy.",
   },
 ];
 
@@ -272,12 +273,14 @@ export function flavourOptions(): FlavourOption[] {
 export function categoryData() {
   const toothpaste = collections.find((c) => c.slug === "toothpaste")!;
   const haircare = collections.find((c) => c.slug === "haircare")!;
+  const essentials = collections.find((c) => c.slug === "essentials")!;
   const bundles = collections.find((c) => c.slug === "bundles")!;
   const fresh = collections.find((c) => c.slug === "new-arrivals")!;
   const count = (slug: string) => productsIn(collections.find((c) => c.slug === slug)!).filter(isInStock).length;
   return {
     toothpaste: { ...pick(toothpaste), count: count("toothpaste"), flavours: toothpasteFlavours },
     haircare: { ...pick(haircare), count: count("haircare"), flavours: haircareScents },
+    essentials: { ...pick(essentials), count: count("essentials") },
     bundles: { ...pick(bundles), count: count("bundles") },
     fresh: { ...pick(fresh), count: count("new-arrivals") },
   };
@@ -370,7 +373,7 @@ export function homeFaqs(): FaqItem[] {
     },
     {
       q: "Are your products genuine?",
-      a: `Yes. We only sell genuine branded products from ${brandFacts.brands.join(" and ")}. No knockoffs, no grey-market stock.`,
+      a: `Yes. We only sell genuine branded products, from ${listJoin([...brandFacts.brands])}. No knockoffs, no grey-market stock.`,
     },
     {
       q: "Is Nice Smile toothpaste vegan and cruelty-free?",

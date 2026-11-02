@@ -15,6 +15,12 @@ const nextConfig = (phase: string): NextConfig => {
       qualities: [60, 75, 90],
       remotePatterns: [{ protocol: "https", hostname: "m.media-amazon.com", pathname: "/images/**" }],
     },
+    async redirects() {
+      return [
+        // Candy Clean single and 4 pack were delisted on Amazon (Oct 2026); the 3 pack still has Candy Clean in it.
+        { source: "/shop/nice-smile-candy-clean-toothpaste", destination: "/shop/nice-smile-3-pack-berry-gummy-candy", permanent: true },
+      ];
+    },
     async headers() {
       return [
         {

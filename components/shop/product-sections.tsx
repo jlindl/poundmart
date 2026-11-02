@@ -29,7 +29,7 @@ import { HorizontalScroller } from "@/components/shop/horizontal-scroller";
 import { ClipReveal, ScrollScale } from "@/components/shop/scroll-fx";
 import type { Media, StoryRow } from "@/components/shop/product-media";
 import { productFeatures } from "@/components/shop/shop-data";
-import { pricePerUnit, type Product } from "@/lib/products";
+import { categoryInfo, pricePerUnit, type Product } from "@/lib/products";
 import { amazon } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -58,7 +58,7 @@ function iconFor(text: string): LucideIcon {
 export function ProductFeatures({ product, image }: { product: Product; image?: Media }) {
   const feats = productFeatures(product);
   if (feats.length === 0) return null;
-  const title = product.category === "toothpaste" ? "Small tube, *big* personality." : "Good hair days, *on repeat*.";
+  const title = categoryInfo[product.category].featuresTitle;
   return (
     <section className="overflow-x-clip bg-paper py-24 lg:py-36">
       <div className="container-x">
@@ -116,14 +116,14 @@ export function ProductFeatures({ product, image }: { product: Product; image?: 
 
 export function ProductStory({ product, rows }: { product: Product; rows: StoryRow[] }) {
   if (rows.length === 0) return null;
-  const title = product.category === "toothpaste" ? "The *story* behind the tube." : "The *good stuff*, explained.";
+  const title = categoryInfo[product.category].storyTitle;
   return (
     <section className="overflow-hidden bg-cream py-24 lg:py-36">
       <div className="container-x">
         <SectionHeading
           eyebrow="The details"
           title={title}
-          intro={`In ${product.brand === "XHC" ? "XHC's" : "Nice Smile's"} own words, from the Amazon listing.`}
+          intro={`In ${product.brand}'s own words, from the Amazon listing.`}
         />
         <div className="mt-16 flex flex-col gap-20 lg:mt-24 lg:gap-32">
           {rows.map((r, i) => {
@@ -244,7 +244,7 @@ export function ProductBestFor({ product }: { product: Product }) {
             </span>
           </Reveal>
           <SplitHeading
-            text={product.category === "toothpaste" ? "Made for *real* routines." : "Made for *your* wash day."}
+            text={categoryInfo[product.category].bestForTitle}
             className="type-display mt-5 text-[clamp(2.6rem,5.6vw,4.9rem)] text-ink-deep"
             accentClassName="text-ink-soft"
           />
@@ -278,7 +278,7 @@ export function VariantCompare({ product, checkedNote }: { product: Product; che
         <SectionHeading
           eyebrow="Compare options"
           title="Pick your *pack*."
-          intro={`Every ${product.brand === "XHC" ? "XHC" : "Nice Smile"} option for this product on Amazon, side by side, so you can see what each ${product.unitNoun} really costs.`}
+          intro={`Every ${product.brand} option for this product on Amazon, side by side, so you can see what each ${product.unitNoun} really costs.`}
         />
         <RevealGroup className={cn("mt-12 grid gap-5 md:grid-cols-2", product.variants.length > 2 && "lg:grid-cols-3")} stagger={0.1}>
           {product.variants.map((v) => {
