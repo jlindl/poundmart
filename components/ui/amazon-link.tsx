@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { ArrowUpRight, ShoppingBag } from "lucide-react";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { buttonClasses, type ButtonSize, type ButtonVariant } from "@/components/ui/button";
@@ -13,8 +14,14 @@ declare global {
   }
 }
 
-/** Fires an "amazon_click" event to whichever analytics are installed (GA4/GTM/Plausible). */
+/** Fires an "amazon_click" event to whichever analytics are installed (Vercel/GA4/GTM/Plausible). */
 export function trackAmazonClick(detail: { placement: string; asin?: string; href: string }) {
+  const { placement, asin } = detail;
+  try {
+    track("amazon_click", { placement, asin: asin ?? null, page: window.location.pathname });
+  } catch {
+    /* Vercel Analytics must never block the click or the GA4 calls */
+  }
   try {
     window.dataLayer?.push({ event: "amazon_click", ...detail });
     window.gtag?.("event", "amazon_click", detail);
