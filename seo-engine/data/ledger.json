@@ -297,6 +297,17 @@
       "slug": "what-does-conditioner-actually-do-for-curly-hair",
       "title": "What does conditioner actually do for curly hair?",
       "targetKeyword": "what does conditioner actually do"
+    },
+    {
+      "date": "2026-11-06",
+      "type": "service",
+      "key": "service:caffeine-shampoo:budget:benefits",
+      "status": "generated",
+      "suggestedKeyword": "caffeine shampoo benefits",
+      "angle": "benefits",
+      "slug": "caffeine-shampoo-benefits-explained-for-budget-shoppers",
+      "title": "Caffeine shampoo benefits explained for budget shoppers",
+      "targetKeyword": "caffeine shampoo benefits"
     }
   ]
 }
