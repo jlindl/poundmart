@@ -57,8 +57,8 @@ export function SignupForm({
           <Check className="size-4" aria-hidden />
         </span>
         <p className="leading-relaxed">
-          <strong className="font-semibold">You&apos;re in.</strong> The next Bundle Drop lands in your inbox soon. Keep an eye out for an
-          email from PoundMart.
+          <strong className="font-semibold">Nearly there.</strong> Check your inbox for an email from PoundMart and tap the button to
+          confirm. Then The Bundle Drop lands every week.
         </p>
       </div>
     );

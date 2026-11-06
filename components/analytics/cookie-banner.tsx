@@ -6,7 +6,7 @@ import { CONSENT_KEY, setConsent } from "@/lib/gtag";
 
 /**
  * Cookie consent banner. Accept and Reject carry equal weight (ICO guidance);
- * analytics cookies are only set after "Accept". Reopened from the footer via
+ * analytics and Klaviyo cookies are only set after "Accept". Reopened from the footer via
  * the "cookie-consent-open" event.
  */
 export function CookieBanner() {
@@ -46,8 +46,8 @@ export function CookieBanner() {
       className="fixed inset-x-4 bottom-4 z-[90] mx-auto max-w-lg rounded-3xl border border-ink/10 bg-cream p-5 text-ink shadow-[0_24px_60px_-20px_rgba(1,25,44,0.45)] md:inset-x-auto md:right-6 md:bottom-6"
     >
       <p className="text-sm leading-relaxed text-ink-soft">
-        We use analytics cookies to see which pages and bundles people find useful, so we can improve the site. They are only set if
-        you accept. See our{" "}
+        We use analytics cookies to see which pages and bundles people find useful, and a Klaviyo cookie to show our newsletter
+        sign-up pop-up. They are only set if you accept. See our{" "}
         <Link href="/cookies" className="font-medium text-ink underline underline-offset-2">
           Cookie Policy
         </Link>
