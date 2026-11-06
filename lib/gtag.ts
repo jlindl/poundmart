@@ -11,6 +11,9 @@ export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-1DE44DYMNE";
 /** localStorage key holding the visitor's cookie choice: "granted" | "denied". */
 export const CONSENT_KEY = "cookie-consent";
 
+/** Window event fired whenever the visitor makes or changes their cookie choice (detail: "granted" | "denied"). */
+export const CONSENT_EVENT = "cookie-consent-change";
+
 /** Events fired before the GA init script has run; it sends them once consent and config are set. */
 export const QUEUE_KEY = "gaQueue";
 
@@ -28,7 +31,7 @@ export function track(event: string, params: Record<string, unknown> = {}) {
   else (window[QUEUE_KEY] ??= []).push([event, params]);
 }
 
-/** Apply a consent choice to GA (Consent Mode v2) and remember it. */
+/** Apply a consent choice to GA (Consent Mode v2), remember it and tell other scripts (Klaviyo). */
 export function setConsent(choice: "granted" | "denied") {
   try {
     window.localStorage.setItem(CONSENT_KEY, choice);
@@ -41,4 +44,5 @@ export function setConsent(choice: "granted" | "denied") {
     ad_user_data: choice,
     ad_personalization: choice,
   });
+  window.dispatchEvent(new CustomEvent(CONSENT_EVENT, { detail: choice }));
 }

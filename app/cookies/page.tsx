@@ -3,7 +3,8 @@ import { CookieSettingsLink } from "@/components/analytics/cookie-banner";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
-  description: "How PoundMart uses cookies, Google Analytics and Vercel Web Analytics on poundmart.co.uk, and how to change your choice at any time.",
+  description:
+    "How PoundMart uses cookies, Google Analytics, Klaviyo and Vercel Web Analytics on poundmart.co.uk, and how to change your choice at any time.",
   alternates: { canonical: "/cookies" },
 };
 
@@ -11,7 +12,7 @@ export default function CookiesPage() {
   return (
     <section className="container-x pt-36 pb-24">
       <div className="mx-auto max-w-2xl">
-        <p className="eyebrow text-ink-muted">Last updated 8 October 2026</p>
+        <p className="eyebrow text-ink-muted">Last updated 6 November 2026</p>
         <h1 className="type-display mt-4 text-5xl text-ink">Cookie Policy</h1>
         <div className="mt-10 space-y-6 text-lg leading-relaxed text-ink-soft">
           <p>
@@ -27,6 +28,15 @@ export default function CookiesPage() {
             make no choice, no analytics cookies are set and Google receives only basic, cookieless signals without identifiers.
           </p>
           <p>
+            <strong className="text-ink">Newsletter pop-up (only with your consent).</strong> We use Klaviyo, provided by Klaviyo Inc., to
+            run our newsletter, The Bundle Drop. If you click &quot;Accept&quot;, Klaviyo&apos;s script loads so it can show you a sign-up
+            pop-up. It sets a first-party cookie named <code>__kla_id</code> that lasts up to 2 years and stores a few related values in
+            your browser&apos;s local storage. These let Klaviyo stop showing the pop-up once you have closed it or signed up, and, if you
+            are a subscriber, see that you visited the site after opening one of our emails. If you click &quot;Reject&quot;, or make no
+            choice, Klaviyo&apos;s script does not load and none of this is stored. The sign-up boxes on the page work either way and do not
+            set any cookies.
+          </p>
+          <p>
             <strong className="text-ink">Visit counts (no cookies).</strong> We also use Vercel Web Analytics, provided by Vercel Inc., to
             count page views and see which pages are visited and where visitors come from. It does not set cookies or store anything on
             your device, and it does not identify you: visits are grouped using a short-lived hash of the request that resets every day.
@@ -36,7 +46,8 @@ export default function CookiesPage() {
             storage (key <code>cookie-consent</code>) so we do not ask on every page. This is not shared with anyone.
           </p>
           <p>
-            We do not use advertising cookies. Orders are placed on Amazon, which has its own cookie policy for amazon.co.uk.
+            We do not use advertising cookies, and we never use the cookies above to show you ads. Orders are placed on Amazon, which has its
+            own cookie policy for amazon.co.uk.
           </p>
           <h2 className="pt-4 text-2xl font-semibold text-ink">Changing your mind</h2>
           <p>

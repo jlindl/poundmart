@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { BellRing, PackagePlus, TrendingDown } from "lucide-react";
 import { SignupForm } from "@/components/newsletter/signup-form";
 import { newsletter } from "@/lib/newsletter";
@@ -59,6 +60,18 @@ export default function NewsletterPage() {
               When you sign up, we store your email address so we can send you The Bundle Drop, a weekly email about PoundMart bundles,
               prices and restocks. We use Klaviyo to store the list and send the emails, and Klaviyo records whether you open or click them
               so we can see what people find useful.
+            </p>
+            <p>
+              After you sign up, we send you one email asking you to confirm. You only join the list once you click the button in it, so
+              nobody can sign you up without you knowing.
+            </p>
+            <p>
+              If you accept cookies, Klaviyo may also show you a sign-up pop-up while you browse. Closing it hides it for two weeks, and
+              it stops for good once you have signed up. Our{" "}
+              <Link href="/cookies" className="font-medium text-ink underline underline-offset-2">
+                Cookie Policy
+              </Link>{" "}
+              explains the cookie it uses.
             </p>
             <p>
               We never sell or share your email with anyone else. Every email has an unsubscribe link, and unsubscribing removes you from

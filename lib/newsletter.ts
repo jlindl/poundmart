@@ -1,9 +1,11 @@
 /**
  * PoundMart newsletter ("The Bundle Drop") sign-up config.
  *
- * Sign-ups go straight from the browser to Klaviyo's public Client
- * Subscriptions API. No Klaviyo tracking script is loaded and no cookies are
- * set, so the cookie banner and Cookie Policy stay accurate.
+ * The inline forms post straight from the browser to Klaviyo's public Client
+ * Subscriptions API, so they need no Klaviyo script and set no cookies. The
+ * list ("The Bundle Drop") is double opt-in: Klaviyo emails a confirmation link
+ * first. Klaviyo's pop-up needs klaviyo.js, which <KlaviyoOnsite /> loads only
+ * after cookie consent (see components/analytics/klaviyo-onsite.tsx).
  *
  * Both values are public by design (Klaviyo's "public API key" is the 6
  * character company id). Set them in Vercel:

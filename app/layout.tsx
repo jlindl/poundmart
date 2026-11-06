@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/footer";
 import { JsonLd } from "@/components/seo/json-ld";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { CookieBanner } from "@/components/analytics/cookie-banner";
+import { KlaviyoOnsite } from "@/components/analytics/klaviyo-onsite";
 import { collections } from "@/lib/products";
 import { amazonStore, site } from "@/lib/site";
 import "./globals.css";
@@ -95,6 +96,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Analytics />
         <CookieBanner />
         <GoogleAnalytics />
+        {/* Klaviyo newsletter pop-up: loads only after "Accept" in the cookie banner. */}
+        <KlaviyoOnsite />
       </body>
     </html>
   );
