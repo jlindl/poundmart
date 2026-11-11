@@ -140,7 +140,7 @@ export default async function ProductPage(props: PageProps<"/shop/[slug]">) {
 
   return (
     <>
-      <JsonLd data={[productJsonLd(product), breadcrumbJsonLd(crumbs)]} />
+      <JsonLd data={[productJsonLd(product), breadcrumbJsonLd(crumbs)].filter((d) => d !== null)} />
       <ViewItem
         id={product.primary.asin}
         name={product.name}

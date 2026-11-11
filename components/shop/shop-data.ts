@@ -230,6 +230,10 @@ export function productJsonLd(p: Product) {
       seller: { "@type": "Organization", name: site.name, url: site.url },
       hasMerchantReturnPolicy: returnPolicy,
     }));
+  // Google rejects Product markup that has no offers, review or rating (Ahrefs
+  // flagged it as a rich results error), and the ratings belong to Amazon. A
+  // product with no price on file gets no Product markup rather than an invalid one.
+  if (!offers.length) return null;
   const primaryGtin = gtinFor(p.primary.asin);
   return {
     "@context": "https://schema.org",
@@ -243,7 +247,7 @@ export function productJsonLd(p: Product) {
     brand: { "@type": "Brand", name: brandName(p) },
     category: categoryInfo[p.category].label,
     keywords: p.keywords.join(", "),
-    ...(offers.length ? { offers: offers.length === 1 ? offers[0] : offers } : {}),
+    offers: offers.length === 1 ? offers[0] : offers,
   };
 }
 

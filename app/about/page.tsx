@@ -28,7 +28,7 @@ import { formatDate, formatPrice } from "@/lib/utils";
 
 const title = "About Us: Genuine Brands, Great Value Bundles";
 const description =
-  "UK-based PoundMart bundles genuine Nice Smile toothpaste, XHC haircare and everyday essentials into great value multi-packs. Packed and checked by us, dispatched by Amazon.";
+  "UK-based PoundMart bundles genuine Nice Smile toothpaste, XHC haircare and everyday essentials into value multi-packs, packed by us and dispatched by Amazon.";
 
 export const metadata: Metadata = {
   title,
