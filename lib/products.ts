@@ -453,6 +453,7 @@ export const products: Product[] = [
   define({
     slug: "xhc-no-rinse-conditioner",
     name: "XHC Vegan No Rinse Conditioner",
+    seoName: "Vegan Leave-In Conditioner for Curly & Afro Hair, 250ml | XHC",
     brand: "XHC",
     category: "haircare",
     type: "Leave-in conditioner",
@@ -520,6 +521,7 @@ export const products: Product[] = [
   define({
     slug: "xhc-argan-oil-shampoo-3-pack",
     name: "XHC Argan Oil Shampoo 3 Pack",
+    seoName: "Argan Oil Shampoo for Dry Hair, 3 x 300ml | XHC",
     brand: "XHC",
     category: "haircare",
     type: "Shampoo",
