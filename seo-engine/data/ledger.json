@@ -363,6 +363,17 @@
       "slug": "gym-bag-toiletries-checklist-for-students",
       "title": "Gym bag toiletries checklist for students who hate soggy bags",
       "targetKeyword": "gym bag toiletries checklist"
+    },
+    {
+      "date": "2026-11-12",
+      "type": "service",
+      "key": "service:hair-washing:curly-hair:how-to",
+      "status": "generated",
+      "suggestedKeyword": "how to wash your hair properly",
+      "angle": "how-to",
+      "slug": "how-to-wash-your-hair-properly-curly-afro-hair",
+      "title": "How to wash your hair properly if you have curly or afro hair",
+      "targetKeyword": "how to wash your hair properly"
     }
   ]
 }
