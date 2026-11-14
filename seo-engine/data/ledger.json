@@ -385,6 +385,17 @@
       "slug": "how-to-make-toiletries-last-longer-and-spend-less",
       "title": "How to make toiletries last longer and spend less",
       "targetKeyword": "how to make toiletries last longer"
+    },
+    {
+      "date": "2026-11-14",
+      "type": "service",
+      "key": "service:curly-hair:parents:routine",
+      "status": "generated",
+      "suggestedKeyword": "how to refresh curls between washes",
+      "angle": "routine",
+      "slug": "how-to-refresh-curls-between-washes-for-busy-family-mornings",
+      "title": "How to refresh curls between washes for busy family mornings",
+      "targetKeyword": "how to refresh curls between washes"
     }
   ]
 }
