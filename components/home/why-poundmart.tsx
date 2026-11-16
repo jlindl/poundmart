@@ -66,9 +66,9 @@ export function WhyPoundMart({ stats, storeHref }: { stats: Stats; storeHref: st
               className="bg-paper text-ink"
               media={
                 <SmartImage
-                  src="/images/home/packing-bench.jpg"
-                  alt="The PoundMart team packing bundles at the packing bench"
-                  hint="Photo to add: the PoundMart team packing bundles at the UK packing bench"
+                  src="/brand/conditioner-3pack-table.jpg"
+                  alt="A PoundMart conditioner 3-pack bundle on a table"
+                  hint="Swap for a photo of the PoundMart team packing bundles at the UK packing bench (/images/home/packing-bench.jpg)"
                   accent="#FCD000"
                   fill
                   sizes="(min-width: 1024px) 28vw, (min-width: 640px) 45vw, 100vw"
