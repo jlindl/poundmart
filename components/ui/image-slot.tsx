@@ -18,7 +18,8 @@ export function imageExists(src: string) {
 
 /**
  * Branded stand-in for a photo that hasn't been shot yet.
- * It prints the exact file path to drop the real image into.
+ * In development it shows the intended shot and the exact file path to drop the real image into.
+ * In production it is a plain decorative panel, so notes like "Photo to add" never reach the live site.
  */
 export function ImagePlaceholder({
   src,
@@ -33,10 +34,10 @@ export function ImagePlaceholder({
   className?: string;
   tone?: "light" | "dark";
 }) {
+  const dev = process.env.NODE_ENV !== "production";
   return (
     <div
-      role="img"
-      aria-label={hint ?? "Image coming soon"}
+      {...(dev ? { role: "img", "aria-label": hint ?? "Image coming soon" } : { "aria-hidden": true })}
       className={cn(
         "absolute inset-0 flex flex-col items-center justify-center overflow-hidden text-center",
         tone === "light" ? "bg-sand text-ink" : "bg-ink-deep text-cream",
@@ -52,15 +53,15 @@ export function ImagePlaceholder({
       />
       <div aria-hidden className="dot-grid absolute inset-0 opacity-60" />
       <div aria-hidden className="absolute -right-10 -bottom-10 size-48 rounded-full border-[18px] opacity-20" style={{ borderColor: accent }} />
-      <div className="relative flex max-w-[80%] flex-col items-center gap-2 px-4">
-        <span className="grid size-11 place-items-center rounded-full bg-white/70 shadow-soft backdrop-blur">
-          <ImageIcon className="size-5 opacity-70" aria-hidden />
-        </span>
-        {hint && <p className="font-display text-sm font-semibold leading-snug opacity-80">{hint}</p>}
-        {src && process.env.NODE_ENV !== "production" && (
-          <p className="max-w-full truncate rounded-full bg-white/60 px-2.5 py-1 font-mono text-[10px] opacity-70">{src}</p>
-        )}
-      </div>
+      {dev && (
+        <div className="relative flex max-w-[80%] flex-col items-center gap-2 px-4">
+          <span className="grid size-11 place-items-center rounded-full bg-white/70 shadow-soft backdrop-blur">
+            <ImageIcon className="size-5 opacity-70" aria-hidden />
+          </span>
+          {hint && <p className="font-display text-sm font-semibold leading-snug opacity-80">{hint}</p>}
+          {src && <p className="max-w-full truncate rounded-full bg-white/60 px-2.5 py-1 font-mono text-[10px] opacity-70">{src}</p>}
+        </div>
+      )}
     </div>
   );
 }
