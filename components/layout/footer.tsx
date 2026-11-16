@@ -5,6 +5,7 @@ import { AmazonButton, AmazonLink } from "@/components/ui/amazon-link";
 import { Parallax } from "@/components/motion/parallax";
 import { BackToTop } from "@/components/layout/back-to-top";
 import { CookieSettingsLink } from "@/components/analytics/cookie-banner";
+import { PreferredSourceButton } from "@/components/layout/preferred-source-button";
 import { amazon, brandFacts, footerNav, site } from "@/lib/site";
 import { formatDate } from "@/lib/utils";
 import { newsletter } from "@/lib/newsletter";
@@ -114,6 +115,7 @@ export function Footer() {
               Cookie Policy
             </Link>
             <CookieSettingsLink className="hover:text-cream" />
+            <PreferredSourceButton domain="poundmart.co.uk" className="text-cream/75 transition-colors hover:text-cream" />
             <a href="https://www.integrate-tech.co.uk" target="_blank" rel="noopener" className="hover:text-cream">
               Website by Integrate Tech
             </a>
