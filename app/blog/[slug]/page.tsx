@@ -20,6 +20,7 @@ import { ShareRow } from "@/components/blog/share-row";
 import { CoverParallax } from "@/components/blog/scroll-effects";
 import { AuthorBox, PostNav, PRICE_NOTE, QuickBuyCard } from "@/components/blog/article-parts";
 import { BacklinkBand } from "@/components/blog/backlink-band";
+import { PreferredSourceCard } from "@/components/blog/preferred-source-card";
 import { getCategoryArt } from "@/components/blog/category-art";
 import { absoluteUrl, extractFaq, formatTag, productsForPost, shareImage } from "@/components/blog/blog-utils";
 import { getAllPosts, getCategory, getPost, getRelatedPosts } from "@/lib/blog";
@@ -259,6 +260,7 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
                   </div>
                 )}
                 <PostBody source={post.body} />
+                <PreferredSourceCard name="PoundMart" domain="poundmart.co.uk" className="mt-12 text-ink" />
 
                 {post.tags.length > 0 && (
                   <div className="mt-14 flex flex-wrap items-center gap-2 border-t border-line pt-8">
