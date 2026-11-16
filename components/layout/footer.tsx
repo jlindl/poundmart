@@ -110,7 +110,7 @@ export function Footer() {
             © {new Date().getFullYear()} PoundMart. Prices, ratings and availability checked {formatDate(site.catalogCheckedAt)} and may have
             changed; Amazon always shows the live price. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates.
           </p>
-          <div className="flex shrink-0 items-center gap-5">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-3 md:shrink-0">
             <Link href="/cookies" className="hover:text-cream">
               Cookie Policy
             </Link>
