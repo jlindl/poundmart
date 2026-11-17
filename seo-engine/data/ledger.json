@@ -418,6 +418,17 @@
       "slug": "how-to-choose-toothpaste-for-kids-without-the-guesswork",
       "title": "How to choose toothpaste for kids without the guesswork",
       "targetKeyword": "how to choose toothpaste for kids"
+    },
+    {
+      "date": "2026-11-17",
+      "type": "service",
+      "key": "service:brushing-habits:parents:routine",
+      "status": "generated",
+      "suggestedKeyword": "bedtime brushing routine for kids",
+      "angle": "routine",
+      "slug": "bedtime-brushing-routine-for-kids-that-actually-works",
+      "title": "A bedtime brushing routine for kids that actually works",
+      "targetKeyword": "bedtime brushing routine for kids"
     }
   ]
 }
