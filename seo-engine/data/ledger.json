@@ -484,6 +484,17 @@
       "slug": "is-flavoured-toothpaste-as-good-as-mint",
       "title": "Is flavoured toothpaste as good as mint? A straight answer",
       "targetKeyword": "is flavoured toothpaste as good as mint"
+    },
+    {
+      "date": "2026-11-23",
+      "type": "service",
+      "key": "service:travel-toiletries:parents:guide",
+      "status": "generated",
+      "suggestedKeyword": "travel toiletries for kids",
+      "angle": "guide",
+      "slug": "travel-toiletries-for-kids-that-actually-work-for-families",
+      "title": "Travel toiletries for kids that actually work for families",
+      "targetKeyword": "travel toiletries for kids"
     }
   ]
 }
