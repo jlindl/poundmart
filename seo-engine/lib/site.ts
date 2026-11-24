@@ -8,6 +8,10 @@ import matter from "gray-matter";
 import { config } from "../config";
 import { loadPages, type LinkTarget } from "./data";
 import { routeExists } from "./routes";
+import { retiredPosts } from "../../lib/retired-posts";
+
+/** Retired posts 301 elsewhere, so new posts must not link to them. */
+export const isLinkable = (slug: string) => !(slug in retiredPosts);
 
 export type ExistingPost = {
   slug: string;
@@ -68,7 +72,7 @@ export function sitePages(): LinkTarget[] {
 /** Every internal path that resolves to a real page (hash fragments stripped). */
 export function validPaths(posts: { slug: string }[]): Set<string> {
   const strip = (p: string) => p.split(/[?#]/)[0].replace(/\/+$/, "") || "/";
-  return new Set(["/", ...sitePages().map((p) => strip(p.path)), ...posts.map((p) => postPath(p.slug))]);
+  return new Set(["/", ...sitePages().map((p) => strip(p.path)), ...posts.filter((p) => isLinkable(p.slug)).map((p) => postPath(p.slug))]);
 }
 
 /**

@@ -5,7 +5,7 @@
  */
 import { config } from "../config";
 import type { ExistingPost, LinkTarget } from "./site";
-import { postPath } from "./site";
+import { isLinkable, postPath } from "./site";
 import type { Topic } from "./topics";
 import { templateVars } from "./topics";
 import { fill } from "./text";
@@ -97,7 +97,7 @@ function targetWords(range: { minWords: number; maxWords: number }): number {
 
 function linkList(pages: LinkTarget[], posts: ExistingPost[]): string {
   const lines = pages.map((p) => `- ${p.path} : ${p.label}`);
-  for (const p of posts) lines.push(`- ${postPath(p.slug)} : blog post, '${p.title}'`);
+  for (const p of posts.filter((x) => isLinkable(x.slug))) lines.push(`- ${postPath(p.slug)} : blog post, '${p.title}'`);
   return lines.join("\n");
 }
 
