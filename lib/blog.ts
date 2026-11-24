@@ -11,6 +11,7 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import GithubSlugger from "github-slugger";
+import { retiredPosts } from "./retired-posts";
 
 export const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
@@ -185,7 +186,7 @@ export function getAllPosts(): Post[] {
   const today = new Date().toISOString().slice(0, 10);
   cache = files
     .map(parsePost)
-    .filter((p) => p.date <= today)
+    .filter((p) => p.date <= today && !(p.slug in retiredPosts))
     .sort((a, b) => (a.date === b.date ? a.slug.localeCompare(b.slug) : b.date.localeCompare(a.date)));
   return cache;
 }

@@ -15,8 +15,10 @@ name: SEO generate
 #         the next deploy.
 
 on:
-  schedule:
-    - cron: "0 5 * * *"
+  # Daily schedule paused (24 Nov 2026) after the November core update drop.
+  # Run it by hand from the Actions tab when a post is wanted.
+  # schedule:
+  #   - cron: "0 5 * * *"
   workflow_dispatch:
     inputs:
       only:

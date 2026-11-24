@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
+import { retiredPosts } from "./lib/retired-posts";
 
 const nextConfig = (phase: string): NextConfig => {
   // Canonical URLs, the sitemap and social previews use NEXT_PUBLIC_SITE_URL (see lib/site.ts).
@@ -19,6 +20,12 @@ const nextConfig = (phase: string): NextConfig => {
       return [
         // Candy Clean single and 4 pack were delisted on Amazon (Oct 2026); the 3 pack still has Candy Clean in it.
         { source: "/shop/nice-smile-candy-clean-toothpaste", destination: "/shop/nice-smile-3-pack-berry-gummy-candy", permanent: true },
+        // Overlapping posts merged into the stronger guide (see lib/retired-posts.ts).
+        ...Object.entries(retiredPosts).map(([from, to]) => ({
+          source: `/blog/${from}`,
+          destination: `/blog/${to}`,
+          permanent: true,
+        })),
       ];
     },
     async headers() {
